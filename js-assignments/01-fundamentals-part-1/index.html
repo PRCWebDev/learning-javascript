@@ -5,15 +5,205 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <title>Assignment #1</title>
+    <title>Assignments - Fundamentals Part 1</title>
   </head>
   <body>
-    <h1>LECTURE: Values and Variables</h1>
-    <p>
-      1. Declare variables called 'country', 'continent' and 'population' and
-      assign their values according to your own country (population in millions)
-    </p>
-    <p>2. Log their values to the console</p>
+    <h2>LECTURE: Values and Variables</h2>
+    <ol>
+      <li>
+        Declare variables called 'country', 'continent' and 'population' and
+        assign their values according to your own country (population in
+        millions)
+      </li>
+      <li>Log their values to the console</li>
+    </ol>
+
+    <h2>LECTURE: Data Types</h2>
+    <ol>
+      <li>
+        Declare a variable called 'isIsland' and set its value according to your
+        country. The variable should hold a Boolean value. Also declare a
+        variable 'language', but don't assign it any value yet
+      </li>
+      <li>
+        Log the types of 'isIsland', 'population', 'country' and 'language' to
+        the console
+      </li>
+    </ol>
+
+    <h2>LECTURE: let, const and var</h2>
+    <ol>
+      <li>
+        Set the value of 'language' to the language spoken where you live (some
+        countries have multiple languages, but just choose one)
+      </li>
+      <li>
+        Think about which variables should be const variables (which values will
+        never change, and which might change?). Then, change these variables to
+        const
+      </li>
+      <li>
+        Try to change one of the changed variables now, and observe what happens
+      </li>
+    </ol>
+
+    <h2>LECTURE: Basic Operators</h2>
+    <ol>
+      <li>
+        If your country split in half, and each half would contain half the
+        population, then how many people would live in each half?
+      </li>
+      <li>
+        Increase the population of your country by 1 and log the result to the
+        console
+      </li>
+      <li>
+        Finland has a population of 6 million. Does your country have more
+        people than Finland?
+      </li>
+      <li>
+        The average population of a country is 33 million people. Does your
+        country have less people than the average country?
+      </li>
+      <li>
+        Based on the variables you created, create a new variable 'description'
+        which contains a string with this format: 'Portugal is in Europe, and
+        its 11 million people speak portuguese'
+      </li>
+    </ol>
+
+    <h2>LECTURE: Strings and Template Literals</h2>
+    <ol>
+      <li>
+        Recreate the 'description' variable from the last assignment, this time
+        using the template literal syntax
+      </li>
+    </ol>
+
+    <h2>LECTURE: Taking Decisions: if / else Statements</h2>
+    <ol>
+      <li>
+        If your country's population is greater that 33 million, log a string
+        like this to the console: 'Portugal's population is above average'.
+        Otherwise, log a string like 'Portugal's population is 22 million below
+        average' (the 22 is the average of 33 minus the country's population)
+      </li>
+      <li>
+        After checking the result, change the population temporarily to 13 and
+        then to 130. See the different results, and set the population back to
+        original
+      </li>
+    </ol>
+
+    <h2>LECTURE: Type Conversion and Coercion</h2>
+    <ol>
+      <li>
+        Predict the result of these 5 operations without executing them:
+        <ul>
+          <li>'9' - '5';</li>
+          <li>'19' - '13' + '17';</li>
+          <li>'19' - '13' + 17;</li>
+          <li>'123' < 57;</li>
+          <li>5 + 6 + '4' + 9 - 4 - 2;</li>
+        </ul>
+      </li>
+      <li>Execute the operations to check if you were right</li>
+    </ol>
+
+    <h2>LECTURE: Equality Operators: == vs. ===</h2>
+    <ol>
+      <li>
+        Declare a variable 'numNeighbours' based on a prompt input like this:
+        prompt('How many neighbour countries does your country have?');
+      </li>
+      <li>
+        If there is only 1 neighbour, log to the console 'Only 1 border!' (use
+        loose equality == for now)
+      </li>
+      <li>
+        Use an else-if block to log 'More than 1 border' in case 'numNeighbours'
+        is greater than 1
+      </li>
+      <li>
+        Use an else block to log 'No borders' (this block will be executed when
+        'numNeighbours' is 0 or any other value)
+      </li>
+      <li>
+        Test the code with different values of numNeighbours', including 1 and 0
+      </li>
+      <li>
+        Change == to ===, and test the code again, with the same values of
+        'numNeighbours'. Notice what happens when there is exactly 1 border! Why
+        is this happening?
+      </li>
+      <li>
+        Finally, convert 'numNeighbours' to a number, and watch what happens now
+        when you input 1
+      </li>
+      <li>
+        Reflect on why we should use the === operator and type conversion in
+        this situation
+      </li>
+    </ol>
+
+    <h2>LECTURE: Logical Operators</h2>
+    <ol>
+      <li>
+        Comment out the previous code so the prompt doesn't get in the way
+      </li>
+      <li>
+        Let's say Sarah is looking for a new country to live in. She wants to
+        live in a country that speaks english, has less than 50 million people
+        and is not an island
+      </li>
+      <li>
+        Write an if statement to help Sarah figure out if your country is right
+        for her. You will need to write a condition that accounts for all of
+        Sarah's criteria. Take your time with this, and check part of the
+        solution if necessary
+      </li>
+      <li>
+        If yours is the right country, log a string like this: 'You should live
+        in Portugal :)'. If not, log 'Portugal does not meet your criteria :('
+      </li>
+      <li>
+        Probably your country does not meet all the criteria. So go back and
+        temporarily change some variables in order to make the condition true
+        (unless you live in Canada :D)
+      </li>
+    </ol>
+
+    <h2>LECTURE: The switch Statement</h2>
+    <ol>
+      <li>
+        Use a switch statement to log the following string for the given
+        'language':
+        <ul>
+          <li>chinese or mandarin: 'MOST number of native speakers!'</li>
+          <li>spanish: '2nd place in number of native speakers'</li>
+          <li>english: '3rd place'</li>
+          <li>hindi: 'Number 4'</li>
+          <li>arabic: '5th most spoken language'</li>
+          <li>for all other simply log 'Great language too :D'</li>
+        </ul>
+      </li>
+    </ol>
+
+    <h2>LECTURE: The Conditional (Ternary) Operator</h2>
+    <ol>
+      <li>
+        If your country's population is greater than 33 million, use the ternary
+        operator to log a string like this to the console: 'Portugal's
+        population is above average'. Otherwise, simply log 'Portugal's
+        population is below average'. Notice how only one word changes between
+        these two sentences!
+      </li>
+      <li>
+        After checking the result, change the population temporarily to 13 and
+        then to 130. See the different results, and set the population back to
+        original
+      </li>
+    </ol>
 
     <script src="script.js"></script>
     <script src="assignments.js"></script>
