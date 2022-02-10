@@ -12,7 +12,7 @@ if (hasDriversLicense) console.log("I can drive :D");
 // future reserved words
 // const interface = 'Audio';
 // const private = 534;
-*/
+
 
 ///////////////////////////////////////
 // Functions
@@ -20,7 +20,7 @@ function logger() {
   console.log("My name is Radu");
 }
 
-// calling / running / invoking function
+// Calling / Running / Invoking function
 logger();
 logger();
 logger();
@@ -38,3 +38,24 @@ const appleOrangeJuice = fruitProcessor(2, 4);
 console.log(appleOrangeJuice);
 
 const num = Number("23");
+*/
+
+// Function declaration
+function calcAge1(birthYear) {
+  return 2037 - birthYear;
+}
+const age1 = calcAge1(1987);
+console.log(age1);
+// (Radu): or
+// console.log(calcAge1(1987));
+
+// Function expression
+const calcAge2 = function (birthYeah) {
+  return 2037 - birthYeah;
+};
+const age2 = calcAge2(1997);
+console.log(age2);
+// (Radu): or
+// console.log(calcAge2(1997));
+
+console.log(age1, age2);
