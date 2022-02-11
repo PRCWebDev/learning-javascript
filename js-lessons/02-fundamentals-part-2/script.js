@@ -40,6 +40,8 @@ console.log(appleOrangeJuice);
 const num = Number("23");
 */
 
+///////////////////////////////////////
+// Function Declarations vs. Expressions
 // Function declaration
 function calcAge1(birthYear) {
   return 2037 - birthYear;
@@ -50,8 +52,8 @@ console.log(age1);
 // console.log(calcAge1(1987));
 
 // Function expression
-const calcAge2 = function (birthYeah) {
-  return 2037 - birthYeah;
+const calcAge2 = function (birthYear) {
+  return 2037 - birthYear;
 };
 const age2 = calcAge2(1997);
 console.log(age2);
@@ -59,3 +61,22 @@ console.log(age2);
 // console.log(calcAge2(1997));
 
 console.log(age1, age2);
+
+///////////////////////////////////////
+// Arrow functions
+
+const calcAge3 = (birthYear) => 2037 - birthYear;
+const age3 = calcAge3(2007);
+console.log(age3);
+// (Radu): or
+// console.log(calcAge3(2007));
+
+const yearsUntilRetirement = (birthYear, firstName) => {
+  const age = 2037 - birthYear;
+  const retirement = 65 - age;
+  // return retirement;
+  return `${firstName} retires in ${retirement} years`;
+};
+
+console.log(yearsUntilRetirement(1991, "Jonas"));
+console.log(yearsUntilRetirement(1980, "Bob"));
