@@ -120,7 +120,7 @@ const yearsUntilRetirement = function (birthYear, firstName) {
 
 console.log(yearsUntilRetirement(1991, "Jonas"));
 console.log(yearsUntilRetirement(1950, "Mike"));
-*/
+
 
 ///////////////////////////////////////
 // Introduction to Arrays
@@ -165,3 +165,42 @@ const ages = [
   calcAge(years[years.length - 1]),
 ];
 console.log(ages);
+*/
+
+///////////////////////////////////////
+// Basic Array Operations (Methods)
+const friends = ["Michael", "Steven", "Peter"];
+
+// Add elements
+const newLength = friends.push("Jay"); // ADDS "Jay" to the END of the "friends" array
+console.log(friends);
+
+console.log(newLength); // the result of "friends.push("Jay");" (stored in a variable called "const newLength") is the VALUE of the NEW LENGTH of the "friends" ARRAY aka "friends.length" (as seen below)
+console.log(friends.length);
+console.log(newLength === friends.length);
+
+friends.unshift("John"); // ADDS "John" to the BEGINNING of the "friends" array and the result is also the VALUE of the NEW LENGTH of the "friends" ARRAY aka "friends.length" (5 in this case)
+console.log(friends);
+
+// Remove elements
+friends.pop(); // REMOVES LAST element of the "friends" array
+const popped = friends.pop(); // outputs the element that was removed, unlike the previous operations that added elemets to the array (Peter in this case because we used "friends.pop();" twice and removed "Jay" before this)
+console.log(popped);
+console.log(friends);
+
+friends.shift(); // REMOVES FIRST element of the "friends" array ("John" in this case)
+console.log(friends);
+
+// Other Basic Array Operations (Methods)
+console.log(friends.indexOf("Steven")); // RETURNS the POSITION of the VALUE "Steven" in the "friends" array (1 in this case)
+console.log(friends.indexOf("Bob")); // (-1 in this case because "Bob" is NOT part of the "friends" array)
+
+friends.push(23);
+console.log(friends.includes("Steven")); // ES6 METHOD similar to "friends.indexOf" that RETURNS "true" or "false" values ("true" in this case)
+console.log(friends.includes("Bob")); // ("false" in this case)
+console.log(friends.includes(23)); // ("true" in this case)
+
+// we can use the "friends.includes" ES6 METHOD to write conditionals (because it RETURNS "true" or "false" values)
+if (friends.includes("Steven")) {
+  console.log("You have a friend called Steven");
+}

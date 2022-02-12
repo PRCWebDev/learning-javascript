@@ -58,7 +58,6 @@ console.log(
   describePopulation("Romania", 19),
   describePopulation("New Zealand", 5)
 );
-// */
 
 ////////////////////////////////////
 // LECTURE: Introduction to Arrays
@@ -79,3 +78,22 @@ console.log(percentages);
 //   percentageOfWorld1(populations[3]),
 // ];
 // console.log(percentages);
+// */
+
+////////////////////////////////////
+// LECTURE: Basic Array Operations (Methods)
+const neighbours = ["Bulgaria", "Serbia", "Hungary", "Moldova", "Ukraine"];
+neighbours.push("Utopia");
+console.log(neighbours);
+
+neighbours.pop();
+console.log(neighbours);
+
+if (!neighbours.includes("Utopia")) {
+  console.log("Probably not a central European country");
+}
+
+neighbours[neighbours.length - 1] = "Russia"; // selects the last value of the array (which was "Ukraine" after "Utopia" was disolved) and replaces it with "Russia"
+// or
+// neighbours[neighbours.indexOf("Ukraine")] = "Russia";
+console.log(neighbours);
