@@ -1,5 +1,5 @@
 "use strict";
-// /*
+
 ////////////////////////////////////
 // LECTURE: Functions
 function describeCountry(country, population, capitalCity) {
@@ -78,7 +78,6 @@ console.log(percentages);
 //   percentageOfWorld1(populations[3]),
 // ];
 // console.log(percentages);
-// */
 
 ////////////////////////////////////
 // LECTURE: Basic Array Operations (Methods)
@@ -97,3 +96,25 @@ neighbours[neighbours.length - 1] = "Russia"; // selects the last value of the a
 // or
 // neighbours[neighbours.indexOf("Ukraine")] = "Russia";
 console.log(neighbours);
+
+////////////////////////////////////
+// LECTURE: Introduction to Objects
+const myCountry = {
+  country: "Romania",
+  capital: "Bucharest",
+  language: "romanian",
+  population: 19,
+  neighbours: ["Bulgaria", "Serbia", "Hungary", "Moldova", "Ukraine"],
+};
+console.log(myCountry);
+
+////////////////////////////////////
+// LECTURE: Dot vs. Bracket Notation
+console.log(
+  `${myCountry.country} has ${myCountry.population} million ${myCountry.language}-speaking people, ${myCountry.neighbours.length} neighbouring countries and a capital called ${myCountry.capital}.`
+);
+myCountry.population += 2;
+console.log(myCountry.population);
+
+myCountry["population"] -= 2;
+console.log(myCountry.population);
