@@ -165,7 +165,7 @@ const ages = [
   calcAge(years[years.length - 1]),
 ];
 console.log(ages);
-*/
+
 
 ///////////////////////////////////////
 // Basic Array Operations (Methods)
@@ -204,3 +204,60 @@ console.log(friends.includes(23)); // ("true" in this case)
 if (friends.includes("Steven")) {
   console.log("You have a friend called Steven");
 }
+*/
+
+///////////////////////////////////////
+// Introduction to Objects
+const jonasArray = [
+  "Jonas",
+  "Schmedtmann",
+  2037 - 1991,
+  "teacher",
+  ["Michael", "Peter", "Steven"],
+];
+
+const jonas = {
+  firstName: "Jonas",
+  lastName: "Schmedtmann",
+  age: 2037 - 1991,
+  job: "teacher",
+  friends: ["Michael", "Peter", "Steven"],
+};
+console.log(jonas);
+
+///////////////////////////////////////
+// Dot vs. Bracket Notation
+console.log(jonas.lastName); // we need to use the REAL property name, not a computed one
+// or
+console.log(jonas["lastName"]); // we can use a COMPUTED property name (an EXPRESSION) , see bellow
+
+const nameKey = "Name";
+console.log(jonas["first" + nameKey]);
+console.log(jonas["last" + nameKey]);
+
+// console.log(jonas.'last' + nameKey) // this will NOT work
+
+// const interestedIn = prompt(
+//   "What do you want to know about Jonas? Choose between firstName, lastName, age, job, and friends"
+// );
+// console.log(jonas[interestedIn]); // JavaScript will replace the "interestedIn" variable with the input we give in the prompt window and it will display the value of that property in the console (from the "jonas" OBJECT)
+
+// if (jonas[interestedIn]) {
+//   console.log(jonas[interestedIn]);
+// } else {
+//   console.log(
+//     "Wrong request! Choose between firstName, lastName, age, job, and friends"
+//   );
+// }
+
+// Adding more Properties to an Object
+jonas.location = "Portugal";
+jonas["twitter"] = "@jonasschmedtman";
+console.log(jonas);
+// console.table(jonas);
+
+// Challenge
+// "Jonas has 3 friends and his best friend is called Michael"
+console.log(
+  `${jonas.firstName} has ${jonas.friends.length} friends and his best friend is called ${jonas.friends[0]}`
+);
