@@ -118,3 +118,28 @@ console.log(myCountry.population);
 
 myCountry["population"] -= 2;
 console.log(myCountry.population);
+
+////////////////////////////////////
+// LECTURE: Object Methods
+const myCountryIs = {
+  country: "Romania",
+  capital: "Bucharest",
+  language: "romanian",
+  population: 19,
+  neighbours: ["Bulgaria", "Serbia", "Hungary", "Moldova", "Ukraine"],
+
+  describe: function () {
+    console.log(
+      `${this.country} has ${this.population} million ${this.language}-speaking people, ${this.neighbours.length} neighbouring countries and a capital called ${this.capital}.`
+    );
+  },
+
+  checkIsland: function () {
+    this.isIsland = this.neighbours.length === 0 ? true : false;
+    return this.isIsland;
+  },
+};
+
+myCountryIs.describe();
+myCountryIs.checkIsland();
+console.log(myCountryIs);

@@ -42,7 +42,7 @@ const num = Number("23");
 
 ///////////////////////////////////////
 // Function Declarations vs. Expressions
-// Function declaration
+// Function Declaration
 function calcAge1(birthYear) {
   return 2037 - birthYear;
 }
@@ -51,7 +51,7 @@ console.log(age1);
 // (Radu): or
 // console.log(calcAge1(1987));
 
-// Function expression
+// Function Expression
 const calcAge2 = function (birthYear) {
   return 2037 - birthYear;
 };
@@ -149,8 +149,8 @@ console.log(jonas);
 console.log(jonas.length);
 
 // Exercise
-const calcAge = function (birthYeah) {
-  return 2037 - birthYeah;
+const calcAge = function (birthYear) {
+  return 2037 - birthYear;
 };
 const years = [1990, 1967, 2002, 2010, 2018];
 
@@ -204,7 +204,7 @@ console.log(friends.includes(23)); // ("true" in this case)
 if (friends.includes("Steven")) {
   console.log("You have a friend called Steven");
 }
-*/
+
 
 ///////////////////////////////////////
 // Introduction to Objects
@@ -237,18 +237,18 @@ console.log(jonas["last" + nameKey]);
 
 // console.log(jonas.'last' + nameKey) // this will NOT work
 
-// const interestedIn = prompt(
-//   "What do you want to know about Jonas? Choose between firstName, lastName, age, job, and friends"
-// );
-// console.log(jonas[interestedIn]); // JavaScript will replace the "interestedIn" variable with the input we give in the prompt window and it will display the value of that property in the console (from the "jonas" OBJECT)
+const interestedIn = prompt(
+  "What do you want to know about Jonas? Choose between firstName, lastName, age, job, and friends"
+);
+console.log(jonas[interestedIn]); // JavaScript will replace the "interestedIn" variable with the input we give in the prompt window and it will display the value of that property in the console (from the "jonas" OBJECT)
 
-// if (jonas[interestedIn]) {
-//   console.log(jonas[interestedIn]);
-// } else {
-//   console.log(
-//     "Wrong request! Choose between firstName, lastName, age, job, and friends"
-//   );
-// }
+if (jonas[interestedIn]) {
+  console.log(jonas[interestedIn]);
+} else {
+  console.log(
+    "Wrong request! Choose between firstName, lastName, age, job, and friends"
+  );
+}
 
 // Adding more Properties to an Object
 jonas.location = "Portugal";
@@ -261,3 +261,45 @@ console.log(jonas);
 console.log(
   `${jonas.firstName} has ${jonas.friends.length} friends and his best friend is called ${jonas.friends[0]}`
 );
+*/
+
+///////////////////////////////////////
+// Object Methods
+const jonas = {
+  firstName: "Jonas",
+  lastName: "Schmedtmann",
+  birthYear: 1991,
+  job: "teacher",
+  friends: ["Michael", "Peter", "Steven"],
+  hasDriversLicense: true,
+
+  // calcAge: function (birthYear) {
+  //   return 2037 - birthYear;
+  // },
+
+  // OR BETTER !
+  // calcAge: function () {
+  //  // console.log(this);
+  //   return 2037 - this.birthYear;
+  // },
+
+  // OR EVEN BETTER !!
+  calcAge: function () {
+    this.age = 2037 - this.birthYear;
+    return this.age;
+  },
+};
+
+// console.log(jonas.calcAge(1991));
+// or
+// console.log(jonas["calcAge"](1991));
+
+// OR BETTER !
+// console.log(jonas.calcAge());
+
+// OR EVEN BETTER !!
+// BUT YOU MUST RUN / CALL "console.log(jonas.calcAge());" ONCE before running / calling "console.log(jonas.age);" OR "jonas.calcAge();" TO actually CREATE the "age" PROPERTY in the "jonas" OBJECT, otherwise you will get the "undefined" error
+jonas.calcAge();
+console.log(jonas.age);
+console.log(jonas.age);
+console.log(jonas.age);
