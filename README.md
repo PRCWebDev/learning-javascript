@@ -2,6 +2,36 @@
 
 from multiple resources
 
+---
+
+## 📈 11 - 17 February 2022
+
+1. Completed the second part of the JavaScript Fundamentals video lectures (~ 4.5h of video content) ✅
+
+- Source: [The Complete JavaScript Course 2022: From Zero to Expert!](https://www.udemy.com/course/the-complete-javascript-course/) created by Jonas Schmedtmann. All credit goes to him 🙏
+
+- I learned about:
+  - [x] Activating Strict Mode
+  - [x] Functions
+  - [x] Function Declarations vs. Expressions
+  - [x] Arrow Functions
+  - [x] Functions Calling Other Functions
+  - [x] Arrays
+  - [x] Basic Array Operations (Methods)
+  - [x] Objects
+  - [x] Dot vs. Bracket Notation
+  - [x] Object Methods
+  - [x] Iteration: The for Loop
+  - [x] Looping Arrays, Breaking and Continuing
+  - [x] Looping Backwards and Loops in Loops
+  - [x] The while Loop
+
+2. Completed 13 coding assignments based on the above mentioned theory lectures ✅
+
+3. Completed 5 coding challenges based on the above mentioned theory lectures ✅
+
+---
+
 ## 📈 05 - 10 February 2022
 
 1. Completed the first part of JavaScript Fundamentals video lectures (~ 5h of video content) ✅
