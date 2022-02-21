@@ -2,6 +2,12 @@
 
 from multiple resources
 
+## 📈 18 - 21 February 2022
+
+1. Practiced spaced repetition: rewatched ALL of the JavaScript Fundamentals (part 1 + part 2) video lectures (~ 9.5h of video content) and redid some of the challenges and some of the assignments ✅
+
+- Source: [The Complete JavaScript Course 2022: From Zero to Expert!](https://www.udemy.com/course/the-complete-javascript-course/) created by Jonas Schmedtmann. All credit goes to him 🙏
+
 ---
 
 ## 📈 11 - 17 February 2022
