@@ -2,6 +2,14 @@
 
 from multiple resources
 
+## 📈 22 - 25 February 2022
+
+1. Learned about VS Code setup and useful extensions, developer skills, debugging and completed a HTML & CSS crash course to refresh my previous knowledge (all adding up to ~ 3h of video content) ✅
+
+- Source: [The Complete JavaScript Course 2022: From Zero to Expert!](https://www.udemy.com/course/the-complete-javascript-course/) created by Jonas Schmedtmann. All credit goes to him 🙏
+
+---
+
 ## 📈 18 - 21 February 2022
 
 1. Practiced spaced repetition: rewatched ALL of the JavaScript Fundamentals (part 1 + part 2) video lectures (~ 9.5h of video content) and redid some of the challenges and some of the assignments ✅
