@@ -13,18 +13,23 @@ document.querySelector(".guess").value = 23;
 console.log(document.querySelector(".guess").value);
 */
 
-// 1. Setting the secret number
+// *** 1. Setting the secret number
 let secretNumber = Math.trunc(Math.random() * 20) + 1;
 // Displaying the secret number
 // document.querySelector(".number").textContent = secretNumber;
 
-// 2. Setting the score (a STATE variable)
+// *** 2. Setting the score (a STATE variable)
 let score = 20;
 
-// 3. Setting the highscore
+// *** 3. Setting the highscore
 let highscore = 0;
 
-// 4. Adding the click event
+// *** 6. Refactoring the code using DRY principles
+const displayMessage = function (message) {
+  document.querySelector(".message").textContent = message;
+};
+
+// *** 4. Adding the click event
 // this function will be called by the JS engine as soon as the event (the click on the "Check!" button) happens
 document.querySelector(".check").addEventListener("click", function () {
   // console.log(document.querySelector(".guess").value);
@@ -41,11 +46,15 @@ document.querySelector(".check").addEventListener("click", function () {
 
   // checking if we have inputed a Number value
   if (!guess) {
-    document.querySelector(".message").textContent = "⛔️ No number!";
+    // Refactoring the code using DRY principles
+    // document.querySelector(".message").textContent = "⛔️ No number!";
+    displayMessage("⛔️ No number!");
 
     // when player wins
   } else if (guess === secretNumber) {
-    document.querySelector(".message").textContent = "🎉 Correct Number!";
+    // Refactoring the code using DRY principles
+    // document.querySelector(".message").textContent = "🎉 Correct Number!";
+    displayMessage("🎉 Correct Number!");
     // displaying the secret number
     document.querySelector(".number").textContent = secretNumber;
     // changing the background color and the width when the player wins
@@ -58,6 +67,22 @@ document.querySelector(".check").addEventListener("click", function () {
       document.querySelector(".highscore").textContent = highscore;
     }
 
+    // when guess is wrong
+  } else if (guess !== secretNumber) {
+    if (score > 1) {
+      // Refactoring the code using DRY principles
+      // document.querySelector(".message").textContent = guess > secretNumber ? "Too high!" : "Too low!";
+      displayMessage(guess > secretNumber ? "Too high!" : "Too low!");
+      score--;
+      document.querySelector(".score").textContent = score;
+    } else {
+      // Refactoring the code using DRY principles
+      // document.querySelector(".message").textContent = "💥 You lost the game!";
+      displayMessage("💥 You lost the game!");
+      document.querySelector(".score").textContent = 0;
+    }
+  }
+  /*
     // when guess is too high
   } else if (guess > secretNumber) {
     if (score > 1) {
@@ -80,9 +105,10 @@ document.querySelector(".check").addEventListener("click", function () {
       document.querySelector(".score").textContent = 0;
     }
   }
+  */
 });
 
-// 5. Resetting the game with the "Again" button
+// *** 5. Resetting the game with the "Again" button
 document.querySelector(".again").addEventListener("click", function () {
   // resetting / reassigning the secret number
   secretNumber = Math.trunc(Math.random() * 20) + 1;
@@ -90,7 +116,9 @@ document.querySelector(".again").addEventListener("click", function () {
   score = 20;
   document.querySelector(".score").textContent = score;
   // resetting / reassigning the message
-  document.querySelector(".message").textContent = "Start guessing...!";
+  // Refactoring the code using DRY principles
+  // document.querySelector(".message").textContent = "Start guessing...!";
+  displayMessage("Start guessing...");
   // resetting / reassigning the number displayed
   document.querySelector(".number").textContent = "?";
   // resetting / reassigning the input value to an empty value
