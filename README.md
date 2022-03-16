@@ -2,6 +2,31 @@
 
 from multiple resources
 
+## 📈 02 - 16 March 2022
+
+1. Learned about JavaScript in the Browser: DOM and Events Fundamentals (~ 4h of video content) ✅
+
+- Source: [The Complete JavaScript Course 2022: From Zero to Expert!](https://www.udemy.com/course/the-complete-javascript-course/) created by Jonas Schmedtmann. All credit goes to him 🙏
+
+- I learned about:
+  - [x] What's the DOM and DOM Manipulation
+  - [x] Selecting and Manipulating Elements
+  - [x] Handling Click Events
+  - [x] Implementing the Game Logic
+  - [x] Manipulating CSS Styles
+  - [x] Refactoring Our Code: The DRY Principle
+  - [x] Working With Classes
+  - [x] Handling an "Esc" Keypress Event
+
+2. Practiced what I learned by:
+
+- Recreating 3 mini-projects / games:
+  - [x] the [Guess My Number](https://guess-my-number-js-webdevprc.netlify.app/) game
+  - [x] the [Modal Window](https://modal-window-js-webdevprc.netlify.app/) mini-project
+  - [x] the [Pig Game](https://pig-game-js-webdevprc.netlify.app/)
+
+---
+
 ## 📈 22 - 25 February 2022
 
 1. Learned about VS Code setup and useful extensions, developer skills, debugging and completed a HTML & CSS crash course to refresh my previous knowledge (all adding up to ~ 3h of video content) ✅
