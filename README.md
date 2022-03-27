@@ -2,6 +2,21 @@
 
 from multiple resources
 
+## 📈 26 - 27 March 2022
+
+1. Learned about How JavaScript Works Behind The Scenes - part 1 ✅
+
+- Source: [The Complete JavaScript Course 2022: From Zero to Expert!](https://www.udemy.com/course/the-complete-javascript-course/) created by Jonas Schmedtmann. All credit goes to him 🙏
+
+- I learned about:
+  - [x] A High-Level Overview of JavaScript
+  - [x] The JavaScript Engine and Runtime
+  - [x] Execution Contexts and The Call Stack
+  - [x] Scope and The Scope Chain
+  - [x] Scoping in Practice
+
+2. Practiced what I learned
+
 ## 📈 02 - 16 March 2022
 
 1. Learned about JavaScript in the Browser: DOM and Events Fundamentals (~ 4h of video content) ✅
