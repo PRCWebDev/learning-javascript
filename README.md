@@ -2,9 +2,9 @@
 
 from multiple resources
 
-## 📈 26 - 27 March 2022
+## 📈 26 - 31 March 2022
 
-1. Learned about How JavaScript Works Behind The Scenes - part 1 ✅
+1. Learned about How JavaScript Works Behind The Scenes ✅
 
 - Source: [The Complete JavaScript Course 2022: From Zero to Expert!](https://www.udemy.com/course/the-complete-javascript-course/) created by Jonas Schmedtmann. All credit goes to him 🙏
 
@@ -13,7 +13,11 @@ from multiple resources
   - [x] The JavaScript Engine and Runtime
   - [x] Execution Contexts and The Call Stack
   - [x] Scope and The Scope Chain
-  - [x] Scoping in Practice
+  - [x] Variable Environment: Hoisting and The TDZ
+  - [x] The "this" Keyword
+  - [x] Regular Functions vs. Arrow Functions
+  - [x] The "arguments" Keyword
+  - [x] Primitives vs. Objects (Primitive vs. Reference Types)
 
 2. Practiced what I learned
 
