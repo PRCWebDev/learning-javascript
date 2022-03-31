@@ -47,7 +47,7 @@ function calcAge(birthYear) {
 const firstName = "Jonas";
 calcAge(1991);
 
-// ONLY an inner scope can have access to the variables of its outer scope, but not the other way around.
+// ONLY an inner scope can have access to the variables of it's outer scope, but not the other way around.
 // console.log(age);
 // printAge();
 */
@@ -271,3 +271,68 @@ var addArrow2 = (a, b) => {
 3. ALWAYS DECLARE ALL THE FUNCTIONS FIRST and USE them AFTER the declaration - this applies to ALL types of functions, even to Function Declarations (which are HOISTED)
 4. NEVER, EVER USE an ARROW FUNCTION !!AS A METHOD (Object Method)!! - USE a REGULAR FUNCTION INSTEAD
 */
+
+///////////////////////////////////////
+// Objects vs. primitives
+let age = 30;
+let oldAge = age;
+age = 31;
+console.log(age);
+console.log(oldAge);
+
+const mee = {
+  name: "Jonas",
+  age: 30,
+};
+const friend = mee;
+friend.age = 27; // ALL REFERENCE TYPES VALUES DECLARED WITH CONST IN OBJECTS ARE !!MUTABLE!!, unlike IN PRIMITIVES TYPES, WHERE ALL VALUES DECLARED WITH CONST ARE !!IMMUTABLE!! (const in PRIMITIVE TYPES = IMMUTABLE vs const in REFERENCE TYPES = MUTABLE)
+console.log("Friend:", friend);
+console.log("Me", mee);
+
+///////////////////////////////////////
+// Primitives vs. Objects in Practice
+
+// Primitive types
+let lastName = "Williams";
+let oldLastName = lastName;
+lastName = "Davis";
+console.log(lastName, oldLastName);
+
+// Reference types
+const jessica = {
+  firstName: "Jessica",
+  lastName: "Williams",
+  age: 27,
+};
+const marriedJessica = jessica;
+marriedJessica.lastName = "Davis";
+console.log("Before marriage:", jessica);
+console.log("After marriage: ", marriedJessica);
+// marriedJessica = {}; - this DOES NOT WORK with CONST, IT WORKS ONLY with LET and it would create a NEW EMPTY OBJECT
+/*
+let marriedJessica = jessica;
+marriedJessica.lastName = "Davis";
+marriedJessica = {};
+console.log("Before marriage:", jessica);
+console.log("After marriage: ", marriedJessica);
+*/
+
+// Copying objects
+const jessica2 = {
+  firstName: "Jessica",
+  lastName: "Williams",
+  age: 27,
+  family: ["Alice", "Bob"],
+};
+
+const jessicaCopy = Object.assign({}, jessica2); // this Method of copying Objects is SWALLOW and only modifies the Object on a surface level, not on a DEEP level. We need a more complex Method to copy Objects that we will learn later on
+jessicaCopy.lastName = "Davis"; // this works on a SWALLOW level, NOT on a DEEP level
+// console.log("Before marriage:", jessica2);
+// console.log("After marriage: ", jessicaCopy);
+
+jessicaCopy.family.push("Mary");
+jessicaCopy.family.push("John");
+// this also modifies the original "jessica2" Object - exemplifies that "Object.assign" DOES NOT WORK ON A DEEP LEVEL
+
+console.log("Before marriage:", jessica2);
+console.log("After marriage: ", jessicaCopy);
