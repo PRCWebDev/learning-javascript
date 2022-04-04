@@ -325,8 +325,8 @@ const jessica2 = {
   family: ["Alice", "Bob"],
 };
 
-const jessicaCopy = Object.assign({}, jessica2); // this Method of copying Objects is SWALLOW and only modifies the Object on a surface level, not on a DEEP level. We need a more complex Method to copy Objects that we will learn later on
-jessicaCopy.lastName = "Davis"; // this works on a SWALLOW level, NOT on a DEEP level
+const jessicaCopy = Object.assign({}, jessica2); // this Method of copying Objects is SHALLOW and only modifies the Object on a surface level, not on a DEEP level. We need a more complex Method to copy Objects that we will learn later on...
+jessicaCopy.lastName = "Davis"; // this works on a SHALLOW level, NOT on a DEEP level
 // console.log("Before marriage:", jessica2);
 // console.log("After marriage: ", jessicaCopy);
 

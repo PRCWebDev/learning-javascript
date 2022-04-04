@@ -97,6 +97,19 @@ const restaurant = {
       `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}. Thank you for your order!`
     );
   },
+
+  // A Practical application of Using the Spread Operator to PASS arguments and parameters into a Function
+  orderPasta: function (ingr1, ingr2, ingr3) {
+    console.log(
+      `Here is your delicious pasta made with ${ingr1}, ${ingr2} and ${ingr3}! Bon appetit!`
+    );
+  },
+
+  // A Practical application of Using the Rest Operator to PASS arguments and parameters into a Function
+  orderPizza(mainIngredient, ...otherIngredients) {
+    console.log(mainIngredient);
+    console.log(otherIngredients);
+  },
 };
 
 ///////////////////////////////////////
@@ -220,3 +233,195 @@ restaurant.orderDelivery({
   address: "Via del Sole, 21",
   starterIndex: 1,
 });
+
+///////////////////////////////////////
+// 3. The Spread Operator
+// The Spread Operator WORKS on ALL ITERABLES (Arrays, Strings, Maps, Sets etc.) but ALSO on OBJECTS (since ES2018)
+
+// 3.1. Before & After the Spread Operator
+// 3.1.1. Before the Spread Operator
+const arr2 = [7, 8, 9];
+const badNewArr = [1, 2, arr2[0], arr2[1], arr2[2]];
+console.log(badNewArr);
+
+// 3.1.2. After the Spread Operator
+const newArr = [1, 2, ...arr2];
+console.log(newArr);
+
+// 3.2. Using the Spread Operator to UNPACK ITERABLES (Strings, Arrays, Maps, Sets etc., BUT ALSO OBJECTS (since ES2018))
+// 3.2.1. Unpacking a String
+const firstName = "Jonas";
+console.log(...firstName); // displays "J o n a s" (with space between the letters)
+// 3.2.2. Unpacking an Array
+console.log(...newArr); // displays "1 2 7 8 9" (with space between the numbers)
+// 3.2.3. Unpacking an Object
+// console.log(restaurant);
+// console.log(...restaurant); // we CANNOT UNPACK an Object !!AND!! Display it DIRECTLY to the console (like we did with the OTHER ITERABLES) - see 3.5.3. for more...
+
+// 3.5. Using the Spread Operator on ARRAYS
+// 3.2.3. Creating a NEW Array by Copying an old one, UNPACKED with the Spread Operator & Adding a NEW item to the "mainMenu" Property
+const newMenu = [...restaurant.mainMenu, "Gnocci"];
+// const newMenu = ["Hamburgers", ...restaurant.mainMenu, "Gnocci"];
+console.log(restaurant.mainMenu);
+console.log(newMenu);
+console.log(...restaurant.mainMenu); // Unpacking the Array
+console.log(...newMenu); // Unpacking the Array
+
+// 3.3. Using the Spread Operator to COPY ARRAYS - also SHALLOW Copy
+const mainMenuCopy = [...restaurant.mainMenu]; // similar to the "Object.assign" Method
+console.log(mainMenuCopy);
+console.log(restaurant.mainMenu);
+console.log(...mainMenuCopy); // Unpacking the Array
+console.log(...restaurant.mainMenu); // Unpacking the Array
+
+// 3.4. Using the Spread Operator to MERGE (join) 2(or more) ARRAYS together
+const menuUpdated = [...restaurant.starterMenu, ...restaurant.mainMenu]; // MUST HAVE "..." aka the Spread Operator on ALL of the Arrays we want to MERGE
+console.log(menuUpdated);
+console.log(...menuUpdated); // Unpacking the Array
+/*
+// Extra - Radu - MUST HAVE "..." aka the Spread Operator on ALL of the Arrays we want to MERGE
+const menuUpdated2 = [
+  ...restaurant.starterMenu,
+  ...restaurant.mainMenu,
+  ...["Sauces", "Desserts", "Side Dishes", "Beverages"],
+];
+console.log(menuUpdated2);
+console.log(...menuUpdated2);
+*/
+
+// 3.4. Using the Spread Operator to PASS Arguments into a Function
+const ingredients = [
+  // prompt("Let's make pasta! Insert ingredient 1:"),
+  // prompt("Insert ingredient 2:"),
+  // prompt("Insert ingredient 3:"),
+];
+console.log(ingredients);
+
+// without using the Spread Operator
+// restaurant.orderPasta(ingredients[0], ingredients[1], ingredients[2]);
+
+// using the Spread Operator
+restaurant.orderPasta(...ingredients);
+
+// 3.5. Using the Spread Operator on OBJECTS
+// 3.5.0. Extra - Radu: ADDING A PROPERTY TO AN OBJECT
+/*
+// from the "Primitives vs. Objects ... Copying objects" lectures - SHALLOW Copy
+const mee = {
+  name: "Jonas",
+  age: 30,
+};
+const friend = mee;
+friend.age = 27; // ALL REFERENCE TYPES VALUES DECLARED WITH CONST IN OBJECTS ARE !!MUTABLE!!, unlike IN PRIMITIVES TYPES, WHERE ALL VALUES DECLARED WITH CONST ARE !!IMMUTABLE!! (const in PRIMITIVE TYPES = IMMUTABLE vs const in REFERENCE TYPES = MUTABLE)
+console.log("Friend:", friend);
+console.log("Me", mee);
+*/
+
+/*
+const restaurantNewMenu = restaurant;
+restaurant.newMenu = newMenu; // ADDING A PROPERTY TO AN OBJECT will modify BOTH Objects
+console.log(restaurantNewMenu); // Same as the "restaurant" Object - see "Primitives vs. Objects" lectures ... Copying objects - SHALLOW Copy
+console.log(restaurant); // // Same as the "restaurantNewMenu" Object - see "Primitives vs. Objects" lectures ... Copying objects - SHALLOW Copy
+*/
+
+// 3.5.1. Using the Spread Operator to COPY OBJECTS - SHALLOW Copy - similar to the "Object.assign" Method
+const restaurantCopy = { ...restaurant };
+console.log("restaurant Object Copy:", restaurantCopy);
+console.log("initial restaurant Object:", restaurant);
+
+// PROOF that this Method of copying Objects is also SHALLOW (just like the "Object.assign" Method) & also modifies the original "restaurant" Object. This only modifies the Object on a surface level, not on a DEEP level. We need a more complex Method to copy Objects that we will learn later on...
+restaurantCopy.starterMenu.push("Salads");
+console.log(restaurantCopy.starterMenu);
+console.log(restaurant.starterMenu);
+
+// 3.5.2. Creating a NEW Object by Copying an old one, UNPACKED with the Spread Operator & Adding new Properties to it - also SHALLOW Copy (just like the "Object.assign" Method)
+const newRestaurant = { foundedIn: 1919, ...restaurant, founder: "Giuseppe" }; // the order in which we add the new Properties is NOT important
+console.log(newRestaurant);
+console.log(restaurant);
+
+// 3.5.3. Unpacking an Object
+// console.log(restaurant);
+// console.log(...restaurant); // we CANNOT UNPACK an Object !!AND!! Display it DIRECTLY to the console (like we did with the OTHER ITERABLES)
+// BUT we can Display the Properties (PACKED or UNPACKED) of the Object DIRECTLY to the console
+console.log(
+  restaurant.name,
+  restaurant.location,
+  restaurant.mainMenu,
+  ...restaurant.starterMenu
+);
+
+// ALSO we can MODIFY the Properties of the NEW Object's Copy, UNPACK them & Display them DIRECTLY to the console
+// const restaurantCopy = { ...restaurant };
+restaurantCopy.name = "Ristorante Roma";
+restaurantCopy.founder = "Romeo";
+restaurantCopy.foundedIn = 2022;
+console.log(
+  restaurantCopy.name, // modified
+  restaurantCopy.founder, // modified
+  restaurantCopy.foundedIn, // modified
+  ...restaurantCopy.mainMenu // same as "restaurant"
+);
+// Vs
+console.log(
+  restaurant.name,
+  restaurant.founder, // does not exists in the initial "restaurant" Object
+  restaurant.foundedIn, // does not exists in the initial "restaurant" Object
+  ...restaurant.mainMenu
+);
+
+///////////////////////////////////////
+// 4. Rest Pattern / Operator and Parameters
+// 4.1. Using Destructuring !!AND!! the Rest Operator
+
+// SPREAD, because "..." on RIGHT side of "="
+// const arr = [1, 2, ...[3, 4]];
+
+// REST, because "..." on LEFT side of "="
+// const [a, b, ...others] = [1, 2, 3, 4, 5];
+// console.log(a, b, others);
+
+// 4.1.1. Using Destructuring !!AND!! the Rest Operator in Arrays
+// in an Array, variables can have ANY name
+const [pizza, , risotto, ...otherFood] = [
+  ...restaurant.mainMenu,
+  ...restaurant.starterMenu,
+];
+console.log(pizza, risotto, otherFood);
+
+// // 4.1.2. Using Destructuring !!AND!! the Rest Operator in Objects
+// in an Object, the DESTRUCTERED Property from the Object MUST HAVE the SAME name as INSIDE that Object, WHILE the RESTED Object can have ANY name
+const { sat, ...weekdays } = restaurant.openingHours;
+console.log(weekdays);
+
+// 4.2. Using the Rest Operator in Functions - REST PARAMETERS
+const add = function (...numbers) {
+  // "numbers" is an Array created with the REST Operator
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++) sum += numbers[i];
+  console.log(sum);
+};
+
+add(2, 3); // displays an ARRAY [2, 3]
+add(5, 3, 7, 2); // displays an ARRAY [5, 3, 7, 2]
+add(8, 2, 5, 3, 2, 1, 4); // displays an ARRAY [8, 2, 5, 3, 2, 1, 4]
+
+const xx = [23, 5, 7];
+// const xx = [23, 5, 7, 222, 333];
+add(...xx);
+// 1) the SPREAD Operator is used here to UNPACK the "xx" Array and PASS it's VALUES as ARGUMENTS in the "add" Function Call
+// 2) the "add" Function receives the values as PARAMETERS
+// the REST Operator PACKS the received values (aka REST PARAMETERS) into an Array (aka "numbers") so that the "for" loop can iterate through that Array and display the SUM of the values to the console
+
+restaurant.orderPizza("mushrooms", "onion", "olives", "spinach"); // displays "mushrooms" as "mainIngredient" & ["onion", "olives", "spinach"] as the "otherIngredients" Array
+restaurant.orderPizza("mushrooms"); // displays "mushrooms" as "mainIngredient" & [] as the "otherIngredients" Array (empty array)
+
+/*
+// 4.3. Conclusions:
+* The DIFFERENCES between the REST Operator & the SPREAD Operator:
+1) REST is the OPPOSITE of SPREAD
+2) REST is on the LEFT of the "=" while SPREAD is on the RIGHT of the "="
+3) REST PACKS (ONLY into an ARRAY ) while SPREAD UNPACKS (from ALL ITERABLES and OBJECTS)
+4) REST = VARIABLES + "," while SPREAD = VALUES + ","
+
+* WE CANNOT USE the REST Operator OR the SPREAD Operator inside Template Literals :(
+*/
