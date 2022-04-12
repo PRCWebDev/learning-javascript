@@ -106,6 +106,7 @@ const restaurant = {
   },
 
   // A Practical application of Using the Rest Operator to PASS arguments and parameters into a Function
+  // Enhanced Object Literals
   orderPizza(mainIngredient, ...otherIngredients) {
     console.log(mainIngredient);
     console.log(otherIngredients);
@@ -297,7 +298,7 @@ const ingredients = [
 ];
 console.log(ingredients);
 
-// without using the Spread Operator
+// WITHOUT using the Spread Operator
 // restaurant.orderPasta(ingredients[0], ingredients[1], ingredients[2]);
 
 // using the Spread Operator
@@ -381,7 +382,7 @@ console.log(
 // console.log(a, b, others);
 
 // 4.1.1. Using Destructuring !!AND!! the Rest Operator in Arrays
-// in an Array, variables can have ANY name
+// in an Array, VARIABLES can have ANY name
 const [pizza, , risotto, ...otherFood] = [
   ...restaurant.mainMenu,
   ...restaurant.starterMenu,
@@ -425,3 +426,257 @@ restaurant.orderPizza("mushrooms"); // displays "mushrooms" as "mainIngredient" 
 
 * WE CANNOT USE the REST Operator OR the SPREAD Operator inside Template Literals :(
 */
+
+////////////////////////////////////
+// 5. Short Circuiting (&& and ||)
+// when we are converting a value to a BOOLEAN value, we will get either a TRUTHY value OR a FALSY value:
+// strings
+console.log(Boolean("Jonas")); // TRUTHY value
+console.log(Boolean("")); // FALSY value
+
+// numbers
+console.log(Boolean(11)); // TRUTHY value
+console.log(Boolean(0)); // FALSY value
+
+// objects
+console.log(Boolean(restaurant)); // TRUTHY value
+console.log(Boolean({})); // !!ALSO a TRUTHY value!!
+
+// The OR Operator || and the AND Operator && can use ANY data type, return ANY data type, short-circuiting
+console.log("Short Circuiting: The OR Operator || and the AND Operator &&");
+
+// 5.1. The OR Operator ||
+// => looking for TRUTHY values (number, string, boolean, symbol, bigInt, Object, {}(empty object))
+// => returns the first Truthy value OR the last Falsy value
+console.log("1. ---- OR ----");
+console.log(3 || "Jonas");
+console.log("" || "Jonas");
+console.log(true || 0);
+console.log(undefined || null); // returns "null" because it's the last Falsy value - there's no short-circuiting happening here
+
+console.log(undefined || 0 || "" || "Hello" || 23 || null); // returns "Hello" because it's the first Truthy value
+
+// Practical example
+restaurant.numGuests = 23;
+// restaurant.numGuests = 0; // this does NOT work with the OR Operator => we need to use the NULLISH Coalescing Operator (??) - SEE 6.
+const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
+console.log(guests1);
+// console.log(restaurant);
+
+const guests2 = restaurant.numGuests || 10;
+// const guests2 = restaurant.numGuests ?? 10; // using the NULLISH Coalescing Operator (??) - SEE 6.
+console.log(guests2);
+console.log(restaurant);
+
+// 5.2. The AND Operator &&
+// => is the OPPOSITE of ||
+// => looking for FALSY values (0, "", undefined, null, NaN)
+// => returns the first Falsy value OR the last Truthy value
+console.log("2. ---- AND ----");
+console.log(0 && "Jonas");
+console.log(7 && "Jonas"); // returns "Jonas" because it's the last Truthy value - there's no short-circuiting happening here
+
+console.log("Hello" && 23 && null && "jonas"); // returns "null" because it's the first Falsy value
+
+// Practical example
+// WITHOUT the AND Operator &&
+if (restaurant.orderPizza) {
+  restaurant.orderPizza("mushrooms", "spinach");
+}
+
+// using the AND Operator && to avoid creating an "if" statement only to check if a certain Object Property, Method or Value actually exists
+restaurant.orderPizza && restaurant.orderPizza("mushrooms", "spinach");
+// if that Object Property, Method or Value does NOT exists => NOTHING HAPPENS (the function is not executed in this case)
+restaurant.orderPizzazzz && restaurant.orderPizzazzz("mushrooms", "spinach");
+
+///////////////////////////////////////
+// 6. The Nullish Coalescing Operator ??
+// ?? => looking for NON-NULLISH values
+// NULLISH values = ONLY null and undefined
+// => returns the first NON-nullish value OR the last nullish value
+
+console.log(0 ?? true ?? null); // returns "0" - the first NON-nullish value
+console.log(null ?? true ?? 0); // returns "true" - the first NON-nullish value
+console.log(undefined ?? null); // returns "null" - the last nullish value
+
+restaurant.numGuestsCorrect = 0;
+const guests = restaurant.numGuestsCorrect || 10;
+console.log(guests); // returns "10" because "10" is the Truthy value, which is WRONG because we set the initial "restaurant.numGuestsCorrect" Property of the "restaurant" object to "0"
+// console.log(restaurant); // PROOF that "restaurant.numGuestsCorrect = 0;
+
+// Nullish: null and undefined (NOT 0 or '')
+const guestCorrect = restaurant.numGuestsCorrect ?? 10; // returns "0" because "0" is the first TRUTHY AND NON-nullish value, which is CORRECT because we set the initial "restaurant.numGuestsCorrect" Property of the "restaurant" object to "0"
+console.log(guestCorrect);
+// console.log(restaurant); // PROOF that "restaurant.numGuestsCorrect = 0;
+
+////////////////////////////////////
+// 7. Logical Assignment Operators
+// (just like "+=" or "-=" etc.)
+// ||=
+// ??=
+// &&=
+
+const rest1 = {
+  name: "Capri",
+  // numGuests: 20,
+  numGuests: 0,
+};
+
+const rest2 = {
+  name: "La Piazza",
+  owner: "Giovanni Rossi",
+};
+
+// WITHOUT the Logical OR Assignment Operator
+// rest1.numGuests = rest1.numGuests || 10;
+// rest2.numGuests = rest2.numGuests || 10;
+// console.log(rest1);
+// console.log(rest2);
+
+// using the Logical OR Assignment Operator
+// rest1.numGuests ||= 10;
+// rest2.numGuests ||= 10;
+// console.log(rest1); // 10
+// console.log(rest2); // 10
+
+// using the Logical Nullish Assignment Operator (null or undefined)
+// rest1.numGuests ??= 10;
+// rest2.numGuests ??= 10;
+// console.log(rest1); // 0
+// console.log(rest2); // 10
+
+// using the Logical AND Assignment Operator
+rest1.owner &&= "<ANONYMOUS>";
+rest2.owner &&= "<ANONYMOUS>";
+rest1.owner;
+console.log(rest1); // NOTHING changes because "rest1.owner" does NOT exists ("rest1.owner" = falsy value) <=> the Object stays the same
+console.log(rest2); // returns the last Truthy value ("ANONYMOUS")
+
+///////////////////////////////////////
+// 8. Looping Arrays: The for-of Loop
+// We can USE "continue" AND "break" in the "for-of" Loop
+const menu2 = [...restaurant.starterMenu, ...restaurant.mainMenu];
+
+for (const item of menu2) {
+  console.log(item);
+}
+// FOR each "item" OF the "menu2" Array "console.log(item)"
+
+// to get the INDEX of the Array we must USE the "array.entries()" METHOD which will return multiple smaller Arrays, each of them made of the Index of the Array Element and the Element itself
+console.log(menu2);
+for (const item of menu2.entries()) {
+  console.log(item);
+}
+
+// destructuring the smaller Arrays into "i" = index and "el" = element
+// console.log([...menu2.entries()]);
+for (const [i, el] of menu2.entries()) {
+  console.log(`${i + 1}: ${el}`);
+}
+
+////////////////////////////////////
+// 9. Enhanced Object Literals
+// 9.1. To ADD (insert / nest) an Object into another Object as an Object Property we can USE Enhanced Object Literals by simple writing that Object's name as a Property
+const pls = {
+  mIRC: "mIRC reference",
+};
+const aslPls = {
+  age: "randomAge",
+  sex: "randomSex",
+  location: "randomLocation",
+  // Enhanced Object Literals
+  pls,
+};
+
+console.log(aslPls);
+
+// 9.2. NEW SYNTAX to write Object Methods
+const restaurantNewSyntax = {
+  orderPizza(mainIngredient, other) {
+    console.log(mainIngredient);
+    console.log(other);
+  },
+};
+
+restaurantNewSyntax.orderPizza("NEW", "SYNTAX");
+
+// instead of Old Syntax
+const restaurantOldSyntax = {
+  orderPizza: function (mainIngredient, other) {
+    console.log(mainIngredient);
+    console.log(other);
+  },
+};
+restaurantOldSyntax.orderPizza("Old", "Syntax");
+
+// 9.3. Computing Object Property names
+const weekdays2 = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
+const weAreOpenOn = {
+  [weekdays2[0]]: {
+    open: 10,
+    close: 22,
+  },
+  [weekdays2[1]]: {
+    open: 10,
+    close: 22,
+  },
+  [weekdays2[2]]: {
+    open: 10,
+    close: 22,
+  },
+  [`day ${2 + 2} of the week`]: {
+    open: 8,
+    close: 24,
+  },
+  [`rest of the week`]: {
+    open: 0, // Open 24 hours
+    close: 24,
+  },
+};
+
+console.log(weAreOpenOn);
+
+///////////////////////////////////////
+// 10. Optional Chaining Operator (?.)
+// WORKS on: Object Properties, Object Methods AND on /Arrays
+// BEST USED to check if Object Properties actually EXISTS
+
+// WITHOUT Optional Chaining Operator (?.)
+if (restaurant.openingHours && restaurant.openingHours.mon) {
+  console.log(restaurant.openingHours.mon.open);
+}
+// "restaurant.openingHours.mon" does NOT exists so NOTHING is displayed
+// console.log(restaurant.openingHours.mon.open);
+
+// WITH Optional Chaining Operator (?.)
+console.log(restaurant.openingHours.mon?.open);
+// "restaurant.openingHours.mon" does NOT exists so "undefined" is displayed
+// we can USE MULTIPLE Optional Chaining Operators tied together
+console.log(restaurant.openingHours?.mon?.open); // undefined
+
+// Example
+const days = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
+
+// using "Dot vs. Bracket Notation" - see lecture from JS Fundamentals Part 2
+// using the Optional Chaining Operator (?.)
+// using the Nullish Operator inside a variable
+for (const day of days) {
+  const open = restaurant.openingHours[day]?.open ?? "closed";
+  console.log(`On ${day}, we open at ${open}`);
+}
+
+// Methods
+// WITH Optional Chaining Operator (?.)
+console.log(restaurant.order?.(0, 1) ?? "Method does not exist");
+console.log(restaurant.orderRisotto?.(0, 1) ?? "Method does not exist");
+
+// Arrays
+const users = [{ name: "Jonas", email: "hello@jonas.io" }];
+// const users = [];
+
+// WITH Optional Chaining Operator (?.)
+console.log(users[0]?.name ?? "User array empty");
+
+// WITHOUT Optional Chaining Operator (?.)
+// if (users.length > 0) console.log(users[0].name);
+// else console.log("user array empty");
