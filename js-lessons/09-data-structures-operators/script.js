@@ -680,3 +680,45 @@ console.log(users[0]?.name ?? "User array empty");
 // WITHOUT Optional Chaining Operator (?.)
 // if (users.length > 0) console.log(users[0].name);
 // else console.log("user array empty");
+
+////////////////////////////////////
+// 11. Looping Objects: Object Keys, Values, and Entries
+// 11.1. Looping over Object Property NAMES
+// we use the "Object.keys()" Method to Loop over Object Property NAMES
+const properties = Object.keys(openingHours); // returns an Array
+console.log(properties);
+
+// using the for-of loop & string concatenation of Template Literals together with the "=+=" logical operator to loop over Object Property NAMES
+let openStr = `We are open on ${properties.length} days: `;
+for (const day of properties) {
+  openStr += `${day}, `;
+}
+console.log(openStr);
+
+// 11.2. Looping over Object Property VALUES
+// we use the "Object.values()" Method to Loop over Object Property VALUES
+const values = Object.values(openingHours); // returns an Array
+console.log(values);
+
+// 11.3. Looping over Entire Object
+// we use the "Object.entries()" Method to Loop over THE ENTIRE Object
+// ENTRIES = NAMES + VALUES
+const entries = Object.entries(openingHours); // returns an Array
+console.log(entries);
+// *** FOR OBJECTS we use the "Object.entries()" Method
+// *** FOR ARRAYS we use the "anyArrayNameWeWantToLoopOver.entries()" Method - see 8. "Looping Arrays: The for-of Loop" lecture with the "menu2.entries" example
+
+// using the for-of Loop
+// using Destructuring of an Array into [key, value]
+// using Destructuring of an Object (value = the "openingHours" Object (nested inside the "restaurant" Object)) into { open, close }
+
+// for better understanding... Radu
+// for (const [key, value] of entries) {
+//   console.log(`On ${key} we open at ${open} and close at ${close}`);
+// }
+// key = day = object property NAME
+// value = object property VALUE (set of values in this case: "open" & "close")
+
+for (const [day, { open, close }] of entries) {
+  console.log(`On ${day} we open at ${open} and close at ${close}`);
+}
