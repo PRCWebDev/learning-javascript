@@ -249,7 +249,7 @@ console.log(badNewArr);
 const newArr = [1, 2, ...arr2];
 console.log(newArr);
 
-// 3.2. Using the Spread Operator to UNPACK ITERABLES (Strings, Arrays, Maps, Sets etc., BUT ALSO OBJECTS (since ES2018))
+// 3.2. Using the Spread Operator to UNPACK ITERABLES (Strings, Arrays, Maps, Sets etc., BUT ALSO OBJECTS, INDIRECTLY (since ES2018))
 // 3.2.1. Unpacking a String
 const firstName = "Jonas";
 console.log(...firstName); // displays "J o n a s" (with space between the letters)
@@ -421,7 +421,7 @@ restaurant.orderPizza("mushrooms"); // displays "mushrooms" as "mainIngredient" 
 * The DIFFERENCES between the REST Operator & the SPREAD Operator:
 1) REST is the OPPOSITE of SPREAD
 2) REST is on the LEFT of the "=" while SPREAD is on the RIGHT of the "="
-3) REST PACKS (ONLY into an ARRAY ) while SPREAD UNPACKS (from ALL ITERABLES and OBJECTS)
+3) REST PACKS (ONLY into an ARRAY ) while SPREAD UNPACKS (from ALL ITERABLES and OBJECTS (INDIRECTLY))
 4) REST = VARIABLES + "," while SPREAD = VALUES + ","
 
 * WE CANNOT USE the REST Operator OR the SPREAD Operator inside Template Literals :(
@@ -684,6 +684,11 @@ console.log(users[0]?.name ?? "User array empty");
 ////////////////////////////////////
 // 11. Looping Objects: Object Keys, Values, and Entries
 // 11.1. Looping over Object Property NAMES
+// Object Properties NAMES = KEYS = Object.keys
+// !! almost always, Object KEYS = STRINGS !!
+// Object.keys(anyPropertyNameFromANestedObject) returns an ARRAY with all the Properties NAMES of that Nested Object
+// then this Array can be Looped
+
 // we use the "Object.keys()" Method to Loop over Object Property NAMES
 const properties = Object.keys(openingHours); // returns an Array
 console.log(properties);
@@ -696,13 +701,21 @@ for (const day of properties) {
 console.log(openStr);
 
 // 11.2. Looping over Object Property VALUES
+// Object Properties VALUES = Object.values
+// Object.values(anyPropertyNameFromANestedObject) returns an ARRAY with all the Properties VALUES of that Nested Object
+// then this Array can be Looped
+
 // we use the "Object.values()" Method to Loop over Object Property VALUES
 const values = Object.values(openingHours); // returns an Array
 console.log(values);
 
 // 11.3. Looping over Entire Object
+// Object Properties ENTRIES = Object.entries = KEYS + VALUES => ENTRIES = NAMES + VALUES
+// Object.entries(anyPropertyNameFromANestedObject) returns an ARRAY with NESTED ARRAYS inside
+// EACH ONE of those NESTED ARRAYS contains the Property NAME (the KEY) AND the Property VALUE FOR EACH PROPERTY of that Nested Object
+// then this ARRAY (with the NESTED ARRAYS inside) can be DESTRUCTERED (BOTH arrays AND objects can be destructured - see 1. & 2. of the "09-data-structures-operators" lecture notes) and Looped
+
 // we use the "Object.entries()" Method to Loop over THE ENTIRE Object
-// ENTRIES = NAMES + VALUES
 const entries = Object.entries(openingHours); // returns an Array
 console.log(entries);
 // *** FOR OBJECTS we use the "Object.entries()" Method
@@ -722,3 +735,185 @@ console.log(entries);
 for (const [day, { open, close }] of entries) {
   console.log(`On ${day} we open at ${open} and close at ${close}`);
 }
+
+///////////////////////////////////////
+// 12. Sets
+// a SET is a collection of UNIQUE Values => a SET can NEVER have duplicates
+// a Set DOES NOT have any Indexes => there's NO WAY to retrieve values from a Set
+// we CAN USE the For-of LOOP on SETS
+// we CAN USE the SPREAD Operator on SETS
+
+// 12.1. Creating a new SET
+const ordersSet = new Set([
+  "Pasta",
+  "Pizza",
+  "Pizza",
+  "Risotto",
+  "Pasta",
+  "Pizza",
+]);
+console.log(ordersSet);
+
+console.log(new Set("Jonas"));
+
+// 12.2. Checking the size / length of a SET
+console.log(ordersSet.size); // 3
+console.log(new Set("Jonas").size); // 5
+
+// 12.3. Checking for values values in a SET
+console.log(ordersSet.has("Pizza")); // true
+console.log(ordersSet.has("Bread")); // false
+
+// 12.4. Adding values to a SET
+ordersSet.add("Garlic Bread");
+ordersSet.add("Garlic Bread");
+console.log(ordersSet);
+console.log(ordersSet.size); // 4
+
+// 12.5. Deleting values from a SET
+ordersSet.delete("Risotto");
+console.log(ordersSet);
+// Deleting ALL values from a SET
+// ordersSet.clear();
+// console.log(ordersSet);
+
+// 12.6. Looping over Sets
+// we CAN USE the For-of LOOP on SETS
+for (const order of ordersSet) {
+  console.log(order);
+}
+console.log(...ordersSet);
+
+// Examples
+// 12.7. Converting a SET into an Array
+// we can CONVERT a SET into an Array just by placing the Set inside [] AND we CAN USE the SPREAD Operator on that SET
+const staff = ["Waiter", "Chef", "Waiter", "Manager", "Chef", "Waiter"];
+const staffUnique = [...new Set(staff)];
+console.log(staffUnique);
+
+console.log(
+  new Set(["Waiter", "Chef", "Waiter", "Manager", "Chef", "Waiter"]).size
+);
+
+console.log(new Set("jonasschmedtmann").size); // 11
+console.log(new Set("jonas schmedt mann").size); // 12 - the empty space between words is also counted as a UNIQUE Value (but only once, of course)
+
+///////////////////////////////////////
+// 13. Maps
+// *** 13.1. Maps: Fundamentals
+// a MAP is a Data Structure we can use to ASSIGN / BIND VALUES to KEYS
+// !! unlike in Objects, in MAPS the KEYS can have ANY TYPE (strings, numbers, objects, arrays, other maps etc.) !!
+
+// 13.1.1. Creating a new MAP
+// EASIEST WAY to CREATE a MAP = CREATE AN EMPTY MAP
+const rest = new Map();
+console.log(rest);
+
+// 13.1.2. Adding values to a MAP
+// then use the ".set()" Method to ADD elements to the Map
+rest.set("name", "Classico Italiano");
+rest.set(1, "Firenze, Italy");
+
+// CALLING the ".set()" Method in MAPS returns the UPDATED Map
+console.log(rest.set(2, "Lisbon, Portugal"));
+
+// so, the ".set()" Method in MAPS can be CHAIN LINKED multiple times (mapName.set(..).set(..).set(..))
+rest
+  .set("categories", ["Italian", "Pizzeria", "Vegetarian", "Organic"])
+  .set("open", 11)
+  .set("close", 23)
+  .set(true, "We are open :D")
+  .set(false, "We are closed :(");
+
+console.log(rest);
+
+// 13.1.3. Getting data from a MAP
+// TO READ / GET data from a MAP we use the ".get()" Method and PASSING the KEY inside ()
+console.log(rest.get("name"));
+console.log(rest.get(true));
+console.log(rest.get(1));
+
+// const time = 21;
+const time = 8;
+console.log(rest.get(time > rest.get("open") && time < rest.get("close")));
+
+// 13.1.4. Checking for values values in a MAP
+console.log(rest.has("categories"));
+
+// 13.1.5. Deleting values from a MAP
+rest.delete(2);
+console.log(rest);
+// Deleting ALL values from a MAP
+// rest.clear();
+// console.log(rest);
+
+// 13.1.6. Checking the size / length of a MAP
+console.log(rest.size);
+
+// 13.1.7. HEAP misplacement - using Objects / Arrays as MAP KEYS
+// rest.set([1, 2], "Test1");
+// console.log(rest);
+// console.log(rest.get([1, 2])); // NOT WORKING - because it DOES NOT refer to the same place in the HEAP - we need to set the Array to a variable
+const arr3 = [1, 2];
+rest.set(arr3, "Test2");
+console.log(rest);
+console.log(rest.get(arr3)); // WORKING - because it refers to the same place in the HEAP
+
+// 13.1.8. Using DOM elements as MAP KEYS
+rest.set(document.querySelector("h1"), "Heading");
+console.log(rest);
+
+///////////////////////////////////////
+// *** 13.2. Maps: Iteration
+const question = new Map([
+  // !! MUST HAVE [] INSIDE new Map()
+  ["question", "What is the best programming language in the world?"],
+  [1, "C"],
+  [2, "Java"],
+  [3, "JavaScript"],
+  ["correct", 3],
+  [true, "Correct 🎉"],
+  [false, "Try again!"],
+]);
+console.log(question);
+
+// 13.2.1. Converting an OBJECT into a MAP
+// we can CONVERT an OBJECT into a MAP using "new Map(Object.entries("...");)" Method
+console.log(Object.entries(openingHours));
+const hoursMap = new Map(Object.entries(openingHours));
+console.log(hoursMap);
+// NOW we CAN USE the For-of LOOP on MAPS
+
+// 13.2.2. LOOPing over MAPs
+// Quiz app
+console.log(question.get("question"));
+for (const [key, value] of question) {
+  if (typeof key === "number") {
+    console.log(`Answer ${key}: ${value}`);
+  }
+}
+// const answer = Number(prompt("Your answer is:"));
+const answer = 3; // setting a dfault answer to stop prompting
+console.log(answer);
+console.log(question.get(question.get("correct") === answer));
+// OR Radu
+console.log(question.get(answer === 3));
+
+// 13.2.3. Converting an Array into a MAP
+// Radu - my solution
+// console.log(new Map([...question])); // using the SPREAD Operator
+
+// 13.2.4. Converting a MAP into an Array AND Using Methods on MAPS
+// Jonas
+// we are first building an Array using the [] ...
+console.log([...question]);
+// AND Using Methods on MAPS
+// ... AND then unpacking the "question" MAP using the SPREAD Operator into that Array WHILE also applying different METHODS to that MAP
+console.log([question.entries()]);
+console.log([...question.keys()]);
+console.log([...question.values()]);
+
+// OR Radu - my solutions of Using Methods on MAPS - WITHOUT building an Array
+console.log(...question.entries());
+console.log(...question.keys());
+console.log(...question.values());
