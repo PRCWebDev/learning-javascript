@@ -2,6 +2,32 @@
 
 from multiple resources
 
+## 📈 02 - 18 April 2022
+
+1. Learned about Data Structures, Modern Operators & Working with Strings ✅
+
+- Source: [The Complete JavaScript Course 2022: From Zero to Expert!](https://www.udemy.com/course/the-complete-javascript-course/) created by Jonas Schmedtmann. All credit goes to him 🙏
+
+- I learned about:
+  - [x] Destructuring Arrays
+  - [x] Destructuring Objects
+  - [x] The Spread Operator (...)
+  - [x] Rest Pattern / Operator (...) and Rest Parameters
+  - [x] Short Circuiting (&& and ||)
+  - [x] The Nullish Coalescing Operator (??)
+  - [x] Logical Assignment Operators
+  - [x] Looping Arrays: The for-of Loop
+  - [x] Enhanced Object Literals
+  - [x] Optional Chaining (?.)
+  - [x] Looping Objects: Object Keys, Values, and Entries
+  - [x] Sets
+  - [x] Maps: Fundamentals
+  - [x] Maps: Iteration
+  - [x] Which Data Structure to Use
+  - [x] Working With Strings
+
+2. Practiced what I learned by completing multiple coding assignments and challenges
+
 ## 📈 26 - 31 March 2022
 
 1. Learned about How JavaScript Works Behind The Scenes ✅
@@ -19,7 +45,7 @@ from multiple resources
   - [x] The "arguments" Keyword
   - [x] Primitives vs. Objects (Primitive vs. Reference Types)
 
-2. Practiced what I learned
+2. Practiced what I learned by completing multiple coding assignments and challenges
 
 ## 📈 02 - 16 March 2022
 
