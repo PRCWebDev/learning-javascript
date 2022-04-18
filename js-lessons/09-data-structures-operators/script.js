@@ -919,6 +919,7 @@ console.log(...question.values());
 const flights =
   "_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30";
 
+// 14.1. Indexes and Length of Strings
 const airline = "TAP Air Portugal";
 const plane = "A320";
 
@@ -935,6 +936,7 @@ console.log(airline.lastIndexOf("r")); // 10 - the space counts as character - c
 console.log(airline.indexOf("portugal")); // -1 - "portugal" does NOT exist - CASE SENSITIVE
 console.log(airline.indexOf("Portugal")); // 8 - "Portugal" is on position 8 - count starting from position 0 just like in Arrays
 
+// 14.2. Slicing Strings
 console.log(airline.slice(4));
 console.log(airline.slice(4, 7));
 
@@ -958,6 +960,7 @@ checkMiddleSeat("11B");
 checkMiddleSeat("23C");
 checkMiddleSeat("3E");
 
+// Extra explanations on Strings:
 // STRINGS are just PRIMITIVES.
 // So why do they have methods?
 // Whenever we call a method on a string, JavaScript will automatically, behind the scenes, CONVERT that String Primitive to a String OBJECT with the same content.
@@ -971,30 +974,62 @@ console.log(typeof new String("jonas").slice(1));
 console.log(airline.toLowerCase());
 console.log(airline.toUpperCase());
 
-// Fixing capitalization in name
-// !! MUST DO CHALLENGE - Turn into a function
+// 14.3. Fixing capitalization in Strings
 const passenger = "jOnAS"; // Jonas
 const passengerLower = passenger.toLowerCase();
 const passengerCorrect =
   passengerLower[0].toUpperCase() + passengerLower.slice(1);
 console.log(passengerCorrect); // Jonas
 
+// !! MUST DO CHALLENGE - Turn into a function - DONE !!
+// V1 - Converting to Lower Case
+const nameToLowerCase = function (name) {
+  const str = name.toLowerCase();
+  console.log(str);
+  return str;
+};
+nameToLowerCase("ASdfgGfdgAaaAa ASAF dfa");
+// V2 - Converting to Upper Case
+const nameToUpperCase = function (name) {
+  const str = name.toUpperCase();
+  console.log(str);
+  return str;
+};
+nameToUpperCase("ASdfgGfdgAaaAa ASAF dfa");
+
+// 14.4. Trimming Strings
 // Comparing emails
-// !! MUST DO CHALLENGE - Turn into a function
 const email = "hello@jonas.io";
-const loginEmail = "  Hello@Jonas.Io \n";
+const loginEmail = "  Hello@Jonas.Io \n"; // "\n " = ""Enter" aka "new line"
 
 // const lowerEmail = loginEmail.toLowerCase();
 // const trimmedEmail = lowerEmail.trim();
 const normalizedEmail = loginEmail.toLowerCase().trim();
 console.log(normalizedEmail);
 console.log(email === normalizedEmail);
+// !! MUST DO CHALLENGE - Turn into a function - DONE !!
+const normalizeString = function (anyString) {
+  const str = anyString.toLowerCase().trim();
+  console.log(str);
+  return str;
+};
+normalizeString("   ASdfgGfdgAaaAa@ASAF.dev \n "); // "\n " = ""Enter" aka "new line"
+normalizeString(
+  "   STRING has BEEN NormaLiZed by being converted TO LOwer CaSe and TRIMMEd  \n "
+);
 
-// Replacing
-// !! MUST DO CHALLENGE - Turn into a function
+// 14.5. Replacing Strings
 const priceGB = "288,97£";
 const priceUS = priceGB.replace("£", "$").replace(",", ".");
 console.log(priceUS);
+// !! MUST DO CHALLENGE - Turn into a function - DONE !!
+const currencyReplacement = function (currencyA, currencyB) {
+  const priceA = `"100${currencyA}"`;
+  const priceB = priceA.replace(currencyA, currencyB);
+  console.log(priceA, priceB);
+  return priceA, priceB;
+};
+currencyReplacement("$", "RON");
 
 const announcement =
   "All passengers come to boarding door 23. Boarding door 23!";
@@ -1003,7 +1038,7 @@ console.log(announcement.replace("door", "gate")); // ONLY replaces the FIRST oc
 // console.log(announcement.replace(/gate/g, "door")); // older Method using Regular Expression - used before ".replaceAll();" - also Case Sensitive
 console.log(announcement.replaceAll("door", "gate")); // the ".replaceAll();" Method is NOW WORKING
 
-// Booleans
+// 14.6. Booleans - Checking Strings
 const plane2 = "Airbus A320neo";
 console.log(plane2.includes("A320"));
 console.log(plane2.includes("Boeing"));
@@ -1027,11 +1062,13 @@ const checkBaggage = function (items) {
 checkBaggage("I have a laptop, some Food and a pocket Knife");
 checkBaggage("Socks and camera");
 checkBaggage("Got some snacks and a gun for protection");
-// Split and join
+
+// 14.7. Splitting and joining Strings
 // SPLIT returns an ARRAY from a STRING
 // we can LOOP over that Array
 console.log("a+very+nice+string".split("+"));
 console.log("Jonas Schmedtmann".split(" "));
+console.log("Radu-test".split("")); // Splitting a String letter by letter - WITHOUT a space bwetween letters
 
 const [firstName2, lastName2] = "Jonas Schmedtmann".split(" ");
 
@@ -1077,7 +1114,7 @@ const anyArray = [
 const arrayToString = anyArray.join("");
 console.log(arrayToString);
 
-// RADU - test Accesa
+// RADU - test Accesa V1
 function hideDigits(num) {
   var maskedString = "";
   // Write code that returns markedString as the answer
@@ -1097,3 +1134,105 @@ function hideDigits(num) {
 
 hideDigits("1234567890");
 // hideDigits("a1s2d3");
+
+// 14.8. Padding Strings
+const message = "Go to gate 23!";
+console.log(message.padStart(20, "+")); // PADDING from the Start of the String to the End - Left to Right
+console.log(message.padEnd(20, "+")); // PADDING from the End of the String to the Start - Right to Left
+console.log(message.padStart(20, "+").padEnd(26, "+")); // PADDING can the CHAIN LINKED - PADDING from the Start of the String to the End AND from the End of the String to the Start
+console.log(message.padStart(20, "+-").padEnd(26, "*/")); // MULTIPLE characters or set of characters can be added
+
+// Practical example - HIDING LAST DIGITS OF A CREDIT CARD
+const maskCreditCard = function (number) {
+  // const str = String(number); // converting a Number to a String
+  // or
+  const str = number + ""; // converting a Number to a String
+  const last = str.slice(-4);
+  return last.padStart(str.length, "*");
+};
+
+console.log(maskCreditCard(64637836));
+console.log(maskCreditCard(43378463864647384));
+console.log(maskCreditCard("334859493847755774747"));
+
+// RADU - test Accesa V2
+function hideDigits(num) {
+  var maskedString = "";
+  // Write code that returns markedString as the answer
+  maskedString = num + maskedString;
+  maskedString = maskedString.slice(-3);
+  maskedString = maskedString.padStart(num.length, "#");
+  console.log(maskedString);
+
+  return maskedString;
+}
+
+hideDigits("1234567890");
+// hideDigits(1234567890123);
+hideDigits("a1s2d3");
+
+// 14.9. Repeating Strings
+const message2 = "Bad weather... All Departures Delayed... ";
+console.log(message2.repeat(5));
+
+const planesInLine = function (n) {
+  console.log(`There are ${n} planes in line ${"✈".repeat(n)}`);
+};
+planesInLine(5);
+planesInLine(3);
+planesInLine(12);
+
+// 14.10. CHECK OUT MORE STRING METHODS @ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String
+
+// Extra - Radu
+// How to REVERSE a String
+const str = "hello";
+// console.log(str.reverse()); // NOT WORKING ON STRINGS - "str.reverse is not a function" - Method ONLY works on ARRAYS
+
+// Solutions:
+// V1 - Detailed version
+function reverseStringV1(str) {
+  // Step 1. Use the split() method to return a new array
+  const splitString = str.split(""); // const splitString = "hello".split("");
+  // ["h", "e", "l", "l", "o"]
+
+  // Step 2. Use the reverse() method to reverse the new created array
+  const reverseArray = splitString.reverse(); // const reverseArray = ["h", "e", "l", "l", "o"].reverse();
+  // ["o", "l", "l", "e", "h"]
+
+  // Step 3. Use the join() method to join all elements of the array into a string
+  const joinArray = reverseArray.join(""); // const joinArray = ["o", "l", "l", "e", "h"].join("");
+  // "olleh"
+
+  //Step 4. Return the reversed string
+  console.log(joinArray); // "olleh"
+  return joinArray; // "olleh"
+}
+reverseStringV1("hello V1");
+
+// V2 - Faster version
+function reverseStringV2(str) {
+  const reverseString = str.split("").reverse().join(""); // the ".reverse();" Method ONLY works on ARRAYS (".split("");" returns an Array on which the ".reverse();" Method is applied)
+  console.log(reverseString);
+  return reverseString;
+}
+reverseStringV2("hello V2");
+reverseStringV2("Hello! How are you?");
+
+///////////////////////////////////////
+// Coding Challenge #4 - Converting underscore string to camel case string
+// SIMPLE Version <=> SEE Challenge #13 for Detailed and more Complex Version
+const underscoreToCamelCase = function (str) {
+  const [first, second] = str.toLowerCase().trim().split("_");
+  const output = `${first}${second.replace(
+    second[0],
+    second[0].toUpperCase()
+  )}`;
+  console.log(`${output} ✅`);
+  // console.log(`${output.padEnd(20)}${"✅".repeat(2)}`);
+};
+underscoreToCamelCase("underscore_camel");
+underscoreToCamelCase("first_name");
+underscoreToCamelCase(" Some_Variable");
+underscoreToCamelCase("  calculate_AGE ");
+underscoreToCamelCase("   delayed_departure    ");
