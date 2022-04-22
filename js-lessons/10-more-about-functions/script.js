@@ -82,17 +82,45 @@ const upperFirstWord = function (str) {
 // High-order function
 const transformer = function (str, fn) {
   console.log(`Original string: ${str}`);
-  console.log(`Transformed string: ${fn(str)}`);
+  console.log(`Transformed string: ${fn(str)}`); // CALLING the CALLBACK function ("fn" = "upperFirstWord" / "oneWord")
 
-  console.log(`Transformed by: ${fn.name}`);
+  console.log(`Transformed by: ${fn.name}`); // APPLYING the ".name" METHOD on the "fn" function
 };
 
 transformer("JavaScript is the best!", upperFirstWord);
 transformer("JavaScript is the best!", oneWord);
+// the "upperFirstWord" and the "oneWord" functions are NOT CALLED when passed as ARGUMENTS into the "transformer" function, they are CALLED INSIDE the "transformer" function LATER, whenever the "transformer" function is CALLED / EXECUTED => the "upperFirstWord" and the "oneWord" functions are CALLBACK functions & the "transformer" function is a HIGH-ORDER function (because it receives a function as an Argument)
 
-// JS uses CALLBACK Functions all the time
+// JS uses CALLBACK Functions ALL THE TIME
 const high5 = function () {
   console.log("👋");
 };
 document.body.addEventListener("click", high5);
 ["Jonas", "Martha", "Adam"].forEach(high5);
+
+///////////////////////////////////////
+// 4. Functions Returning Functions
+const greet = function (greeting) {
+  return function (name) {
+    console.log(`${greeting}, ${name}! 👋`);
+  };
+};
+const greeterHey = greet("Hey");
+greeterHey("Jonas");
+greeterHey("Steven");
+// OR
+greet("Ola")("Jose");
+// Functions Returning Functions are VERY IMPORTANT when using the FUNCTIONAL PROGRAMMING PARADIGM
+
+// Challenge
+// RE-written WITH Arrow Functions
+// ** REMEMBER that "Arrow Functions DO NOT GET their OWN "this" keyword"
+// ** "Instead, the "this" keyword in ARROW FUNCTIONS is the LEXICAL "this" keyword which means that it uses the "this" keyword of it's PARENT function or of it's PARENT scope (..."in this case, the WINDOW OBJECT (aka the Global Object, aka the Global Window Object)"...)"
+const greetArrow = (greeting) => (name) =>
+  console.log(`${greeting}, ${name}! 👋`);
+
+greetArrow("Howdy")("Bobby");
+
+/*
+
+ */
