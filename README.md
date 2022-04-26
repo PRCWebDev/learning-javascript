@@ -4,7 +4,7 @@ from multiple resources
 
 ## 📈 20 - 25 April 2022
 
-1. Learned about more about Functions ✅
+1. Learned more about Functions ✅
 
 - Source: [The Complete JavaScript Course 2022: From Zero to Expert!](https://www.udemy.com/course/the-complete-javascript-course/) created by Jonas Schmedtmann. All credit goes to him 🙏
 
