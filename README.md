@@ -2,6 +2,26 @@
 
 from multiple resources
 
+## 📈 20 - 25 April 2022
+
+1. Learned about more about Functions ✅
+
+- Source: [The Complete JavaScript Course 2022: From Zero to Expert!](https://www.udemy.com/course/the-complete-javascript-course/) created by Jonas Schmedtmann. All credit goes to him 🙏
+
+- I learned about:
+  - [x] Default Parameters
+  - [x] How Passing Arguments Works: Value vs. Reference
+  - [x] First-Class Functions
+  - [x] Higher-Order Functions
+  - [x] Functions Accepting Callback Functions
+  - [x] Functions Returning Functions
+  - [x] The call and apply Methods
+  - [x] The bind Method
+  - [x] Immediately Invoked Function Expressions (IIFE)
+  - [x] Closures
+
+2. Practiced what I learned by completing multiple coding assignments and challenges
+
 ## 📈 02 - 18 April 2022
 
 1. Learned about Data Structures, Modern Operators & Working with Strings ✅
