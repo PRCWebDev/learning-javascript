@@ -915,7 +915,8 @@ console.log(...question.keys());
 console.log(...question.values());
 
 ///////////////////////////////////////
-// 14. Working with STRINGS
+// 14. WORKIN WITH STRINGS
+///////////////
 // 14.1. Indexes and Length of Strings
 const airline = "TAP Air Portugal";
 const plane = "A320";
@@ -933,6 +934,7 @@ console.log(airline.lastIndexOf("r")); // 10 - the space counts as character - c
 console.log(airline.indexOf("portugal")); // -1 - "portugal" does NOT exist - CASE SENSITIVE
 console.log(airline.indexOf("Portugal")); // 8 - "Portugal" is on position 8 - count starting from position 0 just like in Arrays
 
+///////////////
 // 14.2. Slicing Strings
 console.log(airline.slice(4));
 console.log(airline.slice(4, 7));
@@ -971,6 +973,7 @@ console.log(typeof new String("jonas").slice(1));
 console.log(airline.toLowerCase());
 console.log(airline.toUpperCase());
 
+///////////////
 // 14.3. Fixing capitalization in Strings
 const passenger = "jOnAS"; // Jonas
 const passengerLower = passenger.toLowerCase();
@@ -994,6 +997,7 @@ const nameToUpperCase = function (name) {
 };
 nameToUpperCase("ASdfgGfdgAaaAa ASAF dfa");
 
+///////////////
 // 14.4. Trimming Strings
 // Comparing emails
 const email = "hello@jonas.io";
@@ -1015,6 +1019,7 @@ normalizeString(
   "   STRING has BEEN NormaLiZed by being converted TO LOwer CaSe and TRIMMEd  \n "
 );
 
+///////////////
 // 14.5. Replacing Strings
 const priceGB = "288,97£";
 const priceUS = priceGB.replace("£", "$").replace(",", ".");
@@ -1035,6 +1040,7 @@ console.log(announcement.replace("door", "gate")); // ONLY replaces the FIRST oc
 // console.log(announcement.replace(/gate/g, "door")); // older Method using Regular Expression - used before ".replaceAll();" - also Case Sensitive
 console.log(announcement.replaceAll("door", "gate")); // the ".replaceAll();" Method is NOW WORKING
 
+///////////////
 // 14.6. Booleans - Checking Strings
 const plane2 = "Airbus A320neo";
 console.log(plane2.includes("A320"));
@@ -1060,6 +1066,7 @@ checkBaggage("I have a laptop, some Food and a pocket Knife");
 checkBaggage("Socks and camera");
 checkBaggage("Got some snacks and a gun for protection");
 
+///////////////
 // 14.7. Splitting and joining Strings
 // SPLIT returns an ARRAY from a STRING
 // we can LOOP over that Array
@@ -1132,6 +1139,7 @@ function hideDigits(num) {
 hideDigits("1234567890");
 // hideDigits("a1s2d3");
 
+///////////////
 // 14.8. Padding Strings
 const message = "Go to gate 23!";
 console.log(message.padStart(20, "+")); // PADDING from the Start of the String to the End - Left to Right
@@ -1139,7 +1147,7 @@ console.log(message.padEnd(20, "+")); // PADDING from the End of the String to t
 console.log(message.padStart(20, "+").padEnd(26, "+")); // PADDING can the CHAIN LINKED - PADDING from the Start of the String to the End AND from the End of the String to the Start
 console.log(message.padStart(20, "+-").padEnd(26, "*/")); // MULTIPLE characters or set of characters can be added
 
-// Practical example - HIDING LAST DIGITS OF A CREDIT CARD
+// Practical example - !!! HIDING LAST DIGITS OF A CREDIT CARD !!!
 const maskCreditCard = function (number) {
   // const str = String(number); // converting a Number to a String
   // or
@@ -1168,6 +1176,7 @@ hideDigits("1234567890");
 // hideDigits(1234567890123);
 hideDigits("a1s2d3");
 
+///////////////
 // 14.9. Repeating Strings
 const message2 = "Bad weather... All Departures Delayed... ";
 console.log(message2.repeat(5));
@@ -1179,10 +1188,18 @@ planesInLine(5);
 planesInLine(3);
 planesInLine(12);
 
-// 14.10. CHECK OUT MORE STRING METHODS @ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String
+///////////////
+// 14.10. The NEW ".at();" Method
+// INDICATES THE POSITION / INDEX OF AN ELEMENT IN THE STRING
+// ALSO WORKS ON ARRAYS
+console.log("jonas".at(0));
+console.log("jonas".at(-1));
+
+///////////////
+// 14.11. CHECK OUT MORE STRING METHODS @ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String
 
 // Extra - Radu
-// How to REVERSE a String
+// !!! How to REVERSE a String !!!
 const str = "hello";
 // console.log(str.reverse()); // NOT WORKING ON STRINGS - "str.reverse is not a function" - Method ONLY works on ARRAYS
 
