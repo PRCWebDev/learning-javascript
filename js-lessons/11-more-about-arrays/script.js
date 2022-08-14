@@ -61,15 +61,38 @@ const inputLoanAmount = document.querySelector(".form__input--loan-amount");
 const inputCloseUsername = document.querySelector(".form__input--user");
 const inputClosePin = document.querySelector(".form__input--pin");
 
+const displayMovements = function (movements) {
+  // CLEARING / EMPTYING the "Movements" container:
+  containerMovements.innerHTML = ""; // this REMOVES ALL previous entries
+
+  movements.forEach(function (mov, i) {
+    const type = mov > 0 ? "deposit" : "withdrawal";
+
+    // DOM Manipulation:
+    const html = `
+      <div class="movements__row">
+        <div class="movements__type movements__type--${type}">${
+      i + 1
+    } ${type}</div>
+        <div class="movements__value">${mov}</div>
+      </div>
+    `;
+
+    containerMovements.insertAdjacentHTML("afterbegin", html);
+  });
+};
+displayMovements(account1.movements);
+// console.log(containerMovements.innerHTML);
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
 
-const currencies = new Map([
-  ["USD", "United States dollar"],
-  ["EUR", "Euro"],
-  ["GBP", "Pound sterling"],
-]);
+// const currencies = new Map([
+//   ["USD", "United States dollar"],
+//   ["EUR", "Euro"],
+//   ["GBP", "Pound sterling"],
+// ]);
 
 // const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
@@ -104,18 +127,23 @@ let arr = ["a", "b", "c", "d", "e"];
 // - CHANGES / MUTATES THE ORIGINAL ARRAY
 
 // console.log(arr.splice(2)); // REMOVES & RETURNS the Array elements starting from position 2 until the end of the Array
+// console.log(arr);
 // console.log(arr.splice(-1)); // REMOVES & RETURNS the last element
 // console.log(arr);
 
 // *** Using the "deleteCount" parameter inside the ".splice();" Method
+// "anyArrayName.splice(start, deleteCount);"
 // console.log(arr.splice(0, 1)); // REMOVES & RETURNS 1 Array element starting from position 0
 // console.log(arr);
 // console.log(arr.splice(2, 2)); // REMOVES & RETURNS 2 Array elements starting from position 2
 // console.log(arr);
 
-// console.log(arr.splice(-1)); // ultimul element
+// EXTRA - Radu
+// *** Using the "deleteCount" parameter + the "insertItem" parameter inside the ".splice();" Method
+// "anyArrayName.splice(start, deleteCount, insertItem1, insertItem2, ..., insertItemN);"
+// arr.splice(0, 0, "f"); // REMOVES & RETURNS 0 Array element starting from Position 0 and ADDS the "f" Element
 // console.log(arr);
-// console.log(arr.splice(-2)); // ultimele 2 elemente
+// arr.splice(2, 1, "g", "h"); // REMOVES & RETURNS 1 Array element starting from Position 2 and ADDS the "g", "h" Elements
 // console.log(arr);
 
 ///////////////
@@ -185,22 +213,34 @@ maskCreditCard("123123");
 ///////////////
 // 1.4. "anyArray.concat();"
 // - ADDS one or more Arrays to the current one
-// - RETURNS A NEW ARRAY
-const letters = arr.concat(arr2);
+// - RETURNS A NEW ARRAY / DOES NOT MUTATE the Original Arrays
+const moreItems = [1, 2, 3, 4, 5];
+const letters = arr.concat(arr2, moreItems);
 console.log(letters);
 console.log(arr);
+console.log(arr2);
 // SAME RESULT as using the SPREAD Operator:
 console.log([...arr, ...arr2]);
 // console.log(...arr, ...arr2);
 
 ///////////////
-// 1.4. "anyArray.concat();"
+// 1.5. "anyArray.join();"
 console.log(letters);
 console.log(letters.join(" - "));
 console.log(letters);
 
-/////////////////////////////////////////////////
-// 2. The NEW ".at();" Method
+///////////////
+// 1.6. "anyArray.includes();"
+// EXTRA - Radu
+// developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes
+// 1.6.1. "anyArray.includes("searchElement");"
+https: console.log(letters.includes(1)); // searchElement "1" // true
+// 1.6.2. "anyArray.includes("searchElement", startingfromIndex );"
+console.log(letters.includes(1, 2)); // searchElement "1" startingfromIndex "2" // true
+console.log(letters.includes("a", 2)); // searchElement "a" starting fromIndex "2" // false
+
+///////////////
+// 1.7. The NEW ".at();" Method
 // INDICATES THE POSITION / INDEX OF AN ELEMENT IN THE ARRAY
 const arr3 = [23, 11, 64];
 // this ...
@@ -212,6 +252,7 @@ console.log(arr3.at(0)); // arr3 at position 0
 console.log(arr3.at(-1)); // THIS ...
 console.log(arr3[arr3.length - 1]); // ... is the SAME as this ...
 console.log(arr3.slice(-1)[0]); // ... is the SAME as this ...
+console.log(arr3);
 console.log(...arr3.slice(-1)); // ... is the SAME as this :D
 
 // IS PERFECT FOR METHOD CHAINING
@@ -220,8 +261,8 @@ console.log(...arr3.slice(-1)); // ... is the SAME as this :D
 console.log("jonas".at(0));
 console.log("jonas".at(-1));
 
-/////////////////////////////////////////////////
-// 3. Looping Arrays: the "forEach();" Method
+///////////////
+// 1.8. Looping Arrays: the "forEach();" Method
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 // *** Using the "for-of" Method:
 console.log("---- FOR-OF ----");
@@ -243,10 +284,10 @@ for (const [i, movement] of movements.entries()) {
     console.log(`Movement ${i + 1}: You withdrew ${Math.abs(movement)}`);
   }
 }
-// *** Using the "forEach();" Method:
+// *** 1.8.1. Using the "forEach();" Method:
 // V1:
-/*
 console.log("---- FOREACH ----");
+/*
 movements.forEach(function (movement) {
   if (movement > 0) {
     console.log(`You deposited ${movement}.`);
@@ -261,12 +302,16 @@ movements.forEach(function (movement) {
 // 2: function(400)
 // ...
 */
+
 // Or BETTER - V2:
+// the "forEach();" Method is a Higher-Order Function that PASSES into the CALLBACK Function:
+// *** 1. the Current Element of the Array (= "mov" = "movement")
+// *** 2. the Current Index of the Current Element of the Array (= "i" = "index")
+// *** 3. the ENTIRE Array that we are looping over (= "arr" = "array")
+// !!! THE ORDER MATTERS !!!
+// !!! The "continue" and "break" statements !!! DO NOT WORK !!! in the "forEach();" Method
 // movements.forEach(function (movement, index, array) {
 movements.forEach(function (mov, i, arr) {
-  // "mov" = "movement" = the Current Element of the Array
-  // "i" = "index" = the Current Index of the Current Element of the Array
-  //  "arr" = "array" = the ENTIRE Array
   if (mov > 0) {
     console.log(`Movement ${i + 1}: You deposited ${mov}`);
   } else {
@@ -278,3 +323,31 @@ movements.forEach(function (mov, i, arr) {
 // 1: function(450)
 // 2: function(400)
 // ...
+
+///////////////
+// 1.8.2. "forEach();" With Maps and Sets
+// 1.8.2.1. "forEach();" With Maps
+const currencies = new Map([
+  ["USD", "United States dollar"],
+  ["EUR", "Euro"],
+  ["GBP", "Pound sterling"],
+]);
+
+currencies.forEach(function (value, key, map) {
+  console.log(`${key}: ${value}`);
+  // console.log(map);
+});
+// "value" = the Current Value of the Map
+// "key" = the Current Key of the Current Value of the Array
+// "map" = the ENTIRE Map
+
+// 1.8.2.2. "forEach();" With Sets
+// Sets DON'T have any Keys / Indexes so we use "_"(underscore) instead
+// "map" = our Set
+const currenciesUnique = new Set(["USD", "GBP", "USD", "EUR", "EUR"]);
+console.log(currenciesUnique);
+currenciesUnique.forEach(function (value, _, set) {
+  // console.log(`${value}: ${value}`);
+  console.log(`${_}: ${value}`);
+  // console.log(map);
+});
