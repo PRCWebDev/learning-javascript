@@ -2,6 +2,11 @@
 
 from multiple resources
 
+## 📈 May - August 2022
+
+- Restarted learning [The Complete JavaScript Course 2022: From Zero to Expert!](https://www.udemy.com/course/the-complete-javascript-course/) from 0 after failing a couple of interviews.
+- Started taking more and better notes.
+
 ## 📈 20 - 25 April 2022
 
 1. Learned more about Functions ✅

@@ -62,6 +62,7 @@ const inputCloseUsername = document.querySelector(".form__input--user");
 const inputClosePin = document.querySelector(".form__input--pin");
 
 const displayMovements = function (movements) {
+  // DOM Manipulation:
   // CLEARING / EMPTYING the "Movements" container:
   containerMovements.innerHTML = ""; // this REMOVES ALL previous entries
 
