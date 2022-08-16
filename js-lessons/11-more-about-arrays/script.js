@@ -61,6 +61,8 @@ const inputLoanAmount = document.querySelector(".form__input--loan-amount");
 const inputCloseUsername = document.querySelector(".form__input--user");
 const inputClosePin = document.querySelector(".form__input--pin");
 
+///////////////
+// DOM Manipulation:
 const displayMovements = function (movements) {
   // DOM Manipulation:
   // CLEARING / EMPTYING the "Movements" container:
@@ -84,6 +86,84 @@ const displayMovements = function (movements) {
 };
 displayMovements(account1.movements);
 // console.log(containerMovements.innerHTML);
+
+///////////////
+// COMPUTING USERNAMES:
+// 0. we want to CREATE the "username" = "stw" - an abbreviation of the "user" Variable:
+// const user = "Steven Thomas Williams";
+
+// 1. SETTING all the letters of the names to lower case
+// 2. DIVIDING / SPLITTING the String into an Array with 3 elements ['steven', 'thomas', 'williams']
+// const username = user.toLowerCase().split(" ");
+// console.log(username); // ['steven', 'thomas', 'williams']
+
+// 3. taking the FIRST Letter of each Array Elements and PUTTING / ADDING them in a NEW ARRAY
+/*
+const username = user
+  .toLowerCase()
+  .split(" ")
+  .map(function (name) {
+    return name[0];
+  });
+  */
+// OR BETTER with Arrow Functions - MORE MODERN APPROACH:
+/*
+const username = user
+  .toLowerCase()
+  .split(" ")
+  .map((name) => name[0]); // this CREATES a NEW Array ['s', 't', 'w'] WITHOUT MUTATING the Original "user" String
+console.log(username); // ['s', 't', 'w']
+*/
+
+// 4. JOINING the New Array Elements in a NEW String
+/*
+const username = user
+  .toLowerCase()
+  .split(" ")
+  .map((name) => name[0])
+  .join("");
+console.log(username); // "stw"
+console.log(user); // the Original Array / String IS NOT MUTATED "Steven Thomas Williams"
+*/
+
+// 5. CREATING a function that can TRANSFORM any "user" into an abbreviated "username":
+/*
+const createUsernames = function (user) {
+  const username = user
+    .toLowerCase()
+    .split(" ")
+    .map((name) => name[0])
+    .join("");
+  return username;
+};
+console.log(createUsernames(account3.owner));
+*/
+
+// 6. COMPUTING one username FOR EACH of the account holders in our accounts Array (const accounts = [account1, account2, account3, account4];)
+// we DO NOT want to create a new Array in this situation, all we want to do is to MODIFY the elements that ALREADY EXIST in the "accounts" Array = to MUTATE the Original "accounts" Array - SO WE USE the ".forEach();" Method for that:
+// "accs" = "accounts" = the Entire "accounts" Array (#3)
+// "acc" = "account" = the Current Element of the Array (#2)
+const createUsernames = function (accs) {
+  accs.forEach(function (acc) {
+    acc.username = acc.owner // ADDING A NEW PROPERTY "username" to EACH of the "accounts" in the "accounts" Array (account1, account2, account3, account4)
+      .toLowerCase()
+      .split(" ")
+      .map((name) => name[0])
+      .join("");
+    // NO RETURN because what we're doing here is TO PRODUCE A SIDE EFFECT. So we are doing something to this "accounts" Object here (ADDING A NEW PROPERTY "username" to EACH of the "accounts" in the "accounts" Array (account1, account2, account3, account4)). And so there is NO NEED to return anything. We are just doing some work here, basically, we are NOT creating a new value to RETURN.
+  });
+};
+createUsernames(accounts);
+console.log(accounts); // (4) [{…}, {…}, {…}, {…}] 0: {owner: 'Jonas Schmedtmann', movements: Array(8), interestRate: 1.2, pin: 1111, username: "js"} IS THE SAME AS THIS (WITH the NEW PROPERTY "username" ADDED to the Original "account1/2/3/4" Object):
+/*
+const account1 = {
+  owner: "Jonas Schmedtmann",
+  movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
+  interestRate: 1.2, // %
+  pin: 1111,
+  username: "js",
+};
+*/
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -297,7 +377,7 @@ movements.forEach(function (movement) {
   }
 });
 // the "forEach();" Method is CALLING the "function(movement){}" CALLBACK function FOR EACH of the "movements" Array elements:
-// (the "movement" parameter in the "function(movement){}" CALLBACK function === the current Array element):
+// (the "movement" parameter in the "function(movement){}" CALLBACK function === the Current Element of the Array):
 // 0: function(200)
 // 1: function(450)
 // 2: function(400)
@@ -352,3 +432,55 @@ currenciesUnique.forEach(function (value, _, set) {
   console.log(`${_}: ${value}`);
   // console.log(map);
 });
+
+/////////////////////////////////////////////////
+// 2. Data Transformations Methods: ".map();", ".filter();", ".reduce();"
+// these are methods that we use to create new arrays based on transforming data from other arrays
+
+///////////////
+// 2.1. the ".map();" Method
+const eurToUsd = 1.1;
+
+// using the "for-of" loop:
+const movementsUSDfor = [];
+for (const mov of movements) movementsUSDfor.push(mov * eurToUsd);
+console.log(movementsUSDfor);
+
+//  using the ".map();" Method INSTEAD of the "for-of" loop is MORE INLINE with the Functional Programming Paradigm:
+/*
+const movementsUSD = movements.map(function (mov) {
+  return mov * eurToUsd;
+  // return 23
+});
+*/
+// !!! OR BETTER with Arrow Functions - MORE MODERN APPROACH - ALSO DAN SHIFU RECOMMENDS THIS APPROACH:
+const movementsUSD = movements.map((mov) => mov * eurToUsd);
+console.log(movements);
+console.log(movementsUSD);
+
+// V1:
+/*
+const movementsDescriptions = movements.map((mov, i, arr) => {
+  if (mov > 0) {
+    return `Movement ${i + 1}: You deposited ${mov}`;
+  } else {
+    return `Movement ${i + 1}: You withdrew ${Math.abs(mov)}`;
+  }
+});
+*/
+
+// OR EVEN BETTER V2 - using the Conditional Ternary Operator INSIDE the Arrow Function:
+// !!! NO "{}" - OR IT DOESN'T WORK !!!
+const movementsDescriptions = movements.map(
+  (mov, i) =>
+    `Movement ${i + 1}: You ${mov > 0 ? "deposited" : "withdrew"} ${Math.abs(
+      mov
+    )}`
+);
+console.log(movementsDescriptions);
+
+///////////////
+// 2.2. the ".filter();" Method
+
+///////////////
+// 2.3. the ".reduce();" Method
