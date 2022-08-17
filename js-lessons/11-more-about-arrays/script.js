@@ -87,6 +87,14 @@ const displayMovements = function (movements) {
 displayMovements(account1.movements);
 // console.log(containerMovements.innerHTML);
 
+const calcDisplayBalance = function (movements) {
+  const balance = movements.reduce((acc, mov) => acc + mov, 0);
+
+  // DOM Manipulation:
+  labelBalance.textContent = `${balance} EUR`;
+};
+calcDisplayBalance(account1.movements);
+
 ///////////////
 // COMPUTING USERNAMES:
 // 0. we want to CREATE the "username" = "stw" - an abbreviation of the "user" Variable:
@@ -439,6 +447,14 @@ currenciesUnique.forEach(function (value, _, set) {
 
 ///////////////
 // 2.1. the ".map();" Method
+// RETURNS a NEW Array containing the Results of Applying an Operation (a CALLBACK Function) on ALL Original Array Elements
+// OR
+// CALLS a defined CALLBACK Function on EACH Element of an Array, and RETURNS an Array that contains the Results.
+// just like the "forEach();" Method, the ".map();" Method is a Higher-Order Function that PASSES into the CALLBACK Function:
+// *** 1. the Current Element of the Array (= "mov" = "movement")
+// *** 2. the Current Index of the Current Element of the Array (= "i" = "index")
+// *** 3. the ENTIRE Array that we are looping over (= "arr" = "array")
+// !!! THE ORDER MATTERS !!!
 const eurToUsd = 1.1;
 
 // using the "for-of" loop:
@@ -481,6 +497,68 @@ console.log(movementsDescriptions);
 
 ///////////////
 // 2.2. the ".filter();" Method
+// RETURNS a NEW Array containing the Array Elements that PASSED a specified test CONDITION
+// OR
+// RETURNS the Elements of an Array that meet the CONDITION specified in a CALLBACK Function
+// just like the "forEach();" and the ".map();" Methods, the ".filter();" Method is a Higher-Order Function that PASSES into the CALLBACK Function:
+// *** 1. the Current Element of the Array (= "mov" = "movement")
+// *** 2. the Current Index of the Current Element of the Array (= "i" = "index")
+// *** 3. the ENTIRE Array that we are looping over (= "arr" = "array")
+// !!! THE ORDER MATTERS !!!
+const deposits = movements.filter(function (mov, i, arr) {
+  return mov > 0;
+});
+console.log(movements);
+console.log(deposits);
+
+//  using the "for-of" loop Method
+const depositsFor = [];
+for (const mov of movements) if (mov > 0) depositsFor.push(mov);
+console.log(depositsFor);
+
+// BEST version - using Arrrow Functions:
+const withdrawals = movements.filter((mov) => mov <= 0);
+console.log(withdrawals);
+console.log(movements);
 
 ///////////////
 // 2.3. the ".reduce();" Method
+// just like the "forEach();" and the ".map();" Methods, the ".filter();" Method is ALSO a Higher-Order Function
+// !!! BUT it has ACCESS to 4 Parameters that it will PASS into the CALLBACK Function:
+// *** 1. the ACCUMULATOR, which is like a SNOWBALL and, in EACH ITERATION, it will RETURN an UPDATED ACCUMULATOR (= "acc" = "accumulator")
+// *** 2. the Current Element of the Array (= "mov" = "movement")
+// *** 3. the Current Index of the Current Element of the Array (= "i" = "index")
+// *** 4. the ENTIRE Array that we are looping over (= "arr" = "array")
+// !!! THE ORDER MATTERS !!!
+
+// !!! another DIFFERENCE is that the ".reduce();" Method HAS 2 PARAMETERS !!!:
+// *** 1. the CALLBACK Function
+// *** 2. the INITIAL VALUE of the ACCUMULATOR
+// "anyArrayName.reduce(function (acc, mov, i, arr) {...}, initialAcc);"
+
+// the ".reduce();" Method BOILS / REDUCES ALL Array Elements down to ONE SINGLE VALUE (ex: adding all array elements together)
+/*
+const balance = movements.reduce(function (acc, mov, i, arr) {
+  console.log(`Iteration ${i}: ${acc}`);
+  return acc + mov;
+}, 0);
+*/
+
+//  using the "for-of" loop Method
+let balance2 = 0;
+for (const mov of movements) balance2 += mov;
+console.log(balance2);
+
+// BEST version - using Arrrow Functions:
+const balance = movements.reduce((acc, mov) => acc + mov, 0);
+console.log(balance);
+
+// GETTING the Maximum Value from an Array
+const maxValue = movements.reduce((acc, mov) => {
+  if (acc > mov) {
+    return acc;
+  } else {
+    return mov;
+  }
+}, movements.at(0));
+console.log(maxValue);
