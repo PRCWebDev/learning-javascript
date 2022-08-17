@@ -77,7 +77,7 @@ const displayMovements = function (movements) {
         <div class="movements__type movements__type--${type}">${
       i + 1
     } ${type}</div>
-        <div class="movements__value">${mov}</div>
+        <div class="movements__value">${mov} €</div>
       </div>
     `;
 
@@ -91,9 +91,36 @@ const calcDisplayBalance = function (movements) {
   const balance = movements.reduce((acc, mov) => acc + mov, 0);
 
   // DOM Manipulation:
-  labelBalance.textContent = `${balance} EUR`;
+  labelBalance.textContent = `${balance} €`;
 };
 calcDisplayBalance(account1.movements);
+
+const calcDisplaySummary = function (movements) {
+  const incomes = movements
+    .filter((mov) => mov > 0)
+    .reduce((acc, mov) => acc + mov, 0);
+  // DOM Manipulation:
+  labelSumIn.textContent = `${incomes}€`;
+
+  const out = movements
+    .filter((mov) => mov < 0)
+    .reduce((acc, mov) => acc + mov, 0);
+  // DOM Manipulation:
+  labelSumOut.textContent = `${Math.abs(out)}€`;
+
+  // the bank only pays an "interest" if the deposit is 1 euro or above
+  const interest = movements
+    .filter((mov) => mov > 0)
+    .map((deposit) => (deposit * 1.2) / 100)
+    .filter((int, i, arr) => {
+      console.log(arr);
+      return int >= 1;
+    })
+    .reduce((acc, int) => acc + int, 0);
+  // DOM Manipulation:
+  labelSumInterest.textContent = `${interest}€`;
+};
+calcDisplaySummary(account1.movements);
 
 ///////////////
 // COMPUTING USERNAMES:
@@ -562,3 +589,17 @@ const maxValue = movements.reduce((acc, mov) => {
   }
 }, movements.at(0));
 console.log(maxValue);
+
+///////////////
+// 2.4. CHAINING METHODS - CHAINING ALL the Data Transformations Methods: ".map();", ".filter();", ".reduce();" together
+// Write a Function that CONVERTS all the Deposits from euros to usds and Adds them all up
+const totalDepositsUSD = function (movements) {
+  const totalDeposits = movements
+    .filter((mov) => mov >= 0)
+    .map((mov) => mov * eurToUsd)
+    .reduce((acc, mov) => acc + mov, 0);
+
+  console.log(totalDeposits);
+  return totalDeposits;
+};
+totalDepositsUSD(movements);
