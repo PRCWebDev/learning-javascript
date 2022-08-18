@@ -61,7 +61,7 @@ const inputLoanAmount = document.querySelector(".form__input--loan-amount");
 const inputCloseUsername = document.querySelector(".form__input--user");
 const inputClosePin = document.querySelector(".form__input--pin");
 
-///////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////
 // DOM Manipulation:
 const displayMovements = function (movements) {
   // DOM Manipulation:
@@ -84,7 +84,7 @@ const displayMovements = function (movements) {
     containerMovements.insertAdjacentHTML("afterbegin", html);
   });
 };
-displayMovements(account1.movements);
+// displayMovements(account1.movements); // EDITED & MOVED INSIDE THE LOGIN FUNCTION
 // console.log(containerMovements.innerHTML);
 
 const calcDisplayBalance = function (movements) {
@@ -93,8 +93,10 @@ const calcDisplayBalance = function (movements) {
   // DOM Manipulation:
   labelBalance.textContent = `${balance} €`;
 };
-calcDisplayBalance(account1.movements);
+// calcDisplayBalance(account1.movements); // EDITED & MOVED INSIDE THE LOGIN FUNCTION
 
+// EDITED TO WORK INSIDE THE LOGIN FUNCTION because we want to dynamically use the INTEREST RATES depending on the CURRENT USER
+/*
 const calcDisplaySummary = function (movements) {
   const incomes = movements
     .filter((mov) => mov > 0)
@@ -120,9 +122,35 @@ const calcDisplaySummary = function (movements) {
   // DOM Manipulation:
   labelSumInterest.textContent = `${interest}€`;
 };
-calcDisplaySummary(account1.movements);
+// calcDisplaySummary(account1.movements); // EDITED & MOVED INSIDE THE LOGIN FUNCTION
+*/
+const calcDisplaySummary = function (acc) {
+  const incomes = acc.movements
+    .filter((mov) => mov > 0)
+    .reduce((acc, mov) => acc + mov, 0);
+  // DOM Manipulation:
+  labelSumIn.textContent = `${incomes}€`;
 
-///////////////
+  const out = acc.movements
+    .filter((mov) => mov < 0)
+    .reduce((acc, mov) => acc + mov, 0);
+  // DOM Manipulation:
+  labelSumOut.textContent = `${Math.abs(out)}€`;
+
+  // the bank only pays an "interest" if the deposit is 1 euro or above
+  const interest = acc.movements
+    .filter((mov) => mov > 0)
+    .map((deposit) => (deposit * acc.interestRate) / 100)
+    .filter((int, i, arr) => {
+      console.log(arr);
+      return int >= 1;
+    })
+    .reduce((acc, int) => acc + int, 0);
+  // DOM Manipulation:
+  labelSumInterest.textContent = `${interest}€`;
+};
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
 // COMPUTING USERNAMES:
 // 0. we want to CREATE the "username" = "stw" - an abbreviation of the "user" Variable:
 // const user = "Steven Thomas Williams";
@@ -200,8 +228,56 @@ const account1 = {
 };
 */
 
-/////////////////////////////////////////////////
-/////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////
+// Implementing Login:
+let currentAccount; // defining this variable OUTSIDE of the function because we will need this information about the current account also later in other functions.
+// Event handler:
+btnLogin.addEventListener("click", function (e) {
+  // *** 1. Prevent form from submitting / reloading the page:
+  // in HTML, the default behavior, when we click the Submit button, is for the page to reload. So we need to stop that from happening by CALLING the "preventDefault();" on that event ("e"):
+  e.preventDefault();
+  console.log("LOGIN #1");
+
+  // *** 2. to LOG the user actually IN, we need to find the account from the accounts array, with the username that the user inputted:
+  // this variable needs to be defined OUTSIDE of this function because we will need this information about the current account also later in other functions:
+  currentAccount = accounts.find(
+    (acc) => acc.username === inputLoginUsername.value
+  );
+  console.log(currentAccount);
+
+  // *** 3. Checking if the PIN (aka the password) is correct:
+  // *** 3.1. we need to CONVERT the "input" THAT WILL ALWAYS BE A STRING to a number:
+  // *** 3.2. we also need to Check if the account actually EXIST and the BEST WAY to do this is to use the OPTIONAL CHAINING Operator(?.):
+  if (currentAccount?.pin === Number(inputLoginPin.value)) {
+    console.log("LOGIN #2");
+
+    // *** 3.3. if the account actually EXISTS, we need to:
+    // DOM Manipulation:
+    // *** 3.3.1. Display the UI and the Welcome message:
+    // *** 3.3.1.1. Clearing the "input" fields:
+    inputLoginUsername.value = inputLoginPin.value = ""; // this WORKS because the ASSIGNMENT Operator("=") WORKS from RIGHT to LEFT => we ASSIGN the empty string "" to "inputLoginPin" FIRST, which becomes an empty string "", AND ONLY AFTER THAT, the empty string "" is ASSIGNED to "inputLoginUsername",  which ALSO NOW becomes an empty string ""
+    // *** 3.3.1.2. Removing the "focus" blinking dash by applying the ".blur();" Method:
+    inputLoginPin.blur();
+    // *** 3.3.1.3. Manipulating the DOM so we can set the opacity from 0 to 100 and Display the UI:
+    containerApp.style.opacity = 100; //
+    // *** 3.3.1.4. Manipulating the DOM so we can Display the Welcome message:
+    labelWelcome.textContent = `Welcome back, ${currentAccount.owner
+      .split(" ")
+      .at(0)}`; // OR "${currentAccount.owner.split(" ")[0]}" to get ONLY the FIRST name of the account owner
+
+    // *** 3.3.2. Display the Movements:
+    displayMovements(currentAccount.movements);
+
+    // *** 3.3.3. Display the Balance:
+    calcDisplayBalance(currentAccount.movements);
+
+    // *** 3.3.4. Display the Summary:
+    calcDisplaySummary(currentAccount);
+  }
+});
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////
 // LECTURES
 
 // const currencies = new Map([
@@ -603,3 +679,17 @@ const totalDepositsUSD = function (movements) {
   return totalDeposits;
 };
 totalDepositsUSD(movements);
+
+/////////////////////////////////////////////////
+// 3. MORE Array Methods
+///////////////
+// 3.1. the ".find();" Method
+// it is used to RETRIEVE ONLY the FIRST Element of an Array that SATISFIES a given CONDITION
+// UNLIKE the ".filter();" Method, it RETURNS ONLY the Value of the Array Element, NOT an Entire NEW Array
+// is ALSO BEST WRITTEN using Arrow Functions:
+const firstWithdrawal = movements.find((mov) => mov < 0);
+console.log(firstWithdrawal); // "-400" = the Value of the FIRST Element that SATISFIES the given CONDITION
+
+console.log(accounts);
+const account = accounts.find((acc) => acc.owner === "Jessica Davis");
+console.log(account); // {owner: 'Jessica Davis', movements: Array(8), interestRate: 1.5, pin: 2222, username: 'jd'}
