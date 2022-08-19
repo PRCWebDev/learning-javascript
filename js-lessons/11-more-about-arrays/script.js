@@ -87,6 +87,8 @@ const displayMovements = function (movements) {
 // displayMovements(account1.movements); // EDITED & MOVED INSIDE THE LOGIN FUNCTION
 // console.log(containerMovements.innerHTML);
 
+// EDITED TO WORK INSIDE THE MONEY TRANSFERS FUNCTION because we want to dynamically use the BALANCE depending on the CURRENT USER
+/*
 const calcDisplayBalance = function (movements) {
   const balance = movements.reduce((acc, mov) => acc + mov, 0);
 
@@ -94,6 +96,14 @@ const calcDisplayBalance = function (movements) {
   labelBalance.textContent = `${balance} €`;
 };
 // calcDisplayBalance(account1.movements); // EDITED & MOVED INSIDE THE LOGIN FUNCTION
+*/
+const calcDisplayBalance = function (acc) {
+  // ADDING A NEW PROPERTY "balance" to EACH of the "accounts" in the "accounts" Array (account1, account2, account3, account4)
+  acc.balance = acc.movements.reduce((acc, mov) => acc + mov, 0);
+
+  // DOM Manipulation:
+  labelBalance.textContent = `${acc.balance} €`;
+};
 
 // EDITED TO WORK INSIDE THE LOGIN FUNCTION because we want to dynamically use the INTEREST RATES depending on the CURRENT USER
 /*
@@ -142,7 +152,7 @@ const calcDisplaySummary = function (acc) {
     .filter((mov) => mov > 0)
     .map((deposit) => (deposit * acc.interestRate) / 100)
     .filter((int, i, arr) => {
-      console.log(arr);
+      // console.log(arr);
       return int >= 1;
     })
     .reduce((acc, int) => acc + int, 0);
@@ -230,8 +240,18 @@ const account1 = {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // Implementing Login:
+// REFACTORING CODE FOR BEST PRACTICE - Update UI:
+const updateUI = function (acc) {
+  // *** 3.3.2. Display the Movements:
+  displayMovements(acc.movements);
+  // *** 3.3.3. Display the Balance:
+  calcDisplayBalance(acc);
+  // *** 3.3.4. Display the Summary:
+  calcDisplaySummary(acc);
+};
+
 let currentAccount; // defining this variable OUTSIDE of the function because we will need this information about the current account also later in other functions.
-// Event handler:
+// ADDING the Event handler:
 btnLogin.addEventListener("click", function (e) {
   // *** 1. Prevent form from submitting / reloading the page:
   // in HTML, the default behavior, when we click the Submit button, is for the page to reload. So we need to stop that from happening by CALLING the "preventDefault();" on that event ("e"):
@@ -259,20 +279,121 @@ btnLogin.addEventListener("click", function (e) {
     // *** 3.3.1.2. Removing the "focus" blinking dash by applying the ".blur();" Method:
     inputLoginPin.blur();
     // *** 3.3.1.3. Manipulating the DOM so we can set the opacity from 0 to 100 and Display the UI:
-    containerApp.style.opacity = 100; //
+    containerApp.style.opacity = 100;
     // *** 3.3.1.4. Manipulating the DOM so we can Display the Welcome message:
     labelWelcome.textContent = `Welcome back, ${currentAccount.owner
       .split(" ")
       .at(0)}`; // OR "${currentAccount.owner.split(" ")[0]}" to get ONLY the FIRST name of the account owner
 
+    // REFACTORING CODE FOR BEST PRACTICE - Update UI:
+    /*
     // *** 3.3.2. Display the Movements:
     displayMovements(currentAccount.movements);
 
     // *** 3.3.3. Display the Balance:
-    calcDisplayBalance(currentAccount.movements);
+    calcDisplayBalance(currentAccount);
 
     // *** 3.3.4. Display the Summary:
     calcDisplaySummary(currentAccount);
+    */
+    updateUI(currentAccount);
+  }
+});
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+// Implementing Money Transfers:
+// ADDING the Event handler:
+btnTransfer.addEventListener("click", function (e) {
+  // *** 1. Prevent form from submitting / reloading the page:
+  e.preventDefault();
+
+  // *** 2. Defining the Amount to transfer and the Receiver of the transfer:
+  const amount = Number(inputTransferAmount.value);
+  const receiverAcc = accounts.find(
+    (acc) => acc.username === inputTransferTo.value
+  );
+  console.log(amount, receiverAcc);
+
+  // *** 3. Checking for transfer conditions:
+  if (
+    amount > 0 &&
+    currentAccount.balance >= amount &&
+    receiverAcc &&
+    receiverAcc.username !== currentAccount.username
+  ) {
+    console.log(`Transfer valid: ${amount} €`);
+    // *** 4. Adding a NEW WITHDRAWAL to the user that performed the transfer:
+    currentAccount.movements.push(-amount);
+
+    // *** 5. Adding a NEW DEPOSIT to the user that received the transfer:
+    receiverAcc.movements.push(amount);
+
+    // *** 6. REFACTORING CODE FOR BEST PRACTICE - Update UI:
+    updateUI(currentAccount);
+  }
+
+  // *** 7. Clearing the "input" Money Transfers fields:
+  inputTransferTo.value = inputTransferAmount.value = "";
+  // *** 8. Removing the "focus" blinking dash by applying the ".blur();" Method - OPTIONAL:
+  // inputTransferAmount.blur();
+});
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+// Implementing the "Request loan" feature:
+// our bank has a rule which says that it only grants a loan if there is at least one deposit with at least 10% of the requested loan amount
+// ADDING the Event handler:
+btnLoan.addEventListener("click", function (e) {
+  // *** 1. Prevent form from submitting / reloading the page:
+  e.preventDefault();
+  console.log("Request loan");
+
+  // *** 2. CONVERTING the requested loan amount from a STRING to a Number:
+  const amount = Number(inputLoanAmount.value);
+
+  // *** 3. Checking for loan conditions (at least one deposit with at least 10% of the requested loan amount):
+  if (
+    amount > 0 &&
+    currentAccount.movements.some((mov) => mov >= amount * 0.1)
+  ) {
+    // *** 4. Adding a NEW DEPOSIT to the user that REQUESTED the loan:
+    currentAccount.movements.push(amount);
+
+    // *** 5. REFACTORING CODE FOR BEST PRACTICE - Update UI:
+    updateUI(currentAccount);
+  }
+
+  // *** 6. Clearing the "input" Request loan fields:
+  inputLoanAmount.value = "";
+  // *** 7. Removing the "focus" blinking dash by applying the ".blur();" Method - OPTIONAL:
+  inputLoanAmount.blur();
+
+  console.log(amount);
+});
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+// Implementing the "Close account" feature:
+// ADDING the Event handler:
+btnClose.addEventListener("click", function (e) {
+  // *** 1. Prevent form from submitting / reloading the page:
+  e.preventDefault();
+  console.log("Delete account");
+
+  // *** 2. Checking if the credentials (the username and the pin) are correct:
+  if (
+    inputCloseUsername.value === currentAccount.username &&
+    Number(inputClosePin.value) === currentAccount.pin
+  ) {
+    // *** 3. Finding the INDEX of the Current Account:
+    const index = accounts.findIndex(
+      (acc) => acc.username === currentAccount.username
+    );
+    console.log(index);
+
+    // *** 4. Removing / DELETING the Current Account from the "accounts" Array:
+    accounts.splice(index, 1);
+
+    // *** 5. Manipulating the DOM so we can set the opacity from 100 to 0 and HIDE the UI:
+    containerApp.style.opacity = 0;
   }
 });
 
@@ -693,3 +814,40 @@ console.log(firstWithdrawal); // "-400" = the Value of the FIRST Element that SA
 console.log(accounts);
 const account = accounts.find((acc) => acc.owner === "Jessica Davis");
 console.log(account); // {owner: 'Jessica Davis', movements: Array(8), interestRate: 1.5, pin: 2222, username: 'jd'}
+
+///////////////
+// 3.2. the ".findIndex();" Method
+// it RETURNS the INDEX of the FIRST Element of an Array that SATISFIES a given CONDITION
+console.log(movements);
+const firstWithdrawalIndex = movements.findIndex((mov) => mov < 0);
+console.log(firstWithdrawalIndex);
+
+///////////////
+// 3.3. the "some();" Method
+// it's similar to the ".includes();" Method, BUT it CHECKS if ANY Element of the Array SATISFIES a given CONDITION
+// !!! the word "ANY" => USE the "some();" Method !!!
+console.log(movements);
+// EQUALITY
+console.log(movements.includes(-130));
+// SOME: CONDITION
+console.log(movements.some((mov) => mov === -130));
+
+const anyDeposits = movements.some((mov) => mov > 5000);
+console.log(anyDeposits);
+
+///////////////
+// 3.3. the "every();" Method
+console.log(movements.every((mov) => mov > 0));
+console.log(account4.movements.every((mov) => mov > 0));
+
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// VERY IMPORTANT AND COOL FEATURE:
+// we CAN WRITE the Callback Function SEPARATELY (as a STAND-ALONE Arrow Function) AND THEN PASS it into DIFFERENT Array Methods as an Argument:
+console.log("--- VERY IMPORTANT AND COOL FEATURE: ---");
+const deposit = (mov) => mov > 0; // a STAND-ALONE Arrow Function
+console.log(movements.some(deposit)); // PASSING the STAND-ALONE Arrow Function as an Argument of an Array Method // true
+console.log(movements.every(deposit)); // PASSING the STAND-ALONE Arrow Function as an Argument of an Array Method // false
+console.log(movements.filter(deposit)); // PASSING the STAND-ALONE Arrow Function as an Argument of an Array Method // (5) [200, 450, 3000, 70, 1300]
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
