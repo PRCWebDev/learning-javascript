@@ -823,7 +823,7 @@ const firstWithdrawalIndex = movements.findIndex((mov) => mov < 0);
 console.log(firstWithdrawalIndex);
 
 ///////////////
-// 3.3. the "some();" Method
+// 3.3. the ".some();" Method
 // it's similar to the ".includes();" Method, BUT it CHECKS if ANY Element of the Array SATISFIES a given CONDITION
 // !!! the word "ANY" => USE the "some();" Method !!!
 console.log(movements);
@@ -836,7 +836,7 @@ const anyDeposits = movements.some((mov) => mov > 5000);
 console.log(anyDeposits);
 
 ///////////////
-// 3.3. the "every();" Method
+// 3.4. the ".every();" Method
 console.log(movements.every((mov) => mov > 0));
 console.log(account4.movements.every((mov) => mov > 0));
 
@@ -851,3 +851,50 @@ console.log(movements.every(deposit)); // PASSING the STAND-ALONE Arrow Function
 console.log(movements.filter(deposit)); // PASSING the STAND-ALONE Arrow Function as an Argument of an Array Method // (5) [200, 450, 3000, 70, 1300]
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+///////////////
+// 3.5. the ".flat();" Method
+// it RETURNS a NEW Array containing ALL the Elements that WERE PREVIOUSLY NESTED in the Array
+// it can go MULTIPLE LEVELS DEEP, so we need to SPECIFY the DEPTH LEVEL anytime we have more than 1 Level Deep Array(s)
+// it DOES NOT use a Callback Function
+
+// Default = 1 Level Deep
+const arrFlat1 = [[1, 2, 3], [4, 5, 6], 7, 8];
+console.log(arrFlat1.flat()); // [1, 2, 3, 4, 5, 6, 7, 8]
+
+// 2 Level Deep
+const arrFlat2 = [
+  [[1, 2], 3],
+  [4, [5, 6], 7, 8],
+];
+console.log(arrFlat2.flat(2)); // [1, 2, 3, 4, 5, 6, 7, 8]
+
+// "Infinity" Level Deep OR when we are too lazy to count how many levels we have ;)
+const arrFlatInfinity = [1, 2, [3, 4, [5, 6, [7, 8, [9, [10]]]]]];
+console.log(arrFlatInfinity.flat(Infinity)); // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+console.log(arrFlat2.flat(Infinity)); // [1, 2, 3, 4, 5, 6, 7, 8]
+
+///////////////
+// 3.6. the ".flatMap();" Method
+// it COMBINES the ".map();" Method (FIRST) and the ".flat();" Method (SECOND) together
+// is the SAME as CHAIN Linking those 2 Methods "anyArrayName.map().flat();"
+// the ".flat();" Method in the ".flatMap();" Method is REDUCED to the Default Level (1 Level Deep) and that CANNOT BE CHANGED
+// it RETURNS a NEW Array
+const accountsMovements = accounts.map((acc) => acc.movements);
+console.log(accountsMovements);
+
+// THIS:
+// CHAIN Linking the ".map();" Method (FIRST) and the ".flat();" Method (SECOND) together:
+const allMovements = accounts.map((acc) => acc.movements).flat();
+console.log(allMovements);
+// IS THE SAME AS THIS:
+// using the ".flatMap();" Method:
+const allMovementsFlatMap = accounts.flatMap((acc) => acc.movements);
+console.log(allMovementsFlatMap);
+
+const overallBalance = accounts
+  .flatMap((acc) => acc.movements)
+  .reduce((acc, mov) => acc + mov, 0);
+// OR
+const overallBalance2 = allMovementsFlatMap.reduce((acc, mov) => acc + mov, 0);
+console.log(overallBalance, overallBalance2);
