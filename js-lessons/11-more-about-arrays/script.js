@@ -63,12 +63,47 @@ const inputClosePin = document.querySelector(".form__input--pin");
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // DOM Manipulation:
+// EDITED TO WORK INSIDE THE SORTING FUNCTION:
+/*
 const displayMovements = function (movements) {
   // DOM Manipulation:
   // CLEARING / EMPTYING the "Movements" container:
   containerMovements.innerHTML = ""; // this REMOVES ALL previous entries
 
   movements.forEach(function (mov, i) {
+    const type = mov > 0 ? "deposit" : "withdrawal";
+
+    // DOM Manipulation:
+    const html = `
+      <div class="movements__row">
+        <div class="movements__type movements__type--${type}">${
+      i + 1
+    } ${type}</div>
+        <div class="movements__value">${mov} €</div>
+      </div>
+    `;
+
+    containerMovements.insertAdjacentHTML("afterbegin", html);
+  });
+};
+// displayMovements(account1.movements); // EDITED & MOVED INSIDE THE LOGIN FUNCTION
+// console.log(containerMovements.innerHTML);
+*/
+const displayMovements = function (movements, sort = false) {
+  // ADDED a SECOND Parameter for the Sorting Function to work and SETTING its Default value to "false" because we want to show the "movements" in the exact order in which they are performed / appear in the Array
+  // DOM Manipulation:
+  // CLEARING / EMPTYING the "Movements" container:
+  containerMovements.innerHTML = ""; // this REMOVES ALL previous entries
+
+  // EDITED TO WORK INSIDE THE SORTING FUNCTION:
+  const sortingMovements = sort
+    ? movements.slice().sort((a, b) => a - b)
+    : movements;
+  // we are using the ".slice();" Method to CREATE A SHALLOW COPY of the underlying "movements" Array because we DO NOT WANT TO MUTATE the Original "movements" Array
+  // we are SORTING the "movements" Array in an Ascending Order (a - b) because we are Displaying the movements with the latest on top so we want to actually have them Displayed in a Descending Order, from the biggest movement to the smallest
+
+  // EDITED TO WORK INSIDE THE SORTING FUNCTION:
+  sortingMovements.forEach(function (mov, i) {
     const type = mov > 0 ? "deposit" : "withdrawal";
 
     // DOM Manipulation:
@@ -394,7 +429,27 @@ btnClose.addEventListener("click", function (e) {
 
     // *** 5. Manipulating the DOM so we can set the opacity from 100 to 0 and HIDE the UI:
     containerApp.style.opacity = 0;
+
+    // *** 6. Clearing the "input" Close account fields:
+    inputCloseUsername.value = inputClosePin.value = "";
+
+    // *** 7. Removing the "focus" blinking dash by applying the ".blur();" Method - OPTIONAL:
+    inputClosePin.blur();
   }
+});
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+// Implementing the SORTING feature:
+// Defining the "sorted" variable OUTSIDE of the Sorting function because we will also need this in other functions (ex. in the "displayMovements" function):
+let sorted = false; // SETTING the Initial State
+// ADDING the Event handler:
+btnSort.addEventListener("click", function (e) {
+  // *** 1. Prevent form from submitting / reloading the page:
+  e.preventDefault();
+  console.log("Sort movements");
+  // displayMovements(currentAccount.movements, true);
+  displayMovements(currentAccount.movements, !sorted); // CHANGING the STATE of the "sorted" variable (from "false" to "true") each time we click the "Sort" button
+  sorted = !sorted; // CHANGING BACK the STATE of the "sorted" variable (from "true" to "false") each time we click the "Sort" button
 });
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -898,3 +953,58 @@ const overallBalance = accounts
 // OR
 const overallBalance2 = allMovementsFlatMap.reduce((acc, mov) => acc + mov, 0);
 console.log(overallBalance, overallBalance2);
+
+///////////////
+// 3.7.  the ".sort();" Method
+// it MUTATES the Original Array
+// the Default Sort Order is Ascending
+// the ".sort();" Method CONVERTS the Elements of the Array into STRINGS and then COMPARES them and SORTS them
+
+// 3.7.1. SORTING Strings
+// 3.7.1.1. SORTING Strings Ascending
+const owners = ["Jonas", "Zach", "Adam", "Martha"];
+console.log(owners.sort()); // ['Adam', 'Jonas', 'Martha', 'Zach'] // ONLY WORKS with the Default Sort Order = Ascending
+console.log(owners); // ['Adam', 'Jonas', 'Martha', 'Zach']
+// THIS ALSO WORKS for SORTING Strings Ascending - using Arrow Functions:
+owners.sort((a, b) => {
+  if (a > b) return 1;
+  if (a < b) return -1;
+});
+console.log(owners);
+// OR BETTER:
+console.log(owners.sort((a, b) => a - b)); // THIS ALSO WORKS
+
+// 3.7.1.2. SORTING Strings Descending
+owners.sort((a, b) => {
+  if (a > b) return -1;
+  if (a < b) return 1;
+});
+console.log(owners);
+// console.log(owners.sort((a, b) => b - a)); // THIS DOES NOT WORK
+
+// 3.7.2. SORTING Numbers
+console.log(movements); // [200, 450, -400, 3000, -650, -130, 70, 1300]
+console.log(movements.sort()); // [-130, -400, -650, 1300, 200, 3000, 450, 70] // the ".sort();" Method CONVERTS the Elements of the Array into STRINGS and then COMPARES them and SORTS them
+
+// return < 0, A, B (keep order) ??
+// return > 0, B, A (switch order) ??
+
+// 3.7.2.1. SORTING Numbers Ascending - using Arrow Functions
+movements.sort((a, b) => {
+  if (a > b) return 1;
+  if (a < b) return -1;
+});
+console.log(movements); // [-650, -400, -130, 70, 200, 450, 1300, 3000]
+// OR BETTER:
+movements.sort((a, b) => a - b);
+console.log(movements); // [-650, -400, -130, 70, 200, 450, 1300, 3000]
+
+// 3.7.2.2. SORTING Numbers Descending
+movements.sort((a, b) => {
+  if (a > b) return -1;
+  if (a < b) return 1;
+});
+console.log(movements);
+// OR BETTER - using Arrow Functions
+movements.sort((a, b) => b - a);
+console.log(movements);
