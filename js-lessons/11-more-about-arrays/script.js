@@ -1008,3 +1008,82 @@ console.log(movements);
 // OR BETTER - using Arrow Functions
 movements.sort((a, b) => b - a);
 console.log(movements);
+
+///////////////
+// 3.8. the ".fill();" Method:
+// More Ways of CREATING Arrays:
+// *** 1. the Normal way:
+const arrNew = [1, 2, 3, 4, 5, 6, 7];
+// using the Array CONSTRUCTOR:
+console.log(new Array(1, 2, 3, 4, 5, 6, 7)); // [1, 2, 3, 4, 5, 6, 7]
+
+// *** 2. CREATING NEW Empty Array + the ".fill();" Method:
+const x = new Array(7); // 7 = the NUMBER of Elements in the Array, NOT an Element with the Value = 7
+console.log(x); // (7) [empty × 7] // this DOES NOT WORK
+console.log(x.map(() => 5)); // (7) [empty × 7] // also this DOES NOT WORK
+// !!! THE ONLY WAY TO MALE IT WORK is to USE the Array CONSTRUCTOR TOGETHER WITH the ".fill();" Method:
+x.fill(1, 3); // FILL the Array with "1" STARTING FROM Position 3 (inclusiv 3) UNTIL THE END of the Array
+console.log(x); // (7) [empty × 3, 1, 1, 1, 1]
+
+x.fill(2, 3, 5); // FILL the Array with "2" STARTING FROM Position 3 (inclusiv 3) UNTIL Position 5 (fara 5!) - DOAR Pozitiile 3 si 4 (fara 5!) // (7) [empty × 3, 2, 2, 1, 1]
+console.log(x);
+
+x.fill(3); // FILL the ENTIRE Array with "3"
+console.log(x); // (7) [2, 2, 2, 2, 2, 2, 2]
+
+arrNew.fill(23, 2, 6); // FILL the "arrNew" Array with "23" STARTING FROM Position 2 (inclusiv 2) UNTIL Position 6 (fara 6!) - DOAR Pozitiile 2, 3, 4 si 5 - PRACTIC INLOCUIESTE VALORILE de la Pozitiile 2 la 5 (fara 6!)
+console.log(arrNew);
+// !!! the ".fill();" Method MUTATES the Original Array !!!
+// !!! WE CAN also CHAIN LINK the Array CONSTRUCTOR TOGETHER WITH the ".fill();" Method
+const arrNewFill = new Array(5).fill("xyz"); // CREATES a NEW Array and FILLS it ENTIRELY with "xyz"
+console.log(arrNewFill); // (5) ['xyz', 'xyz', 'xyz', 'xyz', 'xyz']
+
+// *** 3. using Array CONSTRUCTOR + the "Array.from();" Method:
+///////////////
+// 3.9. the Array CONSTRUCTOR + the "Array.from();" Method:
+// Using an arrow function as the map function to manipulate the elements and CREATE a NEW Array FILLED with 7 Elements ALL having the Value of "1" - similar to CREATING NEW Empty Array + the ".fill();" Method
+const y = Array.from({ length: 7 }, () => 1);
+console.log(y); // (7) [1, 1, 1, 1, 1, 1, 1]
+
+// !!! CREATE / GENERATE a SEQUENCE OF NUMBERS:
+// const z = Array.from({ length: 7 }, (cur, i) => i + 1);
+const z = Array.from({ length: 7 }, (_, i) => i + 1); // CREATE a NEW Array FILLED with 7 Elements that represent a SEQUENCE OF NUMBERS // using the THROW-AWAY Variable "_"(underscore) INSTEAD of "cur" because we don't need the "cur" value at all, but we have to define something as the first Parameter
+console.log(z); //(7) [1, 2, 3, 4, 5, 6, 7]
+const w = Array.from({ length: 10 }, (_, i) => i * 2);
+console.log(w); // (10) [0, 2, 4, 6, 8, 10, 12, 14, 16, 18]
+
+// !!! WE CAN USE the Array CONSTRUCTOR + the "Array.from();" Method FOR SOOOO MUCH MORE THAN EXPLAINED IN THIS LECTURE - SEE MDN DOCS @ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from :
+// "The Array.from() static method creates a new, shallow-copied Array instance from an iterable or array-like object."
+// *** Array from a String
+console.log(Array.from("foo")); // [ "f", "o", "o" ]
+
+// *** Array from a Set
+const set = new Set(["foo", "bar", "baz", "foo"]);
+console.log(Array.from(set)); // [ "foo", "bar", "baz" ]
+
+// *** Array from a Map
+const map = new Map([
+  [1, 2],
+  [2, 4],
+  [4, 8],
+]);
+console.log(Array.from(map)); // [[1, 2], [2, 4], [4, 8]]
+
+const mapper = new Map([
+  ["1", "a"],
+  ["2", "b"],
+]);
+console.log(Array.from(mapper.keys())); // ['1', '2'];
+console.log(Array.from(mapper.values())); // ['a', 'b'];
+
+// *** Array from a NodeList: ... SEE MDN DOCS ...
+
+// CHALLENGE - GENERATE 100 RANDOM dice rolls:
+let diceRoll;
+const randomDiceRolls100 = Array.from({ length: 100 }, (_, diceRoll) => {
+  diceRoll = Math.trunc(Math.random() * 6) + 1;
+  // console.log(diceRoll);
+  return diceRoll;
+});
+console.log(randomDiceRolls100);
+console.log(`Dice rolls a ${randomDiceRolls100.join(" Dice rolls a ")}`);
