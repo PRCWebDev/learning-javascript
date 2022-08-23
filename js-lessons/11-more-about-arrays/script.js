@@ -1076,14 +1076,47 @@ const mapper = new Map([
 console.log(Array.from(mapper.keys())); // ['1', '2'];
 console.log(Array.from(mapper.values())); // ['a', 'b'];
 
-// *** Array from a NodeList: ... SEE MDN DOCS ...
-
 // CHALLENGE - GENERATE 100 RANDOM dice rolls:
+// WRITE A FUNCTION that generates 100 RANDOM dice rolls
 let diceRoll;
-const randomDiceRolls100 = Array.from({ length: 100 }, (_, diceRoll) => {
-  diceRoll = Math.trunc(Math.random() * 6) + 1;
-  // console.log(diceRoll);
-  return diceRoll;
+const diceRolls = function () {
+  const randomDiceRolls100 = Array.from({ length: 100 }, (diceRoll, i) => {
+    // console.log(`Dice roll #${i + 1}:`);
+    diceRoll = Math.trunc(Math.random() * 6) + 1;
+    // console.log(`Dice rolls a ${diceRoll}`);
+    return diceRoll;
+  });
+
+  // display the array
+  console.log(randomDiceRolls100);
+
+  // display the dice rolls in order
+  console.log(`Dice rolls a ${randomDiceRolls100.join(" Dice rolls a ")}`);
+  // OR
+  // randomDiceRolls100.forEach(function (el, i, arr) {
+  //   console.log(`Dice roll #${i + 1}: Dice rolls a ${el}`);
+  // });
+
+  return randomDiceRolls100;
+};
+diceRolls();
+
+// *** Array from a NodeList: ... SEE MDN DOCS ... + Jonas Bankist app:
+// using the "document.querySelectorAll(".anyClass")" RETURNS a NodeList, which is something LIKE an Array and CONTAINS ALL Selected DOM Elements
+// a NodeList is NOT a REAL Array and it DOES NOT HAVE METHODS like ".map();" or ".reduce();"
+// if we want to use Array Methods on a NodeList, we first need to CONVERT the NodeList to an Array using the Array CONSTRUCTOR + the "Array.from();" Method AND we can ALSO USE the "map" Function to CONVERT the Selected DOM Elements into Numbers
+// we first ADD the Event handler Function so that every time we click on the "Balance" Label, we RETRIEVE / GET the Selected DOM Elements:
+labelBalance.addEventListener("click", function () {
+  const movementsUI = Array.from(
+    document.querySelectorAll(".movements__value"),
+    (el) => Number(el.textContent.replace("€", ""))
+  );
+  console.log(movementsUI); // (8) [1300, 70, -130, -650, 3000, -400, 450, 200]
+
+  // OR
+  // we can also use the SPREAD Operator CONVERT the NodeList to an Array, BUT we will have to do the "mapping" separately
+  const movementsUI2 = [...document.querySelectorAll(".movements__value")];
+  console.log(
+    movementsUI2.map((el) => Number(el.textContent.replace("€", ""))) // (8) [1300, 70, -130, -650, 3000, -400, 450, 200]
+  );
 });
-console.log(randomDiceRolls100);
-console.log(`Dice rolls a ${randomDiceRolls100.join(" Dice rolls a ")}`);
