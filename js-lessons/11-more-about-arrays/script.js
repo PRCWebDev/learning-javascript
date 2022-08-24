@@ -1120,3 +1120,73 @@ labelBalance.addEventListener("click", function () {
     movementsUI2.map((el) => Number(el.textContent.replace("€", ""))) // (8) [1300, 70, -130, -650, 3000, -400, 450, 200]
   );
 });
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////
+// EXTRA - RADU - Array Methods SUMMARY - which Array Method to use?? I want to... :
+// CREATE a NEW SHALLOW COPY of an Array:
+const originalArray = [1, 2, 3, 4, 5, 0, 1, 2];
+console.log(originalArray);
+
+console.log(originalArray.slice(), originalArray);
+console.log(Array.from(originalArray), originalArray);
+console.log([...originalArray], originalArray); // using the SPREAD Operator
+console.log(
+  originalArray.map((el) => el),
+  originalArray
+);
+
+// FIND OUT the LENGTH of an Array:
+console.log(originalArray.length); // 8 - it's a PROPERTY, NOT A METHOD, but still... I want it here ;)
+
+// FIND the INDEX of an Element in the Array:
+// *** WITHOUT a CONDITION:
+console.log(originalArray.indexOf(1)); // 0 - is counting from the START
+console.log(originalArray.indexOf(1, -1)); // -1 // DOES NOT WORK, USE "..lastIndexOf()" INSTEAD
+
+console.log(originalArray.lastIndexOf(1)); // 6 - is counting from the START
+console.log(originalArray.lastIndexOf(1, 3)); // 0 - is counting from the END
+// *** WITH a CONDITION:
+console.log(originalArray.findIndex((el) => el > 2 && el < 4)); // 2 (the "el" = 3, which has an the Index of 2)
+
+// FIND the Element of an Array BASED on the Index of that Element:
+console.log(originalArray.at(0)); // "1"
+console.log(originalArray[0]); // "1" - NOT A METHOD, but still... I want it here ;)
+
+console.log(originalArray[-1]); // "undefined" - DOES NOT WORK, USE .at(-1) INSTEAD
+console.log(originalArray.at(-1)); // "2"
+// OR
+console.log(originalArray.slice(-1)[0]);
+// OR
+console.log(...originalArray.slice(-1));
+// OR
+console.log(originalArray[originalArray.length - 1]);
+
+// ADD Elements to Original Array... :
+// *** it MUTATES the Original Array:
+// *** ... AT the END of the Array:
+console.log(originalArray.push("end")); // 9 - it RETURNS the NEW LENGTH of the Array
+console.log(originalArray); // (9) [1, 2, 3, 4, 5, 0, 1, 2, 'end']
+
+// *** ... AT the START of the Array:
+console.log(originalArray.unshift("start")); // 10 - it RETURNS the NEW LENGTH of the Array
+console.log(originalArray); // (10) ['start', 1, 2, 3, 4, 5, 0, 1, 2, 'end']
+
+// REMOVE Elements from the Original Array... :
+// *** it MUTATES the Original Array:
+// *** ... FROM the END of the Array:
+console.log(originalArray.pop()); // "end" - it REMOVES the LAST Element from an Array and RETURNS it
+
+// *** ... FROM the START of the Array:
+console.log(originalArray.shift()); // "start" - it REMOVES the FIRST Element from an Array and RETURNS it
+
+// EXTRACT / RETRIEVE ELEMENTS from the Array:
+// *** WITHOUT MUTATING the Original Array:
+console.log(originalArray.slice(2)); // (6) [3, 4, 5, 0, 1, 2]
+console.log(originalArray.slice(2, 4)); // (2) [3, 4]
+console.log(originalArray.slice(2, -1)); // (5) [3, 4, 5, 0, 1]
+console.log(originalArray.slice(-4)); // (4) [5, 0, 1, 2]
+
+console.log(originalArray.at(0)); // 1
+// *** MUTATE the Original Array:
+console.log(originalArray);
