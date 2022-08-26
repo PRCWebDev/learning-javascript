@@ -1124,17 +1124,18 @@ labelBalance.addEventListener("click", function () {
 //////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // EXTRA - RADU - Array Methods SUMMARY - which Array Method to use?? I want to... :
+/*
 // CREATE a NEW SHALLOW COPY of an Array:
 const originalArray = [1, 2, 3, 4, 5, 0, 1, 2];
 console.log(originalArray);
 
 console.log(originalArray.slice(), originalArray);
 console.log(Array.from(originalArray), originalArray);
-console.log([...originalArray], originalArray); // using the SPREAD Operator
 console.log(
   originalArray.map((el) => el),
   originalArray
 );
+console.log([...originalArray], originalArray); // using the SPREAD Operator
 
 // FIND OUT the LENGTH of an Array:
 console.log(originalArray.length); // 8 - it's a PROPERTY, NOT A METHOD, but still... I want it here ;)
@@ -1188,5 +1189,90 @@ console.log(originalArray.slice(2, -1)); // (5) [3, 4, 5, 0, 1]
 console.log(originalArray.slice(-4)); // (4) [5, 0, 1, 2]
 
 console.log(originalArray.at(0)); // 1
+
 // *** MUTATE the Original Array:
 console.log(originalArray);
+*/
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+// EXTRA - RADU
+// Reverse a String WITHOUT using the ".reverse()" and / or ".push()" Methods:
+const reverseString = function (str) {
+  let reverseArray = [];
+  const stringSplit = str.split("");
+  // console.log(stringSplit);
+  const reverse = stringSplit.forEach((letter, i) =>
+    reverseArray.unshift(stringSplit.at(i))
+  );
+  console.log(reverseArray.join(""));
+
+  // OR
+  // for (let i = 0; i < str.length; i++) {
+  //   reverseArray.unshift(stringSplit.at(i));
+  // }
+  // console.log(reverseArray.join(""));
+
+  return reverseArray.join("");
+};
+reverseString("reverseString");
+reverseString("1234567890");
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+// Array Methods Practice Jonas
+
+// 1. how much has been deposited in total in the bank?
+const bankDepositSum = accounts
+  .flatMap((account) => account.movements)
+  .filter((deposit) => deposit > 0)
+  .reduce((acc, deposit) => acc + deposit, 0);
+console.log(bankDepositSum); // 25180
+
+// 2. how many deposits there have been in the bank with at least $1,000?
+const totalNumberOfDeposits1000 = accounts
+  .flatMap((account) => account.movements)
+  .filter((deposit) => deposit >= 1000).length;
+console.log(totalNumberOfDeposits1000); // 6 deposits >= 1000
+//  OR
+const totalNumberOfDeposits1000v2 = accounts
+  .flatMap((account) => account.movements)
+  // .reduce((count, deposit) => (deposit >= 1000 ? count + 1 : count), 0); // count++ DOES NOT WORK => 0, we must use ++count or count + 1 instead
+  .reduce((count, deposit) => (deposit >= 1000 ? ++count : count), 0);
+console.log(totalNumberOfDeposits1000v2);
+
+// the PRE-FIXED "++" OPERATOR
+let a = 10;
+console.log(a++); // !!! 10, NOT 11 - it works, but it STILL DISPLAYS THE OLD VALUE , which is 10
+console.log(a); // 11 - PROOF that the "a++" WORKED
+console.log(++a); // 12 - WE MUST USE THE PRE-FIXED "++" OPERATOR BEFORE the Value to DISPLAY IT PROPERLY
+console.log(a); // 12
+
+// 3. create an object which contains the sum of the deposits and of the withdrawals.
+const sumsAllDepositsAndWithdrawals = accounts
+  .flatMap((account) => account.movements)
+  .reduce(
+    (sums, currentElement) => {
+      // currentElement >= 0
+      //   ? (sums.deposits2 += currentElement)
+      //   : (sums.withdrawals2 += currentElement);
+      // OR BETTER for DRY - using the BRACKET notation:
+      sums[currentElement >= 0 ? "deposits2" : "withdrawals2"] +=
+        currentElement;
+      return sums;
+    },
+    { deposits2: 0, withdrawals2: 0 }
+  );
+console.log(sumsAllDepositsAndWithdrawals); // {deposits2: 25180, withdrawals2: -7340}
+// we can use DESTRUCTURING  to get the values of the deposits and of the withdrawals
+const { deposits2, withdrawals2 } = sumsAllDepositsAndWithdrawals;
+console.log(deposits2, withdrawals2);
+// !!! REMEMBER !!!
+// THIS:
+console.log(sumsAllDepositsAndWithdrawals["deposits2"]); // using the BRACKET notation // 25180
+// IS THE SAME AS THIS:
+console.log(sumsAllDepositsAndWithdrawals.deposits2); // using the DOT notation // 25180
+const jonas = { firstName: "Jonas", lastName: "Schmedtmann" };
+console.log(jonas.lastName); // Schmedtmann
+console.log(jonas["lastName"]); // Schmedtmann
+
+// 4. RECREATE THE CHALLENGES ABOVE : "And I would even challenge you to do this with arrays. So as a challenge, I would challenge you to recreate any of the examples that we did previously in the section with map filter and reduce to use only the reduce method. And that is totally possible. And so, yeah, you can try that out."
+// ...
