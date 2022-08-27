@@ -1276,3 +1276,73 @@ console.log(jonas["lastName"]); // Schmedtmann
 
 // 4. RECREATE THE CHALLENGES ABOVE : "And I would even challenge you to do this with arrays. So as a challenge, I would challenge you to recreate any of the examples that we did previously in the section with map filter and reduce to use only the reduce method. And that is totally possible. And so, yeah, you can try that out."
 // ...
+
+// 5.1. create a function to convert any string to a title case.
+// ex: this is a nice title -> This Is a Nice Title
+
+const convertTitleCase = function (title) {
+  const exceptions = ["a", "an", "and", "the", "but", "or", "on", "in", "with"];
+
+  const capitalize = (str) => str[0].toUpperCase() + str.slice(1);
+
+  const titleCase = title
+    .toLowerCase()
+    .split(" ")
+    .map((word) => (exceptions.includes(word) ? word : capitalize(word)))
+    .join(" ");
+
+  // this will display and return "and Here Is Another Title with an Example" so we need to appply the "capitalize" function to it and return it:
+  // console.log(titleCase);
+  // return titleCase;
+  console.log(capitalize(titleCase));
+  return capitalize(titleCase);
+};
+
+convertTitleCase("this is a nice title");
+convertTitleCase("this is a LONG title but not too long");
+convertTitleCase("and here is another title with an EXAMPLE");
+
+// EXTRA - RADU
+// 5.2. Write a function that receives variable names written in underscore_case and converts them to camelCase.
+// Test data:
+// underscore_case
+//  first_name
+// Some_Variable
+//   calculate_AGE
+// delayed_departure
+
+const convertToCamelCase = function (str) {
+  const capitalize = (str) => str[0].toUpperCase() + str.slice(1);
+
+  const convert = str
+    .toLowerCase()
+    .trim()
+    .split("_")
+    .map((word, index) => (index === 0 ? word : capitalize(word)))
+    .join("");
+
+  console.log(convert);
+  return convert;
+};
+
+convertToCamelCase("underscore_case");
+convertToCamelCase(" first_name_Some_Variable");
+convertToCamelCase("  calculate_AGE_underscore_case_RANdom_wOrD_123_fOUr   ");
+
+// 5.3. Write a function that hides / masks all the digits of a credit card number, except the last 3
+const maskCreditCard = function (num) {
+  const str = num + "";
+  // console.log(str);
+
+  const mask = str
+    .toLowerCase()
+    .trim()
+    .split("")
+    .map((digit, index, arr) => (index < arr.length - 3 ? "*" : digit))
+    .join("");
+  console.log(`Your credit card number is: ${mask}`);
+  return mask;
+};
+maskCreditCard(123456789);
+maskCreditCard("123456789");
+maskCreditCard("  123456  \n");
