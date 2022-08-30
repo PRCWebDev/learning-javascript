@@ -3,7 +3,7 @@
 from multiple resources
 
 - So far, I recreated from [The Complete JavaScript Course 2022: From Zero to Expert!](https://www.udemy.com/course/the-complete-javascript-course/) by Jonas Schmedtmann:
-  - 3 mini-projects / games:
+  - 3 mini-projects / games - please note that these are made for viewing ONLY on a laptop / desktop, they are not made responsive for mobile / tablet viewing:
     - [x] the [Guess My Number](https://guess-my-number-js-webdevprc.netlify.app/) game
     - [x] the [Modal Window](https://modal-window-js-webdevprc.netlify.app/) mini-project
     - [x] the [Pig Game](https://pig-game-js-webdevprc.netlify.app/)
