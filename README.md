@@ -3,10 +3,45 @@
 from multiple resources
 
 - So far, I recreated from [The Complete JavaScript Course 2022: From Zero to Expert!](https://www.udemy.com/course/the-complete-javascript-course/) by Jonas Schmedtmann:
+
   - 3 mini-projects / games - please note that these are made for viewing ONLY on a laptop / desktop screen, they are not made responsive for mobile / tablet viewing:
     - [x] the [Guess My Number](https://guess-my-number-js-webdevprc.netlify.app/) game
     - [x] the [Modal Window](https://modal-window-js-webdevprc.netlify.app/) mini-project
     - [x] the [Pig Game](https://pig-game-js-webdevprc.netlify.app/)
+  - Work in Progress (WIP) on Jonas "Bankist" App
+
+    \*\*\* All credit for these projects goes to Jonas Schmedtmann 🙏 I am just his student, learning and practicing from his awesome course 🔥
+
+## 📈 14 - 31 August 2022
+
+1. Learned more about Working with Arrays - Array Methods ✅
+
+- Source: [The Complete JavaScript Course 2022: From Zero to Expert!](https://www.udemy.com/course/the-complete-javascript-course/) created by Jonas Schmedtmann. All credit goes to him 🙏
+
+- I learned about:
+  - [x] Simple Array Methods
+  - [x] The new at Method
+  - [x] Looping Arrays: forEach
+  - [x] forEach With Maps and Sets
+  - [x] PROJECT: "Bankist" App (which is still WIP)
+  - [x] Creating DOM Elements on Jonas "Bankist" App
+  - [x] Data Transformations: map, filter, reduce
+  - [x] The map Method
+  - [x] Computing Usernames on Jonas "Bankist" App
+  - [x] The filter Method
+  - [x] The reduce Method
+  - [x] The Magic of Chaining Methods
+  - [x] The find Method
+  - [x] Implementing Login on Jonas "Bankist" App
+  - [x] Implementing Transfers on Jonas "Bankist" App
+  - [x] The findIndex Method
+  - [x] The some and every Methods
+  - [x] The flat and flatMap Methods
+  - [x] Sorting Arrays
+  - [x] More Ways of Creating and Filling Arrays
+  - [x] Summary: Which Array Method to Use
+
+2. Practiced what I learned by completing multiple coding assignments and challenges and by applying what I learned on "Bankist" App (which is still WIP)
 
 ## 📈 May - August 2022
 
