@@ -23,7 +23,7 @@ from multiple resources
   - [x] The new at Method
   - [x] Looping Arrays: forEach
   - [x] forEach With Maps and Sets
-  - [x] PROJECT: "Bankist" App (which is still WIP)
+  - [x] PROJECT: the "Bankist" App (which is still WIP)
   - [x] Creating DOM Elements on Jonas "Bankist" App
   - [x] Data Transformations: map, filter, reduce
   - [x] The map Method
@@ -41,7 +41,7 @@ from multiple resources
   - [x] More Ways of Creating and Filling Arrays
   - [x] Summary: Which Array Method to Use
 
-2. Practiced what I learned by completing multiple coding assignments and challenges and by applying what I learned on "Bankist" App (which is still WIP)
+2. Practiced what I learned by completing multiple coding assignments and challenges and by applying what I learned on Jonas "Bankist" App (which is still WIP)
 
 ## 📈 May - August 2022
 
