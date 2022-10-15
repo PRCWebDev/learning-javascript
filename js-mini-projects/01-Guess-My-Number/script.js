@@ -17,6 +17,10 @@ document.querySelector('.check').addEventListener('click', function () {
 });
 */
 
+/////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////
+// v1 - Code with all the comments
+/*
 // *** 1. Setting the secret number
 let secretNumber = Math.trunc(Math.random() * 20) + 1;
 // Displaying the secret number
@@ -31,6 +35,16 @@ let highscore = 0;
 // *** 6. Refactoring the code using DRY principles
 const displayMessage = function (message) {
   document.querySelector('.message').textContent = message;
+};
+
+const lowerTheScore = function () {
+  score--;
+  document.querySelector('.score').textContent = score;
+};
+
+const youLostTheGame = function () {
+  document.querySelector('.score').textContent = 0;
+  document.querySelector('body').style.backgroundColor = '#830404';
 };
 
 // *** 4. Adding the click event
@@ -75,40 +89,20 @@ document.querySelector('.check').addEventListener('click', function () {
     if (score > 1) {
       // Refactoring the code using DRY principles
       // document.querySelector('.message').textContent =
-      guess > secretNumber ? 'Too high!' : 'Too low!';
+      // guess > secretNumber ? 'Too high!' : 'Too low!';
       displayMessage(guess > secretNumber ? 'Too high!' : 'Too low!');
-      score--;
-      document.querySelector('.score').textContent = score;
+      // Refactoring the code using DRY principles
+      // score--;
+      // document.querySelector('.score').textContent = score;
+      lowerTheScore();
     } else {
       // Refactoring the code using DRY principles
       // document.querySelector('.message').textContent = '💥 You lost the game!';
       displayMessage('💥 You lost the game!');
-      document.querySelector('.score').textContent = 0;
-      document.querySelector('body').style.backgroundColor = '#830404';
-    }
-
-    // when guess is too high
-  } else if (guess > secretNumber) {
-    if (score > 1) {
-      displayMessage('Too high!');
-      score--;
-      document.querySelector('.score').textContent = score;
-    } else {
-      displayMessage('💥 You lost the game!');
-      document.querySelector('.score').textContent = 0;
-      document.querySelector('body').style.backgroundColor = '#830404';
-    }
-
-    // when guess is too low
-  } else if (guess < secretNumber) {
-    if (score > 1) {
-      displayMessage('Too low!');
-      score--;
-      document.querySelector('.score').textContent = score;
-    } else {
-      displayMessage('💥 You lost the game!');
-      document.querySelector('.score').textContent = 0;
-      document.querySelector('body').style.backgroundColor = '#830404';
+      // Refactoring the code using DRY principles
+      // document.querySelector('.score').textContent = 0;
+      // document.querySelector('body').style.backgroundColor = '#830404';
+      youLostTheGame();
     }
   }
 });
@@ -133,6 +127,96 @@ document.querySelector('.again').addEventListener('click', function () {
   document.querySelector('body').style.backgroundColor = '#222';
   document.querySelector('.number').style.width = '15rem';
 });
+*/
 
-//
+/////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////
+// v2 - Code without some of the comments
 console.log('test');
+
+// /*
+// *** 1. Setting the secret number
+let secretNumber = Math.trunc(Math.random() * 20) + 1;
+// Displaying the secret number
+document.querySelector('.number').textContent = secretNumber;
+
+// *** 2. Setting the score (a STATE variable)
+let score = 20;
+
+// *** 3. Setting the highscore
+let highscore = 0;
+
+// *** 6. Refactoring the code using DRY principles
+const displayMessage = function (message) {
+  document.querySelector('.message').textContent = message;
+};
+
+const lowerTheScore = function () {
+  score--;
+  document.querySelector('.score').textContent = score;
+};
+
+const youLostTheGame = function () {
+  document.querySelector('.score').textContent = 0;
+  document.querySelector('body').style.backgroundColor = '#830404';
+};
+
+// *** 4. Adding the click event
+document.querySelector('.check').addEventListener('click', function () {
+  // converting the String into a Number
+  const guess = Number(document.querySelector('.guess').value);
+  console.log(guess, typeof guess);
+
+  // checking if we have inputed a Number value
+  if (!guess) {
+    displayMessage('⛔️ No number!');
+
+    // when player wins
+  } else if (guess === secretNumber) {
+    displayMessage('🎉 Correct Number!');
+    // displaying the secret number
+    document.querySelector('.number').textContent = secretNumber;
+    // changing the background color and the width when the player wins
+    document.querySelector('body').style.backgroundColor = '#60b347';
+    document.querySelector('.number').style.width = '30rem';
+
+    // displaying the highscore
+    if (score > highscore) {
+      highscore = score;
+      document.querySelector('.highscore').textContent = highscore;
+    }
+  } else if (guess !== secretNumber) {
+    // when guess is wrong
+    if (score > 1) {
+      displayMessage(guess > secretNumber ? 'Too high!' : 'Too low!');
+      lowerTheScore();
+    } else {
+      displayMessage('💥 You lost the game!');
+      youLostTheGame();
+    }
+  }
+});
+
+// *** 5. Resetting the game with the "Again" button
+document.querySelector('.again').addEventListener('click', function () {
+  // resetting / reassigning the secret number
+  secretNumber = Math.trunc(Math.random() * 20) + 1;
+
+  // resetting / reassigning the score
+  score = 20;
+  document.querySelector('.score').textContent = score;
+
+  // resetting / reassigning the message
+  displayMessage('Start guessing...');
+
+  // resetting / reassigning the number displayed
+  document.querySelector('.number').textContent = '?';
+
+  // resetting / reassigning the input value to an empty value
+  document.querySelector('.guess').value = '';
+
+  // resetting / reassigning the CSS styles
+  document.querySelector('body').style.backgroundColor = '#222';
+  document.querySelector('.number').style.width = '15rem';
+});
+// */
