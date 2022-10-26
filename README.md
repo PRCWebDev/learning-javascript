@@ -12,6 +12,24 @@ from multiple resources
 
     \*\*\* All credit for these projects goes to Jonas Schmedtmann 🙏 I am just his student, learning and practicing from his awesome course 🔥
 
+#### 📈 26 October 2022
+
+1. Rewatched part of the lectures from Jonas Schmedtmann's course - Section 9:
+
+- [x] Destructuring Arrays
+- [x] Destructuring Objects
+- [x] The Spread Operator (...)
+- [x] Rest Pattern / Operator (...) and Rest Parameters
+- [x] Short Circuiting (&& and ||)
+- [x] The Nullish Coalescing Operator (??)
+- [x] Logical Assignment Operators
+- [x] Looping Arrays: The for-of Loop
+- [x] Enhanced Object Literals
+- [x] Optional Chaining (?.)
+- [x] Looping Objects: Object Keys, Values, and Entries
+
+2. Reviewed notes, code and challenges
+
 ## 📈 14 - 31 August 2022
 
 1. Learned more about Working with Arrays - Array Methods ✅
