@@ -12,6 +12,21 @@ from multiple resources
 
     \*\*\* All credit for these projects goes to Jonas Schmedtmann 🙏 I am just his student, learning and practicing from his awesome course 🔥
 
+---
+
+#### 📈 27 October 2022
+
+1. Rewatched part of the lectures from Jonas Schmedtmann's course - Section 9:
+
+- [x] Sets
+- [x] Maps: Fundamentals
+- [x] Maps: Iteration
+- [x] Which Data Structure to Use
+
+2. Reviewed notes, code and challenges
+
+---
+
 #### 📈 26 October 2022
 
 1. Rewatched part of the lectures from Jonas Schmedtmann's course - Section 9:
@@ -29,6 +44,8 @@ from multiple resources
 - [x] Looping Objects: Object Keys, Values, and Entries
 
 2. Reviewed notes, code and challenges
+
+---
 
 ## 📈 14 - 31 August 2022
 
@@ -61,10 +78,14 @@ from multiple resources
 
 2. Practiced what I learned by completing multiple coding assignments and challenges and by applying what I learned on Jonas "Bankist" App (which is still WIP)
 
+---
+
 ## 📈 May - August 2022
 
 - Restarted learning [The Complete JavaScript Course 2022: From Zero to Expert!](https://www.udemy.com/course/the-complete-javascript-course/) from 0 after failing a couple of interviews.
 - Started taking more and better notes.
+
+---
 
 ## 📈 20 - 25 April 2022
 
@@ -85,6 +106,8 @@ from multiple resources
   - [x] Closures
 
 2. Practiced what I learned by completing multiple coding assignments and challenges
+
+---
 
 ## 📈 02 - 18 April 2022
 
@@ -112,6 +135,8 @@ from multiple resources
 
 2. Practiced what I learned by completing multiple coding assignments and challenges
 
+---
+
 ## 📈 26 - 31 March 2022
 
 1. Learned about How JavaScript Works Behind The Scenes ✅
@@ -130,6 +155,8 @@ from multiple resources
   - [x] Primitives vs. Objects (Primitive vs. Reference Types)
 
 2. Practiced what I learned by completing multiple coding assignments and challenges
+
+---
 
 ## 📈 02 - 16 March 2022
 

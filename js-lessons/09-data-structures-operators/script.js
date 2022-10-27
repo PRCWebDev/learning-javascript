@@ -765,7 +765,7 @@ console.log(
 console.log(new Set(staff).size);
 // console.log(staffUnique.size); // DOES NOT WORK because the "staffUnique" SET has been CONVERTED INTO an Array
 // SO WE NEED TO USE ".length" instead:
-console.log(staffUnique.length);
+console.log(staffUnique.length); // 3
 
 console.log(new Set('jonasschmedtmann').size); // 11
 console.log(new Set('jonas schmedt mann').size); // 12 - the empty space between words is also counted as a UNIQUE Value (but only once, of course)
@@ -801,13 +801,13 @@ console.log(rest);
 
 // 13.1.3. Getting data from a MAP
 // TO READ / GET data from a MAP we use the ".get()" Method and PASSING the KEY inside ()
-console.log(rest.get('name'));
-console.log(rest.get(true));
-console.log(rest.get(1));
+console.log(rest.get('name')); // Classico Italiano
+console.log(rest.get(true)); // We are open :D
+console.log(rest.get(1)); // Firenze, Italy
 
 // const time = 21;
 const time = 8;
-console.log(rest.get(time > rest.get('open') && time < rest.get('close')));
+console.log(rest.get(time > rest.get('open') && time < rest.get('close'))); // console.log(rest.get(true && false)); => console.log(false); => We are closed :(
 
 // 13.1.4. Checking for values in a MAP
 console.log(rest.has('categories'));
@@ -853,7 +853,7 @@ console.log(question);
 // we can CONVERT an OBJECT into a MAP using "new Map(Object.entries("...");)" Method
 console.log(Object.entries(restaurant.openingHours));
 const hoursMap = new Map(Object.entries(restaurant.openingHours));
-console.log(hoursMap);
+console.log(hoursMap); // Map(3) {'thu' => {…}, 'fri' => {…}, 'sat' => {…}}
 // NOW we CAN USE the For-of LOOP on MAPS
 
 // 13.2.2. LOOPing over MAPs
@@ -865,7 +865,7 @@ for (const [key, value] of question) {
   }
 }
 // const answer = Number(prompt("Your answer is:"));
-const answer = 3; // setting a dfault answer to stop prompting
+const answer = 3; // setting a default answer to stop prompting
 console.log(answer);
 console.log(question.get(question.get('correct') === answer));
 // OR Radu
