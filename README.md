@@ -14,6 +14,17 @@ from multiple resources
 
 ---
 
+#### 📈 28 October 2022
+
+1. Played around with Destructuring / Conversion of Arrays, Objects, Sets and Maps
+2. Rewatched part of the lectures from Jonas Schmedtmann's course - Section 9:
+
+- [x] Working With Strings / Strings Methods
+
+3. Reviewed notes, code and challenges
+
+---
+
 #### 📈 27 October 2022
 
 1. Rewatched part of the lectures from Jonas Schmedtmann's course - Section 9:

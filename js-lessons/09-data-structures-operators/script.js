@@ -55,7 +55,7 @@ const restaurant = {
   },
 };
 
-///////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // 1. Destructuring Arrays
 const arr = [2, 3, 4];
 
@@ -114,7 +114,7 @@ console.log(k, l, m);
 const [p = 1, q = 1, r = 1] = [8, 9];
 console.log(p, q, r);
 
-///////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // 2. Destructuring Objects
 const { name, openingHours, categories } = restaurant;
 console.log(name, openingHours, categories);
@@ -177,7 +177,7 @@ restaurant.orderDelivery({
   starterIndex: 1,
 });
 
-///////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // 3. The Spread Operator
 // The Spread Operator WORKS on ALL ITERABLES (Arrays, Strings, Maps, Sets etc.) but ALSO on OBJECTS (since ES2018)
 // SPREAD, because "..." on RIGHT side of "="
@@ -313,7 +313,7 @@ console.log(
   ...restaurant.mainMenu
 );
 
-///////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // 4. Rest Pattern / Operator and Parameters
 // 4.1. Using Destructuring !!AND!! the Rest Operator
 
@@ -377,7 +377,7 @@ restaurant.orderPizza('mushrooms'); // displays "mushrooms" as "mainIngredient" 
 
 */
 
-////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // 5. Short Circuiting (&& and ||)
 // when we are converting a value to a BOOLEAN value, we will get either a TRUTHY value OR a FALSY value:
 // strings
@@ -440,7 +440,7 @@ restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
 // if that Object Property, Method or Value does NOT exists => NOTHING HAPPENS (the function is not executed in this case)
 restaurant.orderPizzazzz && restaurant.orderPizzazzz('mushrooms', 'spinach');
 
-///////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // 6. The Nullish Coalescing Operator ??
 // ?? => looking for NON-NULLISH values
 // NULLISH values = ONLY "null" and "undefined"
@@ -460,7 +460,7 @@ const guestCorrect = restaurant.numGuestsCorrect ?? 10; // returns "0" because "
 console.log(guestCorrect);
 // console.log(restaurant); // PROOF that "restaurant.numGuestsCorrect" = 0;
 
-////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // 7. Logical Assignment Operators
 // (just like "+=" or "-=" etc.)
 // ||=
@@ -503,7 +503,7 @@ rest1.owner;
 console.log(rest1); // NOTHING changes because "rest1.owner" does NOT exists ("rest1.owner" = falsy value) <=> the Object stays the same
 console.log(rest2); // returns the last Truthy value ("ANONYMOUS")
 
-///////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // 8. Looping Arrays: The for-of Loop
 // We can USE "continue" AND "break" in the "for-of" Loop
 const menu2 = [...restaurant.starterMenu, ...restaurant.mainMenu];
@@ -525,7 +525,7 @@ for (const [i, el] of menu2.entries()) {
   console.log(`${i + 1}: ${el}`);
 }
 
-////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // 9. Enhanced Object Literals
 // 9.1. To ADD (insert / nest) an Object into another Object as an Object Property we can USE Enhanced Object Literals by simple writing that Object's name as a Property
 const pls = {
@@ -589,7 +589,7 @@ const weAreOpenOn = {
 
 console.log(weAreOpenOn);
 
-///////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // 10. Optional Chaining Operator (?.)
 // WORKS on: Object Properties, Object Methods AND on Arrays
 // BEST USED to check if Object Properties actually EXISTS ("EXISTS" = NOT "null" OR "undefined")
@@ -634,7 +634,7 @@ console.log(users[0]?.name ?? 'User array empty');
 // if (users.length > 0) console.log(users[0].name);
 // else console.log("user array empty");
 
-////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // 11. Looping Objects: Object Keys, Values, and Entries
 // 11.1. Looping over Object Property NAMES
 // Object Properties NAMES = KEYS = Object.keys
@@ -703,7 +703,7 @@ for (const [day, { open, close }] of entries) {
   console.log(`On ${day} we open at ${open} and close at ${close}`);
 }
 
-///////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // 12. Sets
 // a SET is a collection of UNIQUE Values => a SET can NEVER have duplicates
 // a Set DOES NOT have any Indexes => there's NO WAY to retrieve values from a Set
@@ -770,7 +770,7 @@ console.log(staffUnique.length); // 3
 console.log(new Set('jonasschmedtmann').size); // 11
 console.log(new Set('jonas schmedt mann').size); // 12 - the empty space between words is also counted as a UNIQUE Value (but only once, of course)
 
-///////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // 13. Maps
 // *** 13.1. Maps: Fundamentals
 // a MAP is a Data Structure we can use to ASSIGN / BIND VALUES to KEYS
@@ -835,7 +835,7 @@ console.log(rest.get(arr3)); // WORKING - because it refers to the same place in
 rest.set(document.querySelector('h1'), 'Heading');
 console.log(rest);
 
-///////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // *** 13.2. Maps: Iteration
 const question = new Map([
   // !! MUST HAVE [] INSIDE new Map()
@@ -850,7 +850,22 @@ const question = new Map([
 console.log(question);
 
 // 13.2.1. Converting an OBJECT into a MAP
-// we can CONVERT an OBJECT into a MAP using "new Map(Object.entries("...");)" Method
+// Radu:
+const testObject = {
+  property1: 0,
+  property2: true,
+  property3: 'test',
+  property4: [1, 2, 3],
+};
+console.log(testObject);
+// Step 1 : we Convert / Destructure the OBJECT into an ARRAY using the "Object.entries();" Method
+// Step 2 : we Convert the ARRAY into an MAP using "new Map()"
+const objectToMap = new Map(Object.entries(testObject));
+console.log(objectToMap); // Map(4) {'property1' => 0, 'property2' => true, 'property3' => 'test', 'property4' => Array(3)}
+
+// Jonas:
+// (!!! this RETURNS AN ARRAY, NOT AN OBJECT => Converting an ARRAY into a MAP: !!!) - Radu
+// we can CONVERT an ARRAY into a MAP using "new Map(Object.entries("...");)" Method
 console.log(Object.entries(restaurant.openingHours));
 const hoursMap = new Map(Object.entries(restaurant.openingHours));
 console.log(hoursMap); // Map(3) {'thu' => {…}, 'fri' => {…}, 'sat' => {…}}
@@ -871,7 +886,7 @@ console.log(question.get(question.get('correct') === answer));
 // OR Radu
 console.log(question.get(answer === 3));
 
-// 13.2.3. Converting an Array into a MAP
+// 13.2.3. Converting an ARRAY into a MAP
 // Radu - my solution
 const questionRadu = [
   ['question', 'What is the best programming language in the world?'],
@@ -888,7 +903,7 @@ console.log(questionRaduMap);
 // test
 console.log(questionRaduMap.get(3)); // Displays "JavaScript"
 
-// 13.2.4. Converting a MAP into an Array AND Using Methods on MAPS
+// 13.2.4. Converting a MAP into an ARRAY AND Using Methods on MAPS
 console.log(question);
 // we are first building an Array using the [] ...
 console.log([...question]);
@@ -898,7 +913,85 @@ console.log([...question.entries()]); // THE SAME as "console.log([...question])
 console.log([...question.keys()]);
 console.log([...question.values()]);
 
-///////////////////////////////////////
+// *****Radu - Extra
+// 13.2.3. Converting an MAP into an OBJECT
+const newMapTest = new Map()
+  .set(1, 'aa')
+  .set(2, 'bb')
+  .set(true, 1)
+  .set('array', [3, 4, 5]);
+console.log(newMapTest); // Map(4) {1 => 'aa', 2 => 'bb', true => 1, 'array' => Array(3)}[[Entries]]0: {1 => "aa"}1: {2 => "bb"}2: {true => 1}3: {"array" => Array(3)}
+console.log(newMapTest.get(true)); // 1
+
+const mapToObject = Object.fromEntries(newMapTest);
+console.log(mapToObject); // {1: 'aa', 2: 'bb', true: 1, array: Array(3)}
+// console.log(mapToObject.get(1)); // PROOF that this is an OBJECT "Uncaught TypeError: mapToObject.get is not a function"
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// ***** Radu - Extra
+// ***** Converting an ARRAY into an OBJECT
+const arrTest = [
+  ['property1', 0],
+  ['property2', true],
+  ['property3', 'test'],
+  ['property4', ['nested', 'array']],
+];
+const arrToObject = Object.fromEntries(arrTest);
+console.log(arrToObject, typeof arrToObject); // {property1: 0, property2: true, property3: 'test', property4: Array(2)} // 'object'
+
+// ***** Converting / Destructuring an OBJECT into an ARRAY
+console.log(Object.entries(arrToObject)); // (4) [Array(2), Array(2), Array(2), Array(2)]
+// 0 : (2) ['property1', 0]
+// 1 : (2) ['property2', true]
+// 2 : (2) ['property3', 'test']
+// 3 : (2) ['property4', Array(2)]
+// length : 4
+// [[Prototype]] : Array(0)
+
+for (const [key, value] of Object.entries(arrToObject)) {
+  console.log(`key: ${key} + value: ${value}`);
+}
+// key: property1 + value: 0
+// key: property2 + value: true
+// key: property3 + value: test
+// key: property4 + value: nested,array
+
+// !!! we MUST USE DESTRUCTURING + we MUST CALL the ".entries();" Method on the ARRAY we got from "Object.entries(arrToObject)"
+for (const [i, [key, value]] of Object.entries(arrToObject).entries()) {
+  console.log(`index: ${i} + key: ${key} + value: ${value}`);
+}
+// index: 0 + key: property1 + value: 0
+// index: 1 + key: property2 + value: true
+// index: 2 + key: property3 + value: test
+// index: 3 + key: property4 + value: nested,array
+
+const arrFromObjectKeys = Object.keys(arrToObject);
+console.log(arrFromObjectKeys); // (4) ['property1', 'property2', 'property3', 'property4']
+// !!! we MUST USE DESTRUCTURING + we MUST CALL the ".entries();" Method on the ARRAY we got from "Object.keys(arrToObject)"
+for (const [i, el] of arrFromObjectKeys.entries()) {
+  console.log(`index: ${i} + element: ${el}`);
+}
+/*
+index: 0 + element: property1
+index: 1 + element: property2
+index: 2 + element: property3
+index: 3 + element: property4
+*/
+
+const arrFromObjectValues = Object.values(arrToObject);
+console.log(arrFromObjectValues); // (4) [0, true, 'test', Array(2)]
+// !!! we MUST USE DESTRUCTURING + we MUST CALL the ".entries();" Method on the ARRAY we got from "Object.values(arrToObject)"
+for (const [i, value] of arrFromObjectValues.entries()) {
+  console.log(`index: ${i} + value: ${value}`);
+}
+/*
+index: 0 + value: 0
+index: 1 + value: true
+index: 2 + value: test
+index: 3 + value: nested,array
+*/
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // 14. WORKING WITH STRINGS
 ///////////////
 // 14.1. Indexes and Length of Strings
@@ -920,17 +1013,17 @@ console.log(airline.indexOf('Portugal')); // 8 - "Portugal" is on position 8 - c
 
 ///////////////
 // 14.2. Slicing Strings
-console.log(airline.slice(4));
+console.log(airline.slice(4)); // 'Air Portugal'
 console.log(airline);
-console.log(airline.slice(4, 7));
+console.log(airline.slice(4, 7)); // 'Air'
 console.log(airline);
 
-console.log(airline.slice(0, airline.indexOf(' ')));
-// console.log(airline.slice(airline.indexOf(" ") + 1, airline.lastIndexOf(" ")));
-console.log(airline.slice(airline.lastIndexOf(' ') + 1));
+console.log(airline.slice(0, airline.indexOf(' '))); // 'TAP'
+console.log(airline.slice(airline.indexOf(' ') + 1, airline.lastIndexOf(' '))); // 'Air'
+console.log(airline.slice(airline.lastIndexOf(' ') + 1)); // 'Portugal'
 
-console.log(airline.slice(-2));
-console.log(airline.slice(1, -1));
+console.log(airline.slice(-2)); // 'al'
+console.log(airline.slice(1, -1)); // 'AP Air Portuga'
 
 const checkMiddleSeat = function (seat) {
   // B and E are middle seats
@@ -952,9 +1045,9 @@ checkMiddleSeat('3E');
 // And then it's on that OBJECT where the Methods are CALLED.
 // This process is called BOXING because it basically takes our String and puts it into a BOX which is the OBJECT.
 // When the operation is done the Object is converted back to a regular String Primitive.
-console.log(new String('jonas'));
-console.log(typeof new String('jonas'));
-console.log(typeof new String('jonas').slice(1));
+console.log(new String('jonas')); // String {'jonas'} // [[Prototype]] : String // [[PrimitiveValue]] : "jonas"
+console.log(typeof new String('jonas')); // 'object'
+console.log(typeof new String('jonas').slice(1)); // 'string'
 
 console.log(airline.toLowerCase());
 console.log(airline.toUpperCase());
@@ -993,17 +1086,17 @@ const loginEmail = '  Hello@Jonas.Io \n'; // "\n " = ""Enter" aka "new line"
 // const trimmedEmail = lowerEmail.trim();
 const normalizedEmail = loginEmail.toLowerCase().trim();
 console.log(normalizedEmail);
-console.log(email === normalizedEmail);
+console.log(email === normalizedEmail); // true
 // !! MUST DO CHALLENGE - Turn into a function - DONE !!
 const normalizeString = function (anyString) {
   const str = anyString.toLowerCase().trim();
   console.log(str);
   return str;
 };
-normalizeString('   ASdfgGfdgAaaAa@ASAF.dev \n '); // "\n " = ""Enter" aka "new line"
+normalizeString('   ASdfgGfdgAaaAa@ASAF.dev \n '); // "\n " = ""Enter" aka "new line" // 'asdfggfdgaaaaa@asaf.dev'
 normalizeString(
   '   STRING has BEEN NormaLiZed by being converted TO LOwer CaSe and TRIMMEd  \n '
-);
+); // 'string has been normalized by being converted to lower case and trimmed'
 
 ///////////////
 // 14.5. Replacing Strings
@@ -1017,21 +1110,22 @@ const currencyReplacement = function (currencyA, currencyB) {
   console.log(priceA, priceB);
   return priceA, priceB;
 };
-currencyReplacement('$', 'RON');
+currencyReplacement('$', 'RON'); // '100$' '100RON'
 
 const announcement =
   'All passengers come to boarding door 23. Boarding door 23!';
 
 console.log(announcement.replace('door', 'gate')); // ONLY replaces the FIRST occurence of "door" with gate"
 // console.log(announcement.replace(/gate/g, "door")); // older Method using Regular Expression - used before ".replaceAll();" - also Case Sensitive
-console.log(announcement.replaceAll('door', 'gate')); // the ".replaceAll();" Method is NOW WORKING
+console.log(announcement.replaceAll('door', 'gate')); // the ".replaceAll();" Method is NOW WORKING // 'All passengers come to boarding gate 23. Boarding gate 23!'
 
 ///////////////
 // 14.6. Booleans - Checking Strings
 const plane2 = 'Airbus A320neo';
-console.log(plane2.includes('A320'));
-console.log(plane2.includes('Boeing'));
-console.log(plane2.startsWith('Airb'));
+console.log(plane2.includes('A320')); // true
+console.log(plane2.includes('Boeing')); // false
+console.log(plane2.startsWith('Airb')); // true
+console.log(plane2.endsWith('neo')); // true
 
 if (plane2.startsWith('Airbus') && plane2.endsWith('neo')) {
   console.log('Part of the NEW ARirbus family');
@@ -1048,17 +1142,17 @@ const checkBaggage = function (items) {
   }
 };
 
-checkBaggage('I have a laptop, some Food and a pocket Knife');
-checkBaggage('Socks and camera');
-checkBaggage('Got some snacks and a gun for protection');
+checkBaggage('I have a laptop, some Food and a pocket Knife'); // 'You are NOT allowed on board'
+checkBaggage('Socks and camera'); // 'Welcome aboard!'
+checkBaggage('Got some snacks and a gun for protection'); // 'You are NOT allowed on board'
 
 ///////////////
-// 14.7. Splitting and joining Strings
+// 14.7. Splitting and Joining Strings
 // SPLIT returns an ARRAY from a STRING
 // we can LOOP over that Array
-console.log('a+very+nice+string'.split('+'));
-console.log('Jonas Schmedtmann'.split(' '));
-console.log('Radu-test'.split('')); // Splitting a String letter by letter - WITHOUT a space bwetween letters
+console.log('a+very+nice+string'.split('+')); // (4) ['a', 'very', 'nice', 'string']
+console.log('Jonas Schmedtmann'.split(' ')); // (2) ['Jonas', 'Schmedtmann']
+console.log('Radu-test'.split('')); // Splitting a String letter by letter - WITHOUT a space between letters // (9) ['R', 'a', 'd', 'u', '-', 't', 'e', 's', 't']
 
 const [firstName2, lastName2] = 'Jonas Schmedtmann'.split(' ');
 
@@ -1085,8 +1179,8 @@ const capitalizeName = function (name) {
   console.log(namesUpper.join(' '));
 };
 
-capitalizeName('jessica ann smith davis');
-capitalizeName('jonas schmedtmann');
+capitalizeName('jessica ann smith davis'); // Jessica Ann Smith Davis
+capitalizeName('jonas schmedtmann'); // Jonas Schmedtmann
 
 // Extra - Radu
 const anyArray = [
@@ -1144,45 +1238,46 @@ const maskCreditCard = function (number) {
   // or
   const str = number + ''; // converting a Number to a String
   const last = str.slice(-4);
-  // console.log(last, str.length);
+  console.log(last, str.length);
   return last.padStart(str.length, '*');
 };
 
-console.log(maskCreditCard(64637836));
-console.log(maskCreditCard(43378463864647384));
-console.log(maskCreditCard('33485949 3847 7557747 47'));
+console.log(maskCreditCard(64637836)); // ****7836
+console.log(maskCreditCard(43378463864647384)); // *************7384
+console.log(maskCreditCard('33485949 3847 7557747 47')); // ********************7 47
 
 // RADU - test Accesa V2
 // /*
 function hideDigits(num) {
   var maskedString = '';
   // Write code that returns markedString as the answer
-  maskedString = num + maskedString;
+  maskedString += num;
   // console.log(maskedString);
-  maskedString = maskedString.slice(-3);
+  // console.log(typeof maskedString);
+  maskedStringSlice = maskedString.slice(-3);
   // console.log(maskedString);
-  maskedString = maskedString.padStart(num.length, '#');
-  console.log(maskedString);
+  maskedString = maskedStringSlice.padStart(maskedString.length, '#');
 
+  console.log(maskedString);
   return maskedString;
 }
 
-hideDigits('123 456 890');
-// hideDigits(1234567890123);
-hideDigits('a1s2d3');
+hideDigits('123 456 890'); // '########890'
+hideDigits(1234567890123); // '##########123'
+hideDigits('a1s2d3'); // '###2d3'
 // */
 
 ///////////////
 // 14.9. Repeating Strings
 const message2 = 'Bad weather... All Departures Delayed... ';
-console.log(message2.repeat(5));
+console.log(message2.repeat(2)); // 'Bad weather... All Departures Delayed... Bad weather... All Departures Delayed... '
 
 const planesInLine = function (n) {
   console.log(`There are ${n} planes in line ${'✈'.repeat(n)}`);
 };
-planesInLine(5);
-planesInLine(3);
-planesInLine(12);
+planesInLine(5); // 'There are 5 planes in line ✈✈✈✈✈'
+planesInLine(3); // There are 3 planes in line ✈✈✈
+planesInLine(12); // There are 12 planes in line ✈✈✈✈✈✈✈✈✈✈✈✈
 
 ///////////////
 // 14.10. The NEW ".at();" Method
@@ -1229,8 +1324,8 @@ function reverseStringV2(str) {
   console.log(reverseString);
   return reverseString;
 }
-reverseStringV2('hello V2');
-reverseStringV2('Hello! How are you?');
+reverseStringV2('hello V2'); // '2V olleh'
+reverseStringV2('Hello! How are you?'); // '?uoy era woH !olleH'
 
 ///////////////////////////////////////
 // Coding Challenge #4 - Converting underscore string to camel case string
@@ -1245,13 +1340,13 @@ const underscoreToCamelCase = function (str) {
   // console.log(`${output.padEnd(20)}${"✅".repeat(2)}`); // OR "... .padEnd(20, " "). ..."
   return output;
 };
-underscoreToCamelCase('underscore_camel');
-underscoreToCamelCase('first_name');
-underscoreToCamelCase(' Some_Variable');
-underscoreToCamelCase('  calculate_AGE ');
-underscoreToCamelCase('   delaYed_dEparturE    ');
+underscoreToCamelCase('underscore_camel'); // 'underscoreCamel ✅'
+underscoreToCamelCase('first_name'); // 'firstName ✅'
+underscoreToCamelCase(' Some_Variable'); // 'someVariable ✅'
+underscoreToCamelCase('  calculate_AGE '); // 'calculateAge ✅'
+underscoreToCamelCase('   delaYed_dEparturE    '); // 'delayedDeparture ✅'
 
-///////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // String Methods Practice
 const flights =
   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
@@ -1282,3 +1377,8 @@ for (const flight of flights.split('+')) {
 
   console.log(output);
 }
+// 🔴 Delayed Departure from FAO to TXL (11h25)
+//  Arrival from BRU to FAO (11h45)
+
+// 🔴 Delayed Arrival from HEL to FAO (12h05)
+//  Departure from FAO to LIS (12h30)
