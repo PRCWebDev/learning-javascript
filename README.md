@@ -14,6 +14,13 @@ from multiple resources
 
 ---
 
+#### 📈 29 October 2022
+
+1. Rewatched some lectures, reviewed notes
+2. Practiced Touch typing
+
+---
+
 #### 📈 28 October 2022
 
 1. Played around with Destructuring / Conversion of Arrays, Objects, Sets and Maps
