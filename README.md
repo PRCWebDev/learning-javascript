@@ -14,6 +14,25 @@ from multiple resources
 
 ---
 
+#### 📈 30 - 31 October 2022
+
+1. Recap of notes from Jonas Schmedtmann's course - Section 9 - Data Structures, Modern Operators & Working with Strings ✅
+2. Rewatched part of the lectures from Jonas Schmedtmann's course - Section 10:
+
+- [x] Default Parameters
+- [x] How Passing Arguments Works: Value vs. Reference
+- [x] First-Class Functions
+- [x] Higher-Order Functions
+- [x] Functions Accepting Callback Functions
+- [x] Functions Returning Functions
+- [x] The call and apply Methods
+- [x] The bind Method
+
+3. Reviewed notes
+4. Practiced Touch typing
+
+---
+
 #### 📈 29 October 2022
 
 1. Rewatched some lectures, reviewed notes
@@ -47,7 +66,7 @@ from multiple resources
 
 #### 📈 26 October 2022
 
-1. Rewatched part of the lectures from Jonas Schmedtmann's course - Section 9:
+1. Rewatched part of the lectures from Jonas Schmedtmann's course - Section 9 - Data Structures, Modern Operators & Working with Strings:
 
 - [x] Destructuring Arrays
 - [x] Destructuring Objects
