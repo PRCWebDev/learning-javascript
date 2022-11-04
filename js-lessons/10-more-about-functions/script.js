@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 ///////////////////////////////////////
 // 1. Default Parameters
@@ -23,25 +23,25 @@ const createBooking = function (
   bookings.push(booking);
 };
 
-createBooking("LH123");
-createBooking("LH123");
-createBooking("LH123", 2, 800);
-createBooking("LH123", 2);
-createBooking("LH123", 5);
+// createBooking("LH123");
+// createBooking("LH123");
+// createBooking("LH123", 2, 800);
+// createBooking("LH123", 2);
+// createBooking("LH123", 5);
 
-createBooking("LH123", undefined, 1000); // skipping a Default Parameter by setting it to "undefined" when we CALL the function
+createBooking('LH123', undefined, 1000); // skipping a Default Parameter by setting it to "undefined" when we CALL the function
 
 ///////////////////////////////////////
 // 2. How Passing Arguments Works: Values vs. Reference
-const flight = "LH234";
+const flight = 'LH234';
 const jonas = {
-  name: "Jonas Schmedtmann",
+  name: 'Jonas Schmedtmann',
   passport: 24739479284,
 };
 
 const checkIn = function (flightNum, passenger) {
-  flightNum = "LH999";
-  passenger.name = "Mr. " + passenger.name;
+  flightNum = 'LH999';
+  passenger.name = 'Mr. ' + passenger.name;
 
   if (passenger.passport === 24739479284) {
     // alert("Checked in");
@@ -66,20 +66,21 @@ newPassport(jonas);
 checkIn(flight, jonas);
 
 ///////////////////////////////////////
-// 3. Functions Accepting Callback Functions
+// 3. HIGHER-ORDER Functions
+// 3.1. Functions Accepting Callback Functions
 
 const oneWord = function (str) {
-  return str.replaceAll(" ", "").toLowerCase();
+  return str.replaceAll(' ', '').toLowerCase();
 };
 // console.log(oneWord("JavaScript is the best!"));
 
 const upperFirstWord = function (str) {
-  const [first, ...others] = str.split(" "); // "..." = the REST Operator used here to PACK all of the remaining words into one Array
-  return [first.toUpperCase(), ...others].join(" "); // "..." = the SPREAD Operator used here to UNPACK the "others" Array created earlier with the Rest Operator
+  const [first, ...others] = str.split(' '); // "..." = the REST Operator used here to PACK all of the remaining words into one Array
+  return [first.toUpperCase(), ...others].join(' '); // "..." = the SPREAD Operator used here to UNPACK the "others" Array created earlier with the Rest Operator
 };
 // console.log(upperFirstWord("JavaScript is the best!"));
 
-// 4. HIGHER-ORDER Function
+// THIS IS the HIGHER-ORDER Function:
 const transformer = function (str, fn) {
   console.log(`Original string: ${str}`);
   console.log(`Transformed string: ${fn(str)}`); // CALLING the CALLBACK function ("fn" = "upperFirstWord" / "oneWord")
@@ -87,29 +88,29 @@ const transformer = function (str, fn) {
   console.log(`Transformed by: ${fn.name}`); // APPLYING the ".name" METHOD on the "fn" function
 };
 
-transformer("JavaScript is the best!", upperFirstWord);
-transformer("JavaScript is the best!", oneWord);
+transformer('JavaScript is the best!', upperFirstWord);
+transformer('JavaScript is the best!', oneWord);
 // the "upperFirstWord" and the "oneWord" functions are NOT CALLED when passed as ARGUMENTS into the "transformer" function, they are CALLED INSIDE the "transformer" function LATER, whenever the "transformer" function is CALLED / EXECUTED => the "upperFirstWord" and the "oneWord" functions are CALLBACK functions & the "transformer" function is a HIGHER-ORDER function (because it receives a function as an Argument)
 
 // JS uses CALLBACK Functions ALL THE TIME
-// const high5 = function () {
-//   console.log("👋");
-// };
-// document.body.addEventListener("click", high5);
-// ["Jonas", "Martha", "Adam"].forEach(high5);
+const high5 = function () {
+  console.log('👋');
+};
+document.body.addEventListener('click', high5);
+['Jonas', 'Martha', 'Adam'].forEach(high5);
 
 ///////////////////////////////////////
-// 5. Functions Returning Functions
+// 3.2. Functions Returning Functions
 const greet = function (greeting) {
   return function (name) {
     console.log(`${greeting}, ${name}! 👋`);
   };
 };
-const greeterHey = greet("Hey");
-greeterHey("Jonas");
-greeterHey("Steven");
+const greeterHey = greet('Hey');
+greeterHey('Jonas');
+greeterHey('Steven');
 // OR
-greet("Ola")("Jose");
+greet('Ola')('Jose');
 // Functions Returning Functions are VERY IMPORTANT when using the FUNCTIONAL PROGRAMMING PARADIGM
 
 // Challenge
@@ -119,13 +120,13 @@ greet("Ola")("Jose");
 const greetArrow = (greeting) => (name) =>
   console.log(`${greeting}, ${name}! 👋`);
 
-greetArrow("Howdy")("Bobby");
+greetArrow('Howdy')('Bobby');
 
 ///////////////////////////////////////
-// 6. The CALL and APPLY Methods
+// 4. The CALL and APPLY Methods
 const lufthansa = {
-  airline: "Lufthansa",
-  iataCode: "LH",
+  airline: 'Lufthansa',
+  iataCode: 'LH',
   bookings: [],
   // Method Syntax BEFORE ES6
   // book: function() {}
@@ -138,13 +139,13 @@ const lufthansa = {
   },
 };
 // WORKS
-lufthansa.book(239, "Jonas Schmedtmann");
-lufthansa.book(635, "John Smith");
+lufthansa.book(239, 'Jonas Schmedtmann');
+lufthansa.book(635, 'John Smith');
 console.log(lufthansa);
 
 const eurowings = {
-  airline: "Eurowings",
-  iataCode: "EW",
+  airline: 'Eurowings',
+  iataCode: 'EW',
   bookings: [],
 };
 
@@ -155,27 +156,27 @@ const book = lufthansa.book; // A SEPARATE COPY, NOT A METHOD anymore, it has no
 // this is JUST ANOTHER REGULAR / SIMPLE FUNCTION CALL => the "this" keyword applied to Regular / Simple Functions CALLS RETURNS "undefined" (in STRICT MODE)
 
 // WORKS
-// 6.1. The CALL Method
+// 4.1. The CALL Method
 // allows us to manually SET the "this" keyword of ANY Function we want to CALL
 // ** REMEMBER: "Functions are JUST ANOTHER TYPE of OBJECTS => we can APPLY / CALL METHODS on Functions just like we do on Objects"
-book.call(eurowings, 23, "Sarah Williams");
+book.call(eurowings, 23, 'Sarah Williams');
 console.log(eurowings);
 
-book.call(lufthansa, 239, "Mary Cooper");
+book.call(lufthansa, 239, 'Mary Cooper');
 console.log(lufthansa);
 
 const swiss = {
-  airline: "Swiss Air Lines",
-  iataCode: "LX",
+  airline: 'Swiss Air Lines',
+  iataCode: 'LX',
   bookings: [],
 };
 
-book.call(swiss, 583, "Mary Cooper");
+book.call(swiss, 583, 'Mary Cooper');
 console.log(swiss);
-// 6.2. The APPLY Method
+// 4.2. The APPLY Method
 // similar to the CALL Method, but takes an ARRAY of Data as ARGUMENTS instead of a LIST of Data, after the "this" keyword
 // it will take the elements of that ARRAY and pass it into the function
-const flightData = [583, "George Cooper"];
+const flightData = [583, 'George Cooper'];
 book.apply(swiss, flightData);
 console.log(swiss);
 
@@ -184,7 +185,7 @@ book.call(swiss, ...flightData);
 console.log(swiss);
 
 ///////////////////////////////////////
-// 7. The BIND Method
+// 5. The BIND Method
 // book.call(eurowings, 23, 'Sarah Williams');
 // the BIND Method does NOT immediately CALL the function
 // instead, it returns a NEW Function where the "this" keyword is ALWAYS BOUND => we can use the BIND Method to SET the "this" keyword to ANY VALUE we pass into that NEW Function
@@ -193,12 +194,12 @@ const bookEW = book.bind(eurowings); // SETING the "this" keyword to "eurowings"
 const bookLH = book.bind(lufthansa);
 const bookLX = book.bind(swiss);
 
-bookEW(12345, "Steven Williams"); // CALLING the NEW Function
+bookEW(12345, 'Steven Williams'); // CALLING the NEW Function
 
 // we can even SET the DEFAULT ARGUMENTS of that NEW Function if we want to => the PARTIAL APPLICATION PATTERN:
 const bookEW23 = book.bind(eurowings, 23);
-bookEW23("Jonas Schmedtmann");
-bookEW23("Martha Cooper");
+bookEW23('Jonas Schmedtmann');
+bookEW23('Martha Cooper');
 
 // Practical example
 // Practical example
@@ -212,14 +213,18 @@ lufthansa.buyPlane = function () {
 };
 // lufthansa.buyPlane();
 
-// this does NOT work
+// this does NOT work:
 // if we were NOT Using the BIND Method together WITH the Event Listener, the "lufthansa.buyPlane" would point to the "<button class="buy">Buy new plane ✈</button>" and it would NOT return a number:
-// document.querySelector(".buy").addEventListener("click", lufthansa.buyPlane);
+// !!! BECAUSE, in an Event Handler Function, the "this" keyword ALWAYS POINTS TO the ELEMENT on which that Handler Function is ATTACHED !!!
+// document.querySelector('.buy').addEventListener('click', lufthansa.buyPlane);
+//=>
+// "<button class="buy">Buy new plane ✈</button>"  +  // "NaN"
+// (the ELEMENT on which that Event Handler Function is ATTACHED <=> the ".addEventListener('click', lufthansa.buyPlane)" (Event Handler Function / Method) is ATTACHED TO the BUTTON (ELEMENT) with the CLASS of "buy" (document.querySelector('.buy') SELECTS / POINTS TO "<button class="buy">Buy new plane ✈</button>"))
 
-// this WORKS - Using the BIND Method WITH Event Listeners:
+// THIS WORKS - Using the BIND Method WITH Event Listeners:
 document
-  .querySelector(".buy")
-  .addEventListener("click", lufthansa.buyPlane.bind(lufthansa));
+  .querySelector('.buy')
+  .addEventListener('click', lufthansa.buyPlane.bind(lufthansa));
 // BINDing the "lufthansa" OBJECT to the button click
 
 // Practical example
@@ -245,6 +250,20 @@ const addVAT2 = addTaxRate(0.23);
 console.log(addVAT2(100));
 console.log(addVAT2(23));
 
+// OR Radu
+const addTaxRate2 = (rate) => (value) =>
+  console.log(
+    `RADU - USING "RETURN" AND "CONSOLE.LOG();" TOGETHER !!!! Hell yeah, baby: ${
+      value + value * rate
+    }`
+  ); // RADU - USING "RETURN" AND "CONSOLE.LOG();" TOGETHER !!!!
+// THIS IS THE SAME AS DOING THIS:
+// {
+// console.log(`${rate}, ${value}`);
+// return console.log(`Hell yeah, baby: ${value + value * rate}`); // RADU - USING "RETURN" AND "CONSOLE.LOG();" TOGETHER !!!!
+// }
+
+addTaxRate2(0.19)(100);
 ///////////////////////////////////////
 // Coding Challenge #1
 /* 
@@ -279,67 +298,67 @@ GOOD LUCK 😀
 */
 
 const poll = {
-  question: "What is your favourite programming language?",
-  options: ["0: JavaScript", "1: Python", "2: Rust", "3: C++"],
+  question: 'What is your favourite programming language?',
+  options: ['0: JavaScript', '1: Python', '2: Rust', '3: C++'],
   // This generates [0, 0, 0, 0]. More in the next section 😃
   answers: new Array(4).fill(0),
   registerNewAnswer() {
     // Get answer
     const answer = Number(
       prompt(
-        `${this.question}\n${this.options.join("\n")}\n(Write option number)`
+        `${this.question}\n${this.options.join('\n')}\n(Write option number)`
       )
     );
     console.log(answer);
 
     // Register answer
-    typeof answer === "number" &&
+    typeof answer === 'number' &&
       answer < this.answers.length &&
       this.answers[answer]++;
 
     this.displayResults();
-    this.displayResults("string");
+    this.displayResults('string');
   },
 
-  displayResults(type = "array") {
-    if (type === "array") {
+  displayResults(type = 'array') {
+    if (type === 'array') {
       console.log(this.answers);
-    } else if (type === "string") {
+    } else if (type === 'string') {
       // Poll results are 13, 2, 4, 1
-      console.log(`Poll results are ${this.answers.join(", ")}`);
+      console.log(`Poll results are ${this.answers.join(', ')}`);
     }
   },
 };
 // poll.registerNewAnswer();
 
 document
-  .querySelector(".poll")
-  .addEventListener("click", poll.registerNewAnswer.bind(poll));
+  .querySelector('.poll')
+  .addEventListener('click', poll.registerNewAnswer.bind(poll));
 
 // BONUS:
 // [5, 2, 3]
 // [1, 5, 3, 9, 6, 1]
-poll.displayResults.call({ answers: [5, 2, 3] }, "string");
-poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] }, "string");
+poll.displayResults.call({ answers: [5, 2, 3] }, 'string');
+poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] }, 'string');
 poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] });
 
 ///////////////////////////////////////
-// 8. Immediately Invoked Function Expressions (IIFE)
+// 6. Immediately Invoked Function Expressions (IIFE)
 const runOnce = function () {
-  console.log("This will run again");
+  console.log('This will run again');
 };
 runOnce();
 // we can Call this function anytime
 
 // IIFE Pattern
 (function () {
-  console.log("This will NEVER run again");
+  console.log('This will NEVER run again');
   const isPrivate = 23; // the "isPrivate" variable is ENCAPSULATED INSIDE THE FUNCTION SCOPE, it cannot be accessed from outside the function
 })();
 // RUNS the function ONLY ONCE, IMMEDIATELY after it has been created
 
 // ALSO IIFE
-(() => console.log("This will ALSO never run again"))();
+(() => console.log('This will ALSO never run again'))();
 
 // console.log(isPrivate); // NOT WORKING because of SCOPING
 
@@ -352,7 +371,7 @@ runOnce();
 console.log(notPrivate);
 
 ///////////////////////////////////////
-// 9. CLOSURES !!!
+// 7. CLOSURES !!!
 const secureBooking = function () {
   let passengerCount = 0;
 
@@ -378,7 +397,7 @@ console.dir(booker);
 // "[[...]]" = double brackets mean it's an INTERNAL PROPERTY of a function
 
 ///////////////////////////////////////
-// 9.1. More Closure Examples !!!
+// 7.1. More Closure Examples !!!
 // WE DON'T ALWAYS NEED TO RETURN A FUNCTION TO SEE A CLOSURE IN ACTION => we can use Functions RETURNING Functions, CALLBACK Functions ETC.(??) TO SEE A CLOSURE IN ACTION
 // Example 1
 let f; // the "f" Variable is created in the Global Scope
@@ -394,23 +413,28 @@ const g = function () {
 const h = function () {
   const b = 777;
   f = function () {
-    // we assigned a function to the "f" Variable => ANOTHER "f" function was created INSIDE the "g" function
+    // we RE-assigned a function to the "f" Variable => ANOTHER "f" function was created INSIDE the "h" function
     console.log(b * 2);
   };
 };
 
 g(); // the birthplace of the "f" function
 f(); // now the "f" function ALWAYS has ACCESS from it's BACKPACK / CLOSURE to the "a" Variable => "console.log(a(=23) * 2)" => 46
-console.dir(f);
+console.dir(f); // [[Scopes]] : Scopes[3] 0 : Closure (g) {a: 23} ....
 
 // Re-assigning the "f" function
-h(); // the birthplace of ANOTHER "f" function
+h(); // the rebirth place of the SAME "f" function
 f(); // now the "f" function ALWAYS has ACCESS from it's BACKPACK / CLOSURE to the "b" Variable => "console.log(b(=777) * 2)" => 1554
-console.dir(f);
+console.dir(f); // [[Scopes]] : Scopes[3] 0 : Closure (h) {b: 777} ....
+
+console.log(f); // ƒ () {
+// we RE-assigned a function to the "f" Variable => ANOTHER "f" function was created INSIDE the "h" function
+//   console.log(b * 2);
+// }
 
 // Example 2
 const boardPassengers = function (n, wait) {
-  const perGroup = n / 3; // comment out to test CLOSURE PRIORITY over the Scope Chain
+  const perGroup = n / 3; // test of CLOSURE PRIORITY over the Scope Chain
 
   // a CALLBACK function
   setTimeout(function () {
@@ -423,6 +447,9 @@ const boardPassengers = function (n, wait) {
 
 const perGroup = 1000; // PROOF that the CLOSURE has PRIORITY over the Scope Chain
 boardPassengers(180, 3);
+// Will start boarding in 3 seconds
+// We are now boarding all 180 passengers // NOT 1000 !!
+// There are 3 groups, each with 60 passengers
 
 ///////////////////////////////////////
 // Coding Challenge #2
@@ -437,11 +464,13 @@ And now explain to YOURSELF (or someone around you) WHY this worked! Take all th
 GOOD LUCK 😀
 */
 
+const header = document.querySelector('h1');
+header.style.color = 'yellow';
 (function () {
-  const header = document.querySelector("h1");
-  header.style.color = "red";
+  const header = document.querySelector('h1'); // test of CLOSURE PRIORITY over the Scope Chain
+  header.style.color = 'red'; // test of CLOSURE PRIORITY over the Scope Chain // Another PROOF that the CLOSURE has PRIORITY over the Scope Chain // 'red', NOT 'yellow' !!
 
-  document.querySelector("body").addEventListener("click", function () {
-    header.style.color = "blue";
+  document.querySelector('body').addEventListener('click', function () {
+    header.style.color = 'blue';
   });
 })();
