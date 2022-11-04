@@ -14,10 +14,17 @@ from multiple resources
 
 ---
 
+#### 📈 04 November 2022
+
+1. Recap of notes & code from Jonas Schmedtmann's course - Section 9 - Data Structures, Modern Operators & Working with Strings ✅
+2. Completed the "underscore_to_camelCase" challenge
+
+---
+
 #### 📈 30 - 31 October 2022
 
 1. Recap of notes from Jonas Schmedtmann's course - Section 9 - Data Structures, Modern Operators & Working with Strings ✅
-2. Rewatched part of the lectures from Jonas Schmedtmann's course - Section 10:
+2. Rewatched part of the lectures from Jonas Schmedtmann's course - Section 10 - A Closer Look at Functions:
 
 - [x] Default Parameters
 - [x] How Passing Arguments Works: Value vs. Reference

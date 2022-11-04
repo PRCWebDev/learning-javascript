@@ -920,7 +920,7 @@ const newMapTest = new Map()
   .set(2, 'bb')
   .set(true, 1)
   .set('array', [3, 4, 5]);
-console.log(newMapTest); // Map(4) {1 => 'aa', 2 => 'bb', true => 1, 'array' => Array(3)}[[Entries]]0: {1 => "aa"}1: {2 => "bb"}2: {true => 1}3: {"array" => Array(3)}
+console.log(newMapTest); // Map(4) {1 => 'aa', 2 => 'bb', true => 1, 'array' => Array(3)} // [[Entries]] 0: {1 => "aa"} 1: {2 => "bb"} 2: {true => 1} 3: {"array" => Array(3)}
 console.log(newMapTest.get(true)); // 1
 
 const mapToObject = Object.fromEntries(newMapTest);
