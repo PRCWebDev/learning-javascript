@@ -1,4 +1,4 @@
-# Learning JavaScript 🚀
+### Learning JavaScript 🚀
 
 from multiple resources
 
@@ -10,26 +10,33 @@ from multiple resources
     - 🌟 the [Pig Game](https://pig-game-js-webdevprc.netlify.app/)
   - 🚧 Work in Progress (WIP) on Jonas "Bankist" App
 
-    \* All credit for these projects goes to Jonas Schmedtmann 🙏 I am just his student, learning and practicing from his awesome course 🔥
+    \*All credit for these projects goes to Jonas Schmedtmann 🙏 I am just his student, learning and practicing from his awesome course 🔥
 
 ---
 
-#### ✔️ 04 November 2022
+#### ☑️ 05 November 2022
 
-1. Notes recap & code review of Jonas Schmedtmann's course - Section 9 - Data Structures, Modern Operators & Working with Strings ✔️
-2. Completed the "underscore_to_camelCase" challenge ✔️
+1. Notes recap ☑️
+2. Multiple Readme files updates ☑️
+
+---
+
+#### ☑️ 04 November 2022
+
+1. Notes recap & code review of Jonas Schmedtmann's course - Section 9 - Data Structures, Modern Operators & Working with Strings ☑️
+2. Completed the "underscore_to_camelCase" challenge ☑️
 3. Rewatched part of the lectures of Jonas Schmedtmann's course - Section 10 - A Closer Look at Functions:
 
 - ☑️ Immediately Invoked Function Expressions (IIFE)
 - ☑️ Closures
 
-4. Notes recap & code review of Jonas Schmedtmann's course - Section 10 - A Closer Look at Functions ✔️
+4. Notes recap & code review of Jonas Schmedtmann's course - Section 10 - A Closer Look at Functions ☑️
 
 ---
 
-#### ✔️ 30 - 31 October 2022
+#### ☑️ 30 - 31 October 2022
 
-1. Notes recap of Jonas Schmedtmann's course - Section 9 - Data Structures, Modern Operators & Working with Strings ✔️
+1. Notes recap of Jonas Schmedtmann's course - Section 9 - Data Structures, Modern Operators & Working with Strings ☑️
 2. Rewatched part of the lectures of Jonas Schmedtmann's course - Section 10 - A Closer Look at Functions:
 
 - ☑️ Default Parameters
@@ -41,43 +48,43 @@ from multiple resources
 - ☑️ The call and apply Methods
 - ☑️ The bind Method
 
-3. Reviewed notes ✔️
-4. Practiced Touch typing ✔️
+3. Reviewed notes ☑️
+4. Practiced Touch typing ☑️
 
 ---
 
-#### ✔️ 29 October 2022
+#### ☑️ 29 October 2022
 
-1. Rewatched some lectures, reviewed notes ✔️
-2. Practiced Touch typing ✔️
+1. Rewatched some lectures, reviewed notes ☑️
+2. Practiced Touch typing ☑️
 
 ---
 
-#### ✔️ 28 October 2022
+#### ☑️ 28 October 2022
 
 1. Played around with Destructuring / Conversion of Arrays, Objects, Sets and Maps
 2. Rewatched part of the lectures of Jonas Schmedtmann's course - Section 9 - Data Structures, Modern Operators & Working with Strings:
 
 - ☑️ Working With Strings / Strings Methods
 
-3. Reviewed notes, code and challenges ✔️
+3. Reviewed notes, code and challenges ☑️
 
 ---
 
-#### ✔️ 27 October 2022
+#### ☑️ 27 October 2022
 
-1. Rewatched part of the lectures of Jonas Schmedtmann's course - Section 9 - Data Structures, Modern Operators & Working with Strings ✔️:
+1. Rewatched part of the lectures of Jonas Schmedtmann's course - Section 9 - Data Structures, Modern Operators & Working with Strings ☑️:
 
 - ☑️ Sets
 - ☑️ Maps: Fundamentals
 - ☑️ Maps: Iteration
 - ☑️ Which Data Structure to Use
 
-2. Reviewed notes, code and challenges ✔️
+2. Reviewed notes, code and challenges ☑️
 
 ---
 
-#### ✔️ 26 October 2022
+#### ☑️ 26 October 2022
 
 1. Rewatched part of the lectures of Jonas Schmedtmann's course - Section 9 - Data Structures, Modern Operators & Working with Strings:
 
@@ -93,13 +100,13 @@ from multiple resources
 - ☑️ Optional Chaining (?.)
 - ☑️ Looping Objects: Object Keys, Values, and Entries
 
-2. Reviewed notes, code and challenges ✔️
+2. Reviewed notes, code and challenges ☑️
 
 ---
 
-## ✔️ 14 - 31 August 2022
+#### ☑️ 14 - 31 August 2022
 
-1. Learned more about Working with Arrays - Array Methods ✔️
+1. Learned more about Working with Arrays - Array Methods ☑️
 
 - Source: [The Complete JavaScript Course 2022: From Zero to Expert!](https://www.udemy.com/course/the-complete-javascript-course/) created by Jonas Schmedtmann. All credit goes to him 🙏
 
@@ -126,20 +133,20 @@ from multiple resources
   - ☑️ More Ways of Creating and Filling Arrays
   - ☑️ Summary: Which Array Method to Use
 
-2. Practiced what I learned by completing multiple coding assignments and challenges and by applying what I learned on Jonas "Bankist" App (which is still WIP) ✔️
+2. Practiced what I learned by completing multiple coding assignments and challenges and by applying what I learned on Jonas "Bankist" App (which is still WIP) ☑️
 
 ---
 
-## ✔️ May - August 2022
+#### ☑️ May - August 2022
 
 - Restarted learning [The Complete JavaScript Course 2022: From Zero to Expert!](https://www.udemy.com/course/the-complete-javascript-course/) from 0 after failing a couple of interviews.
 - Started taking more and better notes.
 
 ---
 
-## ✔️ 20 - 25 April 2022
+#### ☑️ 20 - 25 April 2022
 
-1. Learned more about Functions ✔️
+1. Learned more about Functions ☑️
 
 - Source: [The Complete JavaScript Course 2022: From Zero to Expert!](https://www.udemy.com/course/the-complete-javascript-course/) created by Jonas Schmedtmann. All credit goes to him 🙏
 
@@ -155,13 +162,13 @@ from multiple resources
   - ☑️ Immediately Invoked Function Expressions (IIFE)
   - ☑️ Closures
 
-2. Practiced what I learned by completing multiple coding assignments and challenges ✔️
+2. Practiced what I learned by completing multiple coding assignments and challenges ☑️
 
 ---
 
-## ✔️ 02 - 18 April 2022
+#### ☑️ 02 - 18 April 2022
 
-1. Learned about Data Structures, Modern Operators & Working with Strings ✔️
+1. Learned about Data Structures, Modern Operators & Working with Strings ☑️
 
 - Source: [The Complete JavaScript Course 2022: From Zero to Expert!](https://www.udemy.com/course/the-complete-javascript-course/) created by Jonas Schmedtmann. All credit goes to him 🙏
 
@@ -183,13 +190,13 @@ from multiple resources
   - ☑️ Which Data Structure to Use
   - ☑️ Working With Strings
 
-2. Practiced what I learned by completing multiple coding assignments and challenges ✔️
+2. Practiced what I learned by completing multiple coding assignments and challenges ☑️
 
 ---
 
-## ✔️ 26 - 31 March 2022
+#### ☑️ 26 - 31 March 2022
 
-1. Learned about How JavaScript Works Behind The Scenes ✔️
+1. Learned about How JavaScript Works Behind The Scenes ☑️
 
 - Source: [The Complete JavaScript Course 2022: From Zero to Expert!](https://www.udemy.com/course/the-complete-javascript-course/) created by Jonas Schmedtmann. All credit goes to him 🙏
 
@@ -204,13 +211,13 @@ from multiple resources
   - ☑️ The "arguments" Keyword
   - ☑️ Primitives vs. Objects (Primitive vs. Reference Types)
 
-2. Practiced what I learned by completing multiple coding assignments and challenges ✔️
+2. Practiced what I learned by completing multiple coding assignments and challenges ☑️
 
 ---
 
-## ✔️ 02 - 16 March 2022
+#### ☑️ 02 - 16 March 2022
 
-1. Learned about JavaScript in the Browser: DOM and Events Fundamentals (~ 4h of video content) ✔️
+1. Learned about JavaScript in the Browser: DOM and Events Fundamentals (~ 4h of video content) ☑️
 
 - Source: [The Complete JavaScript Course 2022: From Zero to Expert!](https://www.udemy.com/course/the-complete-javascript-course/) created by Jonas Schmedtmann. All credit goes to him 🙏
 
@@ -233,25 +240,25 @@ from multiple resources
 
 ---
 
-## ✔️ 22 - 25 February 2022
+#### ☑️ 22 - 25 February 2022
 
-1. Learned about VS Code setup and useful extensions, developer skills, debugging and completed a HTML & CSS crash course to refresh my previous knowledge (all adding up to ~ 3h of video content) ✔️
-
-- Source: [The Complete JavaScript Course 2022: From Zero to Expert!](https://www.udemy.com/course/the-complete-javascript-course/) created by Jonas Schmedtmann. All credit goes to him 🙏
-
----
-
-## ✔️ 18 - 21 February 2022
-
-1. Practiced spaced repetition: rewatched ALL of the JavaScript Fundamentals (part 1 + part 2) video lectures (~ 9.5h of video content) and redid some of the challenges and some of the assignments ✔️
+1. Learned about VS Code setup and useful extensions, developer skills, debugging and completed a HTML & CSS crash course to refresh my previous knowledge (all adding up to ~ 3h of video content) ☑️
 
 - Source: [The Complete JavaScript Course 2022: From Zero to Expert!](https://www.udemy.com/course/the-complete-javascript-course/) created by Jonas Schmedtmann. All credit goes to him 🙏
 
 ---
 
-## ✔️ 11 - 17 February 2022
+#### ☑️ 18 - 21 February 2022
 
-1. Completed the second part of the JavaScript Fundamentals video lectures (~ 4.5h of video content) ✔️
+1. Practiced spaced repetition: rewatched ALL of the JavaScript Fundamentals (part 1 + part 2) video lectures (~ 9.5h of video content) and redid some of the challenges and some of the assignments ☑️
+
+- Source: [The Complete JavaScript Course 2022: From Zero to Expert!](https://www.udemy.com/course/the-complete-javascript-course/) created by Jonas Schmedtmann. All credit goes to him 🙏
+
+---
+
+#### ☑️ 11 - 17 February 2022
+
+1. Completed the second part of the JavaScript Fundamentals video lectures (~ 4.5h of video content) ☑️
 
 - Source: [The Complete JavaScript Course 2022: From Zero to Expert!](https://www.udemy.com/course/the-complete-javascript-course/) created by Jonas Schmedtmann. All credit goes to him 🙏
 
@@ -271,15 +278,15 @@ from multiple resources
   - ☑️ Looping Backwards and Loops in Loops
   - ☑️ The while Loop
 
-2. Completed 13 coding assignments based on the above mentioned theory lectures ✔️
+2. Completed 13 coding assignments based on the above mentioned theory lectures ☑️
 
-3. Completed 5 coding challenges based on the above mentioned theory lectures ✔️
+3. Completed 5 coding challenges based on the above mentioned theory lectures ☑️
 
 ---
 
-## ✔️ 05 - 10 February 2022
+#### ☑️ 05 - 10 February 2022
 
-1. Completed the first part of JavaScript Fundamentals video lectures (~ 5h of video content) ✔️
+1. Completed the first part of JavaScript Fundamentals video lectures (~ 5h of video content) ☑️
 
 - Source: [The Complete JavaScript Course 2022: From Zero to Expert!](https://www.udemy.com/course/the-complete-javascript-course/) created by Jonas Schmedtmann. All credit goes to him 🙏
 
@@ -302,6 +309,6 @@ from multiple resources
   - ☑️ The Conditional (Ternary) Operator
   - ☑️ JavaScript Releases: ES5, ES6+ and ESNext
 
-2. Completed 11 coding assignments based on the above mentioned theory lectures ✔️
+2. Completed 11 coding assignments based on the above mentioned theory lectures ☑️
 
-3. Completed 4 coding challenges based on the above mentioned theory lectures ✔️
+3. Completed 4 coding challenges based on the above mentioned theory lectures ☑️
