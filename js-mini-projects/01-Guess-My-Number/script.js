@@ -138,7 +138,7 @@ console.log('test');
 // *** 1. Setting the secret number
 let secretNumber = Math.trunc(Math.random() * 20) + 1;
 // Displaying the secret number
-document.querySelector('.number').textContent = secretNumber;
+// document.querySelector('.number').textContent = secretNumber;
 
 // *** 2. Setting the score (a STATE variable)
 let score = 20;
