@@ -12,9 +12,14 @@ const underscoreToCamelCase = function (str) {
     // console.log(i, word);
     i === 0
       ? `${result.push(word)}`
-      : `${result.push(
-          word[0].replace(word[0], word[0].toUpperCase()) + word.slice(1)
-        )}`;
+      : `${result.push(word.replace(word[0], word[0].toUpperCase()))}`;
+
+    // OR
+    // i === 0
+    //   ? `${result.push(word)}`
+    //   : `${result.push(
+    //       word[0].replace(word[0], word[0].toUpperCase()) + word.slice(1)
+    //     )}`;
     // console.log(result);
   }
   console.log(result.join(''));

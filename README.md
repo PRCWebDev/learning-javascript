@@ -1,6 +1,6 @@
 ### Learning JavaScript 🚀
 
-from multiple resources
+`from multiple resources`
 
 - So far, I recreated from [The Complete JavaScript Course 2022: From Zero to Expert!](https://www.udemy.com/course/the-complete-javascript-course/) by Jonas Schmedtmann:
 
@@ -11,6 +11,13 @@ from multiple resources
   - 🚧 Work in Progress (WIP) on Jonas "Bankist" App
 
     \*All credit for these projects goes to Jonas Schmedtmann 🙏 I am just his student, learning and practicing from his awesome course 🔥
+
+---
+
+#### ☑️ 06 - 07 November 2022
+
+1. Notes recap of previous sections of Jonas Schmedtmann's course ☑️
+2. Multiple code reviews & updates ☑️
 
 ---
 
