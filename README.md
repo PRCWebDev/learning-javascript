@@ -14,10 +14,33 @@
 
 ---
 
+#### ☑️ 08 - 09 November 2022
+
+1. Rewatched part of the lectures of Jonas Schmedtmann's course - Section 11 - Working with Arrays - Array Methods:
+
+- ☑️ Simple Array Methods
+- ☑️ The new at Method
+- ☑️ Looping Arrays: forEach
+- ☑️ forEach With Maps and Sets
+- 🚧 PROJECT: the "Bankist" App (which is still WIP)
+- ☑️ Creating DOM Elements on Jonas "Bankist" App
+- ☑️ Data Transformations: map, filter, reduce
+- ☑️ The map Method
+- ☑️ Computing Usernames on Jonas "Bankist" App
+- ☑️ The filter Method
+- ☑️ The reduce Method
+- ☑️ The Magic of Chaining Methods
+
+2. Notes recap, code reviews & challenges updates ☑️
+3. Practiced Touch typing ☑️
+
+---
+
 #### ☑️ 06 - 07 November 2022
 
 1. Notes recap of previous sections of Jonas Schmedtmann's course ☑️
 2. Multiple code reviews & updates ☑️
+3. Practiced Touch typing ☑️
 
 ---
 

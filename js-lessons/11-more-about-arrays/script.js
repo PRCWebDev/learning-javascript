@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -6,28 +6,28 @@
 
 // Data
 const account1 = {
-  owner: "Jonas Schmedtmann",
+  owner: 'Jonas Schmedtmann',
   movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
   interestRate: 1.2, // %
   pin: 1111,
 };
 
 const account2 = {
-  owner: "Jessica Davis",
+  owner: 'Jessica Davis',
   movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
   interestRate: 1.5,
   pin: 2222,
 };
 
 const account3 = {
-  owner: "Steven Thomas Williams",
+  owner: 'Steven Thomas Williams',
   movements: [200, -200, 340, -300, -20, 50, 400, -460],
   interestRate: 0.7,
   pin: 3333,
 };
 
 const account4 = {
-  owner: "Sarah Smith",
+  owner: 'Sarah Smith',
   movements: [430, 1000, 700, 50, 90],
   interestRate: 1,
   pin: 4444,
@@ -36,30 +36,30 @@ const account4 = {
 const accounts = [account1, account2, account3, account4];
 
 // Elements
-const labelWelcome = document.querySelector(".welcome");
-const labelDate = document.querySelector(".date");
-const labelBalance = document.querySelector(".balance__value");
-const labelSumIn = document.querySelector(".summary__value--in");
-const labelSumOut = document.querySelector(".summary__value--out");
-const labelSumInterest = document.querySelector(".summary__value--interest");
-const labelTimer = document.querySelector(".timer");
+const labelWelcome = document.querySelector('.welcome');
+const labelDate = document.querySelector('.date');
+const labelBalance = document.querySelector('.balance__value');
+const labelSumIn = document.querySelector('.summary__value--in');
+const labelSumOut = document.querySelector('.summary__value--out');
+const labelSumInterest = document.querySelector('.summary__value--interest');
+const labelTimer = document.querySelector('.timer');
 
-const containerApp = document.querySelector(".app");
-const containerMovements = document.querySelector(".movements");
+const containerApp = document.querySelector('.app');
+const containerMovements = document.querySelector('.movements');
 
-const btnLogin = document.querySelector(".login__btn");
-const btnTransfer = document.querySelector(".form__btn--transfer");
-const btnLoan = document.querySelector(".form__btn--loan");
-const btnClose = document.querySelector(".form__btn--close");
-const btnSort = document.querySelector(".btn--sort");
+const btnLogin = document.querySelector('.login__btn');
+const btnTransfer = document.querySelector('.form__btn--transfer');
+const btnLoan = document.querySelector('.form__btn--loan');
+const btnClose = document.querySelector('.form__btn--close');
+const btnSort = document.querySelector('.btn--sort');
 
-const inputLoginUsername = document.querySelector(".login__input--user");
-const inputLoginPin = document.querySelector(".login__input--pin");
-const inputTransferTo = document.querySelector(".form__input--to");
-const inputTransferAmount = document.querySelector(".form__input--amount");
-const inputLoanAmount = document.querySelector(".form__input--loan-amount");
-const inputCloseUsername = document.querySelector(".form__input--user");
-const inputClosePin = document.querySelector(".form__input--pin");
+const inputLoginUsername = document.querySelector('.login__input--user');
+const inputLoginPin = document.querySelector('.login__input--pin');
+const inputTransferTo = document.querySelector('.form__input--to');
+const inputTransferAmount = document.querySelector('.form__input--amount');
+const inputLoanAmount = document.querySelector('.form__input--loan-amount');
+const inputCloseUsername = document.querySelector('.form__input--user');
+const inputClosePin = document.querySelector('.form__input--pin');
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // DOM Manipulation:
@@ -93,7 +93,7 @@ const displayMovements = function (movements, sort = false) {
   // ADDED a SECOND Parameter for the Sorting Function to work and SETTING its Default value to "false" because we want to show the "movements" in the exact order in which they are performed / appear in the Array
   // DOM Manipulation:
   // CLEARING / EMPTYING the "Movements" container:
-  containerMovements.innerHTML = ""; // this REMOVES ALL previous entries
+  containerMovements.innerHTML = ''; // this REMOVES ALL previous entries
 
   // EDITED TO WORK INSIDE THE SORTING FUNCTION:
   const sortingMovements = sort
@@ -104,7 +104,7 @@ const displayMovements = function (movements, sort = false) {
 
   // EDITED TO WORK INSIDE THE SORTING FUNCTION:
   sortingMovements.forEach(function (mov, i) {
-    const type = mov > 0 ? "deposit" : "withdrawal";
+    const type = mov > 0 ? 'deposit' : 'withdrawal';
 
     // DOM Manipulation:
     const html = `
@@ -116,7 +116,7 @@ const displayMovements = function (movements, sort = false) {
       </div>
     `;
 
-    containerMovements.insertAdjacentHTML("afterbegin", html);
+    containerMovements.insertAdjacentHTML('afterbegin', html);
   });
 };
 // displayMovements(account1.movements); // EDITED & MOVED INSIDE THE LOGIN FUNCTION
@@ -198,27 +198,27 @@ const calcDisplaySummary = function (acc) {
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // COMPUTING USERNAMES:
 // 0. we want to CREATE the "username" = "stw" - an abbreviation of the "user" Variable:
-// const user = "Steven Thomas Williams";
+// const user = 'Steven Thomas Williams';
 
 // 1. SETTING all the letters of the names to lower case
 // 2. DIVIDING / SPLITTING the String into an Array with 3 elements ['steven', 'thomas', 'williams']
-// const username = user.toLowerCase().split(" ");
+// const username = user.toLowerCase().split(' ');
 // console.log(username); // ['steven', 'thomas', 'williams']
 
 // 3. taking the FIRST Letter of each Array Elements and PUTTING / ADDING them in a NEW ARRAY
 /*
 const username = user
   .toLowerCase()
-  .split(" ")
+  .split(' ')
   .map(function (name) {
     return name[0];
   });
-  */
+*/
 // OR BETTER with Arrow Functions - MORE MODERN APPROACH:
 /*
 const username = user
   .toLowerCase()
-  .split(" ")
+  .split(' ')
   .map((name) => name[0]); // this CREATES a NEW Array ['s', 't', 'w'] WITHOUT MUTATING the Original "user" String
 console.log(username); // ['s', 't', 'w']
 */
@@ -227,9 +227,9 @@ console.log(username); // ['s', 't', 'w']
 /*
 const username = user
   .toLowerCase()
-  .split(" ")
+  .split(' ')
   .map((name) => name[0])
-  .join("");
+  .join('');
 console.log(username); // "stw"
 console.log(user); // the Original Array / String IS NOT MUTATED "Steven Thomas Williams"
 */
@@ -239,9 +239,9 @@ console.log(user); // the Original Array / String IS NOT MUTATED "Steven Thomas 
 const createUsernames = function (user) {
   const username = user
     .toLowerCase()
-    .split(" ")
+    .split(' ')
     .map((name) => name[0])
-    .join("");
+    .join('');
   return username;
 };
 console.log(createUsernames(account3.owner));
@@ -255,9 +255,9 @@ const createUsernames = function (accs) {
   accs.forEach(function (acc) {
     acc.username = acc.owner // ADDING A NEW PROPERTY "username" to EACH of the "accounts" in the "accounts" Array (account1, account2, account3, account4)
       .toLowerCase()
-      .split(" ")
+      .split(' ')
       .map((name) => name[0])
-      .join("");
+      .join('');
     // NO RETURN because what we're doing here is TO PRODUCE A SIDE EFFECT. So we are doing something to this "accounts" Object here (ADDING A NEW PROPERTY "username" to EACH of the "accounts" in the "accounts" Array (account1, account2, account3, account4)). And so there is NO NEED to return anything. We are just doing some work here, basically, we are NOT creating a new value to RETURN.
   });
 };
@@ -265,11 +265,11 @@ createUsernames(accounts);
 console.log(accounts); // (4) [{…}, {…}, {…}, {…}] 0: {owner: 'Jonas Schmedtmann', movements: Array(8), interestRate: 1.2, pin: 1111, username: "js"} IS THE SAME AS THIS (WITH the NEW PROPERTY "username" ADDED to the Original "account1/2/3/4" Object):
 /*
 const account1 = {
-  owner: "Jonas Schmedtmann",
+  owner: 'Jonas Schmedtmann',
   movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
   interestRate: 1.2, // %
   pin: 1111,
-  username: "js",
+  username: 'js',
 };
 */
 
@@ -287,11 +287,11 @@ const updateUI = function (acc) {
 
 let currentAccount; // defining this variable OUTSIDE of the function because we will need this information about the current account also later in other functions.
 // ADDING the Event handler:
-btnLogin.addEventListener("click", function (e) {
+btnLogin.addEventListener('click', function (e) {
   // *** 1. Prevent form from submitting / reloading the page:
   // in HTML, the default behavior, when we click the Submit button, is for the page to reload. So we need to stop that from happening by CALLING the "preventDefault();" on that event ("e"):
   e.preventDefault();
-  console.log("LOGIN #1");
+  console.log('LOGIN #1');
 
   // *** 2. to LOG the user actually IN, we need to find the account from the accounts array, with the username that the user inputted:
   // this variable needs to be defined OUTSIDE of this function because we will need this information about the current account also later in other functions:
@@ -304,20 +304,20 @@ btnLogin.addEventListener("click", function (e) {
   // *** 3.1. we need to CONVERT the "input" THAT WILL ALWAYS BE A STRING to a number:
   // *** 3.2. we also need to Check if the account actually EXIST and the BEST WAY to do this is to use the OPTIONAL CHAINING Operator(?.):
   if (currentAccount?.pin === Number(inputLoginPin.value)) {
-    console.log("LOGIN #2");
+    console.log('LOGIN #2');
 
     // *** 3.3. if the account actually EXISTS, we need to:
     // DOM Manipulation:
     // *** 3.3.1. Display the UI and the Welcome message:
     // *** 3.3.1.1. Clearing the "input" fields:
-    inputLoginUsername.value = inputLoginPin.value = ""; // this WORKS because the ASSIGNMENT Operator("=") WORKS from RIGHT to LEFT => we ASSIGN the empty string "" to "inputLoginPin" FIRST, which becomes an empty string "", AND ONLY AFTER THAT, the empty string "" is ASSIGNED to "inputLoginUsername",  which ALSO NOW becomes an empty string ""
+    inputLoginUsername.value = inputLoginPin.value = ''; // this WORKS because the ASSIGNMENT Operator("=") WORKS from RIGHT to LEFT => we ASSIGN the empty string "" to "inputLoginPin" FIRST, which becomes an empty string "", AND ONLY AFTER THAT, the empty string "" is ASSIGNED to "inputLoginUsername",  which ALSO NOW becomes an empty string ""
     // *** 3.3.1.2. Removing the "focus" blinking dash by applying the ".blur();" Method:
     inputLoginPin.blur();
     // *** 3.3.1.3. Manipulating the DOM so we can set the opacity from 0 to 100 and Display the UI:
     containerApp.style.opacity = 100;
     // *** 3.3.1.4. Manipulating the DOM so we can Display the Welcome message:
     labelWelcome.textContent = `Welcome back, ${currentAccount.owner
-      .split(" ")
+      .split(' ')
       .at(0)}`; // OR "${currentAccount.owner.split(" ")[0]}" to get ONLY the FIRST name of the account owner
 
     // REFACTORING CODE FOR BEST PRACTICE - Update UI:
@@ -338,7 +338,7 @@ btnLogin.addEventListener("click", function (e) {
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // Implementing Money Transfers:
 // ADDING the Event handler:
-btnTransfer.addEventListener("click", function (e) {
+btnTransfer.addEventListener('click', function (e) {
   // *** 1. Prevent form from submitting / reloading the page:
   e.preventDefault();
 
@@ -368,7 +368,7 @@ btnTransfer.addEventListener("click", function (e) {
   }
 
   // *** 7. Clearing the "input" Money Transfers fields:
-  inputTransferTo.value = inputTransferAmount.value = "";
+  inputTransferTo.value = inputTransferAmount.value = '';
   // *** 8. Removing the "focus" blinking dash by applying the ".blur();" Method - OPTIONAL:
   // inputTransferAmount.blur();
 });
@@ -377,10 +377,10 @@ btnTransfer.addEventListener("click", function (e) {
 // Implementing the "Request loan" feature:
 // our bank has a rule which says that it only grants a loan if there is at least one deposit with at least 10% of the requested loan amount
 // ADDING the Event handler:
-btnLoan.addEventListener("click", function (e) {
+btnLoan.addEventListener('click', function (e) {
   // *** 1. Prevent form from submitting / reloading the page:
   e.preventDefault();
-  console.log("Request loan");
+  console.log('Request loan');
 
   // *** 2. CONVERTING the requested loan amount from a STRING to a Number:
   const amount = Number(inputLoanAmount.value);
@@ -398,7 +398,7 @@ btnLoan.addEventListener("click", function (e) {
   }
 
   // *** 6. Clearing the "input" Request loan fields:
-  inputLoanAmount.value = "";
+  inputLoanAmount.value = '';
   // *** 7. Removing the "focus" blinking dash by applying the ".blur();" Method - OPTIONAL:
   inputLoanAmount.blur();
 
@@ -408,10 +408,10 @@ btnLoan.addEventListener("click", function (e) {
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // Implementing the "Close account" feature:
 // ADDING the Event handler:
-btnClose.addEventListener("click", function (e) {
+btnClose.addEventListener('click', function (e) {
   // *** 1. Prevent form from submitting / reloading the page:
   e.preventDefault();
-  console.log("Delete account");
+  console.log('Delete account');
 
   // *** 2. Checking if the credentials (the username and the pin) are correct:
   if (
@@ -431,7 +431,7 @@ btnClose.addEventListener("click", function (e) {
     containerApp.style.opacity = 0;
 
     // *** 6. Clearing the "input" Close account fields:
-    inputCloseUsername.value = inputClosePin.value = "";
+    inputCloseUsername.value = inputClosePin.value = '';
 
     // *** 7. Removing the "focus" blinking dash by applying the ".blur();" Method - OPTIONAL:
     inputClosePin.blur();
@@ -443,10 +443,10 @@ btnClose.addEventListener("click", function (e) {
 // Defining the "sorted" variable OUTSIDE of the Sorting function because we will also need this in other functions (ex. in the "displayMovements" function):
 let sorted = false; // SETTING the Initial State
 // ADDING the Event handler:
-btnSort.addEventListener("click", function (e) {
+btnSort.addEventListener('click', function (e) {
   // *** 1. Prevent form from submitting / reloading the page:
   e.preventDefault();
-  console.log("Sort movements");
+  console.log('Sort movements');
   // displayMovements(currentAccount.movements, true);
   displayMovements(currentAccount.movements, !sorted); // CHANGING the STATE of the "sorted" variable (from "false" to "true") each time we click the "Sort" button
   sorted = !sorted; // CHANGING BACK the STATE of the "sorted" variable (from "true" to "false") each time we click the "Sort" button
@@ -470,7 +470,7 @@ btnSort.addEventListener("click", function (e) {
 // 1.1. "anyArray.slice();"
 // - EXTRACTS & RETURNS A PIECE / SLICE of an Array WITHOUT MUTATING the ORIGINAL Array
 // - RETURNS A NEW ARRAY
-let arr = ["a", "b", "c", "d", "e"];
+let arr = ['a', 'b', 'c', 'd', 'e'];
 
 // console.log(arr.slice(2)); // EXTRACTS & RETURNS the Array elements starting from position 2 until the end of the Array
 // console.log(arr);
@@ -518,7 +518,7 @@ let arr = ["a", "b", "c", "d", "e"];
 // 1.3. "anyArray.reverse();"
 // - REVERSES the elements of an Array and RETURNS A MUTATED ARRAY
 // - CHANGES / MUTATES THE ORIGINAL ARRAY
-const arr2 = ["j", "i", "h", "g", "f"];
+const arr2 = ['j', 'i', 'h', 'g', 'f'];
 console.log(arr2.reverse());
 console.log(arr2);
 
@@ -527,36 +527,36 @@ console.log(arr2);
 // !!! HOW TO REVERSE A STRING USING A FUNCTION !!!
 // V1 - DETAILED version
 const reverseString = function (str) {
-  const stringToArray = str.split(""); // Step 1: CONVERT the String to an Array
+  const stringToArray = str.split(''); // Step 1: CONVERT the String to an Array
   const reverseArray = stringToArray.reverse(); // Step 2: REVERSE that Array
-  const arrayBackToString = reverseArray.join(""); // Step 3: CONVERT the REVERSED Array BACK to a String
+  const arrayBackToString = reverseArray.join(''); // Step 3: CONVERT the REVERSED Array BACK to a String
   console.log(arrayBackToString); // display to the console
   return arrayBackToString; // execute function
 };
 
-reverseString("string 123"); // CALL function
+reverseString('string 123'); // CALL function
 // console.log(reverseString("string 123")); // WITHOUT using "console.log(arrayToString);" inside the "reverseString" function
-reverseString("123456789");
-reverseString("this is just a test");
-reverseString("tset a tsuj si siht");
+reverseString('123456789');
+reverseString('this is just a test');
+reverseString('tset a tsuj si siht');
 
 // OR
 // V2 - FASTER version
 const reverseString2 = function (str) {
-  const anyString = str.split("").reverse().join("");
+  const anyString = str.split('').reverse().join('');
   console.log(anyString);
   return anyString;
 };
 
-reverseString2("this is another test");
-reverseString2("tset rehtona si siht");
-reverseString2("9876543210");
+reverseString2('this is another test');
+reverseString2('tset rehtona si siht');
+reverseString2('9876543210');
 
 // OR
 // WITHOUT using a function:
-console.log("WITHOUT using a function:".split("").reverse().join(""));
-console.log("Any String".split("").reverse().join(""));
-console.log("gnirtS ynA".split("").reverse().join(""));
+console.log('WITHOUT using a function:'.split('').reverse().join(''));
+console.log('Any String'.split('').reverse().join(''));
+console.log('gnirtS ynA'.split('').reverse().join(''));
 */
 
 /*
@@ -565,17 +565,17 @@ console.log("gnirtS ynA".split("").reverse().join(""));
 const maskCreditCard = function (number) {
   // const str = String(number); // converting a Number to a String
   // or
-  const str = number + ""; // converting a Number to a String
+  const str = number + ''; // converting a Number to a String
   const last = str.slice(-3);
   // console.log(last);
   // console.log(number);
-  const padded = last.padStart(str.length, "*");
+  const padded = last.padStart(str.length, '*');
   console.log(padded);
   return padded;
 };
 
 maskCreditCard(123456789);
-maskCreditCard("123123");
+maskCreditCard('123123');
 */
 
 ///////////////
@@ -594,7 +594,7 @@ console.log([...arr, ...arr2]);
 ///////////////
 // 1.5. "anyArray.join();"
 console.log(letters);
-console.log(letters.join(" - "));
+console.log(letters.join(' - '));
 console.log(letters);
 
 ///////////////
@@ -605,7 +605,7 @@ console.log(letters);
 https: console.log(letters.includes(1)); // searchElement "1" // true
 // 1.6.2. "anyArray.includes("searchElement", startingfromIndex );"
 console.log(letters.includes(1, 2)); // searchElement "1" startingfromIndex "2" // true
-console.log(letters.includes("a", 2)); // searchElement "a" starting fromIndex "2" // false
+console.log(letters.includes('a', 2)); // searchElement "a" starting fromIndex "2" // false
 
 ///////////////
 // 1.7. The NEW ".at();" Method
@@ -626,14 +626,14 @@ console.log(...arr3.slice(-1)); // ... is the SAME as this :D
 // IS PERFECT FOR METHOD CHAINING
 
 // ALSO WORKS ON STRINGS
-console.log("jonas".at(0));
-console.log("jonas".at(-1));
+console.log('jonas'.at(0));
+console.log('jonas'.at(-1));
 
 ///////////////
 // 1.8. Looping Arrays: the "forEach();" Method
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 // *** Using the "for-of" Method:
-console.log("---- FOR-OF ----");
+console.log('---- FOR-OF ----');
 // V1:
 /*
 for (const movement of movements) {
@@ -654,7 +654,7 @@ for (const [i, movement] of movements.entries()) {
 }
 // *** 1.8.1. Using the "forEach();" Method:
 // V1:
-console.log("---- FOREACH ----");
+console.log('---- FOREACH ----');
 /*
 movements.forEach(function (movement) {
   if (movement > 0) {
@@ -696,9 +696,9 @@ movements.forEach(function (mov, i, arr) {
 // 1.8.2. "forEach();" With Maps and Sets
 // 1.8.2.1. "forEach();" With Maps
 const currencies = new Map([
-  ["USD", "United States dollar"],
-  ["EUR", "Euro"],
-  ["GBP", "Pound sterling"],
+  ['USD', 'United States dollar'],
+  ['EUR', 'Euro'],
+  ['GBP', 'Pound sterling'],
 ]);
 
 currencies.forEach(function (value, key, map) {
@@ -712,7 +712,7 @@ currencies.forEach(function (value, key, map) {
 // 1.8.2.2. "forEach();" With Sets
 // Sets DON'T have any Keys / Indexes so we use "_"(underscore) instead
 // "map" = our Set
-const currenciesUnique = new Set(["USD", "GBP", "USD", "EUR", "EUR"]);
+const currenciesUnique = new Set(['USD', 'GBP', 'USD', 'EUR', 'EUR']);
 console.log(currenciesUnique);
 currenciesUnique.forEach(function (value, _, set) {
   // console.log(`${value}: ${value}`);
@@ -768,7 +768,7 @@ const movementsDescriptions = movements.map((mov, i, arr) => {
 // !!! NO "{}" - OR IT DOESN'T WORK !!!
 const movementsDescriptions = movements.map(
   (mov, i) =>
-    `Movement ${i + 1}: You ${mov > 0 ? "deposited" : "withdrew"} ${Math.abs(
+    `Movement ${i + 1}: You ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(
       mov
     )}`
 );
@@ -867,7 +867,7 @@ const firstWithdrawal = movements.find((mov) => mov < 0);
 console.log(firstWithdrawal); // "-400" = the Value of the FIRST Element that SATISFIES the given CONDITION
 
 console.log(accounts);
-const account = accounts.find((acc) => acc.owner === "Jessica Davis");
+const account = accounts.find((acc) => acc.owner === 'Jessica Davis');
 console.log(account); // {owner: 'Jessica Davis', movements: Array(8), interestRate: 1.5, pin: 2222, username: 'jd'}
 
 ///////////////
@@ -899,7 +899,7 @@ console.log(account4.movements.every((mov) => mov > 0));
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 // VERY IMPORTANT AND COOL FEATURE:
 // we CAN WRITE the Callback Function SEPARATELY (as a STAND-ALONE Arrow Function) AND THEN PASS it into DIFFERENT Array Methods as an Argument:
-console.log("--- VERY IMPORTANT AND COOL FEATURE: ---");
+console.log('--- VERY IMPORTANT AND COOL FEATURE: ---');
 const deposit = (mov) => mov > 0; // a STAND-ALONE Arrow Function
 console.log(movements.some(deposit)); // PASSING the STAND-ALONE Arrow Function as an Argument of an Array Method // true
 console.log(movements.every(deposit)); // PASSING the STAND-ALONE Arrow Function as an Argument of an Array Method // false
@@ -962,7 +962,7 @@ console.log(overallBalance, overallBalance2);
 
 // 3.7.1. SORTING Strings
 // 3.7.1.1. SORTING Strings Ascending
-const owners = ["Jonas", "Zach", "Adam", "Martha"];
+const owners = ['Jonas', 'Zach', 'Adam', 'Martha'];
 console.log(owners.sort()); // ['Adam', 'Jonas', 'Martha', 'Zach'] // ONLY WORKS with the Default Sort Order = Ascending
 console.log(owners); // ['Adam', 'Jonas', 'Martha', 'Zach']
 // THIS ALSO WORKS for SORTING Strings Ascending - using Arrow Functions:
@@ -1035,7 +1035,7 @@ arrNew.fill(23, 2, 6); // FILL the "arrNew" Array with "23" STARTING FROM Positi
 console.log(arrNew);
 // !!! the ".fill();" Method MUTATES the Original Array !!!
 // !!! WE CAN also CHAIN LINK the Array CONSTRUCTOR TOGETHER WITH the ".fill();" Method
-const arrNewFill = new Array(5).fill("xyz"); // CREATES a NEW Array and FILLS it ENTIRELY with "xyz"
+const arrNewFill = new Array(5).fill('xyz'); // CREATES a NEW Array and FILLS it ENTIRELY with "xyz"
 console.log(arrNewFill); // (5) ['xyz', 'xyz', 'xyz', 'xyz', 'xyz']
 
 // *** 3. using Array CONSTRUCTOR + the "Array.from();" Method:
@@ -1055,10 +1055,10 @@ console.log(w); // (10) [0, 2, 4, 6, 8, 10, 12, 14, 16, 18]
 // !!! WE CAN USE the Array CONSTRUCTOR + the "Array.from();" Method FOR SOOOO MUCH MORE THAN EXPLAINED IN THIS LECTURE - SEE MDN DOCS @ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from :
 // "The Array.from() static method creates a new, shallow-copied Array instance from an iterable or array-like object."
 // *** Array from a String
-console.log(Array.from("foo")); // [ "f", "o", "o" ]
+console.log(Array.from('foo')); // [ "f", "o", "o" ]
 
 // *** Array from a Set
-const set = new Set(["foo", "bar", "baz", "foo"]);
+const set = new Set(['foo', 'bar', 'baz', 'foo']);
 console.log(Array.from(set)); // [ "foo", "bar", "baz" ]
 
 // *** Array from a Map
@@ -1070,8 +1070,8 @@ const map = new Map([
 console.log(Array.from(map)); // [[1, 2], [2, 4], [4, 8]]
 
 const mapper = new Map([
-  ["1", "a"],
-  ["2", "b"],
+  ['1', 'a'],
+  ['2', 'b'],
 ]);
 console.log(Array.from(mapper.keys())); // ['1', '2'];
 console.log(Array.from(mapper.values())); // ['a', 'b'];
@@ -1091,7 +1091,7 @@ const diceRolls = function () {
   console.log(randomDiceRolls100);
 
   // display the dice rolls in order
-  console.log(`Dice rolls a ${randomDiceRolls100.join(" Dice rolls a ")}`);
+  console.log(`Dice rolls a ${randomDiceRolls100.join(' Dice rolls a ')}`);
   // OR
   // randomDiceRolls100.forEach(function (el, i, arr) {
   //   console.log(`Dice roll #${i + 1}: Dice rolls a ${el}`);
@@ -1106,18 +1106,18 @@ diceRolls();
 // a NodeList is NOT a REAL Array and it DOES NOT HAVE METHODS like ".map();" or ".reduce();"
 // if we want to use Array Methods on a NodeList, we first need to CONVERT the NodeList to an Array using the Array CONSTRUCTOR + the "Array.from();" Method AND we can ALSO USE the "map" Function to CONVERT the Selected DOM Elements into Numbers
 // we first ADD the Event handler Function so that every time we click on the "Balance" Label, we RETRIEVE / GET the Selected DOM Elements:
-labelBalance.addEventListener("click", function () {
+labelBalance.addEventListener('click', function () {
   const movementsUI = Array.from(
-    document.querySelectorAll(".movements__value"),
-    (el) => Number(el.textContent.replace("€", ""))
+    document.querySelectorAll('.movements__value'),
+    (el) => Number(el.textContent.replace('€', ''))
   );
   console.log(movementsUI); // (8) [1300, 70, -130, -650, 3000, -400, 450, 200]
 
   // OR
   // we can also use the SPREAD Operator CONVERT the NodeList to an Array, BUT we will have to do the "mapping" separately
-  const movementsUI2 = [...document.querySelectorAll(".movements__value")];
+  const movementsUI2 = [...document.querySelectorAll('.movements__value')];
   console.log(
-    movementsUI2.map((el) => Number(el.textContent.replace("€", ""))) // (8) [1300, 70, -130, -650, 3000, -400, 450, 200]
+    movementsUI2.map((el) => Number(el.textContent.replace('€', ''))) // (8) [1300, 70, -130, -650, 3000, -400, 450, 200]
   );
 });
 
@@ -1199,12 +1199,12 @@ console.log(originalArray);
 // Reverse a String WITHOUT using the ".reverse()" and / or ".push()" Methods:
 const reverseString = function (str) {
   let reverseArray = [];
-  const stringSplit = str.split("");
+  const stringSplit = str.split('');
   // console.log(stringSplit);
   const reverse = stringSplit.forEach((letter, i) =>
     reverseArray.unshift(stringSplit.at(i))
   );
-  console.log(reverseArray.join(""));
+  console.log(reverseArray.join(''));
 
   // OR
   // for (let i = 0; i < str.length; i++) {
@@ -1212,10 +1212,10 @@ const reverseString = function (str) {
   // }
   // console.log(reverseArray.join(""));
 
-  return reverseArray.join("");
+  return reverseArray.join('');
 };
-reverseString("reverseString");
-reverseString("1234567890");
+reverseString('reverseString');
+reverseString('1234567890');
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // Array Methods Practice Jonas
@@ -1255,7 +1255,7 @@ const sumsAllDepositsAndWithdrawals = accounts
       //   ? (sums.deposits2 += currentElement)
       //   : (sums.withdrawals2 += currentElement);
       // OR BETTER for DRY - using the BRACKET notation:
-      sums[currentElement >= 0 ? "deposits2" : "withdrawals2"] +=
+      sums[currentElement >= 0 ? 'deposits2' : 'withdrawals2'] +=
         currentElement;
       return sums;
     },
@@ -1267,12 +1267,12 @@ const { deposits2, withdrawals2 } = sumsAllDepositsAndWithdrawals;
 console.log(deposits2, withdrawals2);
 // !!! REMEMBER !!!
 // THIS:
-console.log(sumsAllDepositsAndWithdrawals["deposits2"]); // using the BRACKET notation // 25180
+console.log(sumsAllDepositsAndWithdrawals['deposits2']); // using the BRACKET notation // 25180
 // IS THE SAME AS THIS:
 console.log(sumsAllDepositsAndWithdrawals.deposits2); // using the DOT notation // 25180
-const jonas = { firstName: "Jonas", lastName: "Schmedtmann" };
+const jonas = { firstName: 'Jonas', lastName: 'Schmedtmann' };
 console.log(jonas.lastName); // Schmedtmann
-console.log(jonas["lastName"]); // Schmedtmann
+console.log(jonas['lastName']); // Schmedtmann
 
 // 4. RECREATE THE CHALLENGES ABOVE : "And I would even challenge you to do this with arrays. So as a challenge, I would challenge you to recreate any of the examples that we did previously in the section with map filter and reduce to use only the reduce method. And that is totally possible. And so, yeah, you can try that out."
 // ...
@@ -1281,15 +1281,15 @@ console.log(jonas["lastName"]); // Schmedtmann
 // ex: this is a nice title -> This Is a Nice Title
 
 const convertTitleCase = function (title) {
-  const exceptions = ["a", "an", "and", "the", "but", "or", "on", "in", "with"];
+  const exceptions = ['a', 'an', 'and', 'the', 'but', 'or', 'on', 'in', 'with'];
 
   const capitalize = (str) => str[0].toUpperCase() + str.slice(1);
 
   const titleCase = title
     .toLowerCase()
-    .split(" ")
+    .split(' ')
     .map((word) => (exceptions.includes(word) ? word : capitalize(word)))
-    .join(" ");
+    .join(' ');
 
   // this will display and return "and Here Is Another Title with an Example" so we need to appply the "capitalize" function to it and return it:
   // console.log(titleCase);
@@ -1298,9 +1298,9 @@ const convertTitleCase = function (title) {
   return capitalize(titleCase);
 };
 
-convertTitleCase("this is a nice title");
-convertTitleCase("this is a LONG title but not too long");
-convertTitleCase("and here is another title with an EXAMPLE");
+convertTitleCase('this is a nice title');
+convertTitleCase('this is a LONG title but not too long');
+convertTitleCase('and here is another title with an EXAMPLE');
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // EXTRA - RADU
@@ -1318,35 +1318,35 @@ const convertToCamelCase = function (str) {
   const convert = str
     .toLowerCase()
     .trim()
-    .split("_")
+    .split('_')
     .map((word, index) => (index === 0 ? word : capitalize(word)))
-    .join("");
+    .join('');
 
   console.log(convert);
   return convert;
 };
 
-convertToCamelCase("underscore_case");
-convertToCamelCase(" first_name_Some_Variable");
-convertToCamelCase("  calculate_AGE_underscore_case_RANdom_wOrD_123_fOUr   ");
+convertToCamelCase('underscore_case');
+convertToCamelCase(' first_name_Some_Variable');
+convertToCamelCase('  calculate_AGE_underscore_case_RANdom_wOrD_123_fOUr   ');
 
 // 5.3. Write a function that hides / masks all the digits of a credit card number, except the last 3
 const maskCreditCard = function (num) {
-  const str = num + "";
+  const str = num + '';
   // console.log(str);
 
   const mask = str
     .toLowerCase()
     .trim()
-    .split("")
-    .map((digit, index, arr) => (index < arr.length - 3 ? "*" : digit))
-    .join("");
+    .split('')
+    .map((digit, index, arr) => (index < arr.length - 3 ? '*' : digit))
+    .join('');
   console.log(`Your credit card number is: ${mask}`);
   return mask;
 };
 maskCreditCard(123456789);
-maskCreditCard("123456789");
-maskCreditCard("  123456  \n");
+maskCreditCard('123456789');
+maskCreditCard('  123456  \n');
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // 6. Coding Challenge Jonas:
@@ -1380,10 +1380,10 @@ GOOD LUCK 😀
 */
 
 const dogs = [
-  { weight: 22, curFood: 250, owners: ["Alice", "Bob"] },
-  { weight: 8, curFood: 200, owners: ["Matilda"] },
-  { weight: 13, curFood: 275, owners: ["Sarah", "John"] },
-  { weight: 32, curFood: 340, owners: ["Michael"] },
+  { weight: 22, curFood: 250, owners: ['Alice', 'Bob'] },
+  { weight: 8, curFood: 200, owners: ['Matilda'] },
+  { weight: 13, curFood: 275, owners: ['Sarah', 'John'] },
+  { weight: 32, curFood: 340, owners: ['Michael'] },
 ];
 
 // 6.1. Loop over the array containing dog objects, and for each dog, calculate the recommended food portion and add it to the object as a new property. Do NOT create a new array, simply loop over the array. Formula: recommendedFood = weight ** 0.75 * 28. (The result is in grams of food, and the weight needs to be in kg)
@@ -1392,18 +1392,18 @@ console.log(dogs);
 
 // 6.2. Find Sarah's dog and log to the console whether it's eating too much or too little. HINT: Some dogs have multiple owners, so you first need to find Sarah in the owners array, and so this one is a bit tricky (on purpose) 🤓
 // Radu:
-const sarahsDog = dogs.filter((dog) => dog.owners.includes("Sarah"));
+const sarahsDog = dogs.filter((dog) => dog.owners.includes('Sarah'));
 console.log(sarahsDog);
 sarahsDog[0].curFood > sarahsDog[0].recFood
   ? console.log(`Sarah's dog is eating too much`)
   : console.log(`Sarah's dog is eating too little`);
 
 // Jonas:
-const dogSarah = dogs.find((dog) => dog.owners.includes("Sarah"));
+const dogSarah = dogs.find((dog) => dog.owners.includes('Sarah'));
 console.log(dogSarah);
 console.log(
   `Sarah's dog is eating too ${
-    dogSarah.curFood > dogSarah.recFood ? "much" : "little"
+    dogSarah.curFood > dogSarah.recFood ? 'much' : 'little'
   } `
 );
 
@@ -1422,8 +1422,8 @@ console.log(ownersEatTooLittle);
 
 // 6.4. Log a string to the console for each array created in 3., like this: "Matilda and Alice and Bob's dogs eat too much!" and "Sarah and John and Michael's dogs eat too little!"
 // Radu === Jonas:
-console.log(`${ownersEatTooMuch.join(" and ")}'s dogs eat too much!`);
-console.log(`${ownersEatTooLittle.join(" and ")}'s dogs eat too little!`);
+console.log(`${ownersEatTooMuch.join(' and ')}'s dogs eat too much!`);
+console.log(`${ownersEatTooLittle.join(' and ')}'s dogs eat too little!`);
 
 // 6.5. Log to the console whether there is any dog eating EXACTLY the amount of food that is recommended (just true or false)
 // Radu === Jonas:
