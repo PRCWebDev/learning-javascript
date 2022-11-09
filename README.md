@@ -30,9 +30,11 @@
 - ☑️ The filter Method
 - ☑️ The reduce Method
 - ☑️ The Magic of Chaining Methods
+- ☑️ The find Method
 
 2. Notes recap, code reviews & challenges updates ☑️
 3. Practiced Touch typing ☑️
+4. Completed 01 - 06 Codewars Katas ☑️
 
 ---
 
