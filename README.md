@@ -14,6 +14,14 @@
 
 ---
 
+#### ☑️ 12 November 2022
+
+1. Notes recap about Array Methods ☑️
+2. Practiced Touch typing ☑️
+3. Completed 07 - 10 Codewars Katas ☑️
+
+---
+
 #### ☑️ 08 - 09 November 2022
 
 1. Rewatched part of the lectures of Jonas Schmedtmann's course - Section 11 - Working with Arrays - Array Methods:
