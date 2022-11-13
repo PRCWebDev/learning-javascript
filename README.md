@@ -1,16 +1,30 @@
 ### Learning JavaScript 🚀
 
-`from multiple resources`
+**`from multiple resources`**
 
 - So far, I recreated from [The Complete JavaScript Course 2022: From Zero to Expert!](https://www.udemy.com/course/the-complete-javascript-course/) by Jonas Schmedtmann:
 
-  - 3 mini-projects / games (⚠️ please note that these are made for viewing ONLY on a laptop / desktop screen, they are not made responsive for mobile / tablet viewing ⚠️):
+  - 3 mini-projects / games (⚠️ _` please note that these are made for viewing ONLY on a laptop / desktop screen, they are not made responsive for mobile / tablet viewing`_ ⚠️):
     - 🌟 the [Guess My Number](https://guess-my-number-js-webdevprc.netlify.app/) game
     - 🌟 the [Modal Window](https://modal-window-js-webdevprc.netlify.app/) mini-project
     - 🌟 the [Pig Game](https://pig-game-js-webdevprc.netlify.app/)
   - 🚧 Work in Progress (WIP) on Jonas "Bankist" App
 
     \*All credit for these projects goes to Jonas Schmedtmann 🙏 I am just his student, learning and practicing from his awesome course 🔥
+
+---
+
+#### ☑️ 13 November 2022
+
+1. Rewatched part of Section 11 lectures from Jonas Schmedtmann's course - Working with Arrays / Array Methods:
+
+- ☑️ Implementing Login on Jonas "Bankist" App
+- ☑️ Implementing Transfers on Jonas "Bankist" App
+- ☑️ The findIndex Method
+- ☑️ The some and every Methods
+- ☑️ The flat and flatMap Methods
+
+2. Notes recap & code review ☑️
 
 ---
 
@@ -24,7 +38,7 @@
 
 #### ☑️ 08 - 09 November 2022
 
-1. Rewatched part of the lectures of Jonas Schmedtmann's course - Section 11 - Working with Arrays - Array Methods:
+1. Rewatched part of the lectures of Jonas Schmedtmann's course - Section 11 - Working with Arrays / Array Methods:
 
 - ☑️ Simple Array Methods
 - ☑️ The new at Method
