@@ -26,6 +26,8 @@
 - ☑️ Coding Challenge
 
 3. Code & notes review ☑️
+4. Completed 16 - 20 Codewars Katas ☑️
+5. Practiced Touch typing ☑️
 
 ---
 
