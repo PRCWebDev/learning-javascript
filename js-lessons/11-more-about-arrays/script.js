@@ -1039,6 +1039,11 @@ const arrNewFill = new Array(5).fill('xyz'); // CREATES a NEW Array and FILLS it
 console.log(arrNewFill); // (5) ['xyz', 'xyz', 'xyz', 'xyz', 'xyz']
 
 // *** 3. using Array CONSTRUCTOR + the "Array.from();" Method:
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// "Array.from();" INCLUDE ".map();"
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 ///////////////
 // 3.9. the Array CONSTRUCTOR + the "Array.from();" Method:
 // Using an arrow function as the map function to manipulate the elements and CREATE a NEW Array FILLED with 7 Elements ALL having the Value of "1" - similar to CREATING NEW Empty Array + the ".fill();" Method
@@ -1106,6 +1111,11 @@ diceRolls();
 // a NodeList is NOT a REAL Array and it DOES NOT HAVE METHODS like ".map();" or ".reduce();"
 // if we want to use Array Methods on a NodeList, we first need to CONVERT the NodeList to an Array using the Array CONSTRUCTOR + the "Array.from();" Method AND we can ALSO USE the "map" Function to CONVERT the Selected DOM Elements into Numbers
 // we first ADD the Event handler Function so that every time we click on the "Balance" Label, we RETRIEVE / GET the Selected DOM Elements:
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// "Array.from();" INCLUDE ".map();"
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 labelBalance.addEventListener('click', function () {
   const movementsUI = Array.from(
     document.querySelectorAll('.movements__value'),
@@ -1246,7 +1256,9 @@ console.log(a); // 11 - PROOF that the "a++" WORKED
 console.log(++a); // 12 - WE MUST USE THE PRE-FIXED "++" OPERATOR BEFORE the Value to DISPLAY IT PROPERLY
 console.log(a); // 12
 
-// 3. create an object which contains the sum of the deposits and of the withdrawals.
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// 3. create an OBJECT which contains the sum of the deposits and of the withdrawals.
 const sumsAllDepositsAndWithdrawals = accounts
   .flatMap((account) => account.movements)
   .reduce(
@@ -1257,7 +1269,8 @@ const sumsAllDepositsAndWithdrawals = accounts
       // OR BETTER for DRY - using the BRACKET notation:
       sums[currentElement >= 0 ? 'deposits2' : 'withdrawals2'] +=
         currentElement;
-      return sums;
+
+      return sums; // DO NOT FORGET TO RETURN
     },
     { deposits2: 0, withdrawals2: 0 }
   );
@@ -1273,17 +1286,18 @@ console.log(sumsAllDepositsAndWithdrawals.deposits2); // using the DOT notation 
 const jonas = { firstName: 'Jonas', lastName: 'Schmedtmann' };
 console.log(jonas.lastName); // Schmedtmann
 console.log(jonas['lastName']); // Schmedtmann
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-// 4. RECREATE THE CHALLENGES ABOVE : "And I would even challenge you to do this with arrays. So as a challenge, I would challenge you to recreate any of the examples that we did previously in the section with map filter and reduce to use only the reduce method. And that is totally possible. And so, yeah, you can try that out."
-// ...
-
-// 5.1. create a function to convert any string to a title case.
+// 4.1. create a function to convert any string to a title case.
 // ex: this is a nice title -> This Is a Nice Title
 
 const convertTitleCase = function (title) {
   const exceptions = ['a', 'an', 'and', 'the', 'but', 'or', 'on', 'in', 'with'];
 
-  const capitalize = (str) => str[0].toUpperCase() + str.slice(1);
+  // const capitalize = (str) => str[0].toUpperCase() + str.slice(1);
+  // OR
+  const capitalize = (str) => str.replace(str[0], str.at(0).toUpperCase());
 
   const titleCase = title
     .toLowerCase()
@@ -1304,7 +1318,7 @@ convertTitleCase('and here is another title with an EXAMPLE');
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // EXTRA - RADU
-// 5.2. Write a function that receives variable names written in underscore_case and converts them to camelCase.
+// 4.2. Write a function that receives variable names written in underscore_case and converts them to camelCase.
 // Test data:
 // underscore_case
 //  first_name
@@ -1313,7 +1327,9 @@ convertTitleCase('and here is another title with an EXAMPLE');
 // delayed_departure
 
 const convertToCamelCase = function (str) {
-  const capitalize = (str) => str[0].toUpperCase() + str.slice(1);
+  // const capitalize = (str) => str[0].toUpperCase() + str.slice(1);
+  // OR
+  const capitalize = (str) => str.replace(str[0], str.at(0).toUpperCase());
 
   const convert = str
     .toLowerCase()
@@ -1330,7 +1346,7 @@ convertToCamelCase('underscore_case');
 convertToCamelCase(' first_name_Some_Variable');
 convertToCamelCase('  calculate_AGE_underscore_case_RANdom_wOrD_123_fOUr   ');
 
-// 5.3. Write a function that hides / masks all the digits of a credit card number, except the last 3
+// 4.3. Write a function that hides / masks all the digits of a credit card number, except the last 3
 const maskCreditCard = function (num) {
   const str = num + '';
   // console.log(str);
@@ -1349,7 +1365,7 @@ maskCreditCard('123456789');
 maskCreditCard('  123456  \n');
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
-// 6. Coding Challenge Jonas:
+// 5. Coding Challenge Jonas:
 
 /* 
 Julia and Kate are still studying dogs, and this time they are studying if dogs are eating too much or too little.
@@ -1386,11 +1402,11 @@ const dogs = [
   { weight: 32, curFood: 340, owners: ['Michael'] },
 ];
 
-// 6.1. Loop over the array containing dog objects, and for each dog, calculate the recommended food portion and add it to the object as a new property. Do NOT create a new array, simply loop over the array. Formula: recommendedFood = weight ** 0.75 * 28. (The result is in grams of food, and the weight needs to be in kg)
-dogs.forEach((dog) => (dog.recFood = Math.round(dog.weight ** 0.75 * 28)));
+// 5.1. Loop over the array containing dog objects, and for each dog, calculate the recommended food portion and add it to the object as a new property. Do NOT create a new array, simply loop over the array. Formula: recommendedFood = weight ** 0.75 * 28. (The result is in grams of food, and the weight needs to be in kg)
+dogs.forEach((dog) => (dog.recFood = Math.round(dog.weight ** 0.75 * 28))); // ADDING the "recFood" as a PROPERTY to EACH OBJECT of the "dogs" Array
 console.log(dogs);
 
-// 6.2. Find Sarah's dog and log to the console whether it's eating too much or too little. HINT: Some dogs have multiple owners, so you first need to find Sarah in the owners array, and so this one is a bit tricky (on purpose) 🤓
+// 5.2. Find Sarah's dog and log to the console whether it's eating too much or too little. HINT: Some dogs have multiple owners, so you first need to find Sarah in the owners array, and so this one is a bit tricky (on purpose) 🤓
 // Radu:
 const sarahsDog = dogs.filter((dog) => dog.owners.includes('Sarah'));
 console.log(sarahsDog);
@@ -1407,7 +1423,7 @@ console.log(
   } `
 );
 
-// 6.3. Create an array containing all owners of dogs who eat too much ('ownersEatTooMuch') and an array with all owners of dogs who eat too little ('ownersEatTooLittle').
+// 5.3. Create an array containing all owners of dogs who eat too much ('ownersEatTooMuch') and an array with all owners of dogs who eat too little ('ownersEatTooLittle').
 // Radu === Jonas:
 console.log(dogs);
 const ownersEatTooMuch = dogs
@@ -1420,16 +1436,16 @@ const ownersEatTooLittle = dogs
   .flatMap((dog) => dog.owners);
 console.log(ownersEatTooLittle);
 
-// 6.4. Log a string to the console for each array created in 3., like this: "Matilda and Alice and Bob's dogs eat too much!" and "Sarah and John and Michael's dogs eat too little!"
+// 5.4. Log a string to the console for each array created in 3., like this: "Matilda and Alice and Bob's dogs eat too much!" and "Sarah and John and Michael's dogs eat too little!"
 // Radu === Jonas:
 console.log(`${ownersEatTooMuch.join(' and ')}'s dogs eat too much!`);
 console.log(`${ownersEatTooLittle.join(' and ')}'s dogs eat too little!`);
 
-// 6.5. Log to the console whether there is any dog eating EXACTLY the amount of food that is recommended (just true or false)
+// 5.5. Log to the console whether there is any dog eating EXACTLY the amount of food that is recommended (just true or false)
 // Radu === Jonas:
 console.log(dogs.some((dog) => dog.curFood === dog.recFood));
 
-// 6.6. Log to the console whether there is any dog eating an OKAY amount of food (just true or false)
+// 5.6. Log to the console whether there is any dog eating an OKAY amount of food (just true or false)
 // Radu:
 console.log(
   dogs.some(
@@ -1442,17 +1458,17 @@ const checkEatingOkay = (dog) =>
   dog.curFood > dog.recFood * 0.9 && dog.curFood < dog.recFood * 1.1;
 
 console.log(dogs.some(checkEatingOkay));
-// 6.7. Create an array containing the dogs that are eating an OKAY amount of food (try to reuse the condition used in 6.)
+// 5.7. Create an array containing the dogs that are eating an OKAY amount of food (try to reuse the condition used in 5.)
 // Radu === Jonas:
 console.log(dogs.filter(checkEatingOkay));
 
-// 6.8. Create a shallow copy of the dogs array and sort it by recommended food portion in an ascending order (keep in mind that the portions are inside the array's objects)
+// 5.8. Create a shallow copy of the dogs array and sort it by recommended food portion in an ascending order (keep in mind that the portions are inside the array's objects)
 // Radu:
 console.log(dogs);
-const sortedDogs = Array.from(dogs).sort((a, b) => a.recFood - b.recFood);
+const sortedDogs = Array.from(dogs).sort((a, b) => a.recFood - b.recFood); // THE PORTIONS ARE INSIDE THE ARRAY'S OBJECTS (a.recFood, b.recFood)
 console.log(sortedDogs);
 
 // Jonas:
 // sort it by recommended food portion in an ascending order [1,2,3]
-const dogsSorted = dogs.slice().sort((a, b) => a.recFood - b.recFood);
+const dogsSorted = dogs.slice().sort((a, b) => a.recFood - b.recFood); // THE PORTIONS ARE INSIDE THE ARRAY'S OBJECTS (a.recFood, b.recFood)
 console.log(dogsSorted);
