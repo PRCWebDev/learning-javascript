@@ -14,6 +14,12 @@
 
 ---
 
+#### ☑️ 14 November 2022
+
+1. Completed 11 - 15 Codewars Katas ☑️
+
+---
+
 #### ☑️ 13 November 2022
 
 1. Rewatched part of Section 11 lectures from Jonas Schmedtmann's course - Working with Arrays / Array Methods:
