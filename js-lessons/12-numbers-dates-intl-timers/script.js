@@ -436,6 +436,26 @@ labelBalance.addEventListener('click', function () {
 });
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// 4. Numeric Separators "_":
+// 287,460,000,000
+const diameter = 287_460_000_000; // 287460000000
+console.log(diameter);
+
+const priceInCents = 345_99; // 34599
+console.log(priceInCents);
+
+const weightInGrams = 69_000;
+console.log(weightInGrams); // 69000
+
+const transferFee1 = 15_00; // 1500
+const transferFee2 = 1_500; // 1500
+console.log(transferFee1, transferFee2);
+
+const PI = 3.1415;
+console.log(PI); // 3.1415
+
+console.log(Number('230_000')); // NaN - DOES NOT WORK because we used the Numeric Separator "_" on a String, NOT on a Number
+console.log(parseInt('230_000')); // 230 - kinda works, but BETTER AVOID !!!
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
