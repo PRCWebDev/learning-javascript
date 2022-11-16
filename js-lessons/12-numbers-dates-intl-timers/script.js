@@ -94,7 +94,7 @@ const displayMovements = function (movements, sort = false) {
         <div class="movements__type movements__type--${type}">${
       i + 1
     } ${type}</div>
-        <div class="movements__value">${mov}€</div>
+        <div class="movements__value">${mov.toFixed(2)}€</div>
       </div>
     `;
 
@@ -104,19 +104,19 @@ const displayMovements = function (movements, sort = false) {
 
 const calcDisplayBalance = function (acc) {
   acc.balance = acc.movements.reduce((acc, mov) => acc + mov, 0);
-  labelBalance.textContent = `${acc.balance}€`;
+  labelBalance.textContent = `${acc.balance.toFixed(2)}€`;
 };
 
 const calcDisplaySummary = function (acc) {
   const incomes = acc.movements
     .filter((mov) => mov > 0)
     .reduce((acc, mov) => acc + mov, 0);
-  labelSumIn.textContent = `${incomes}€`;
+  labelSumIn.textContent = `${incomes.toFixed(2)}€`;
 
   const out = acc.movements
     .filter((mov) => mov < 0)
     .reduce((acc, mov) => acc + mov, 0);
-  labelSumOut.textContent = `${Math.abs(out)}€`;
+  labelSumOut.textContent = `${Math.abs(out.toFixed(2))}€`;
 
   const interest = acc.movements
     .filter((mov) => mov > 0)
@@ -126,7 +126,7 @@ const calcDisplaySummary = function (acc) {
       return int >= 1;
     })
     .reduce((acc, int) => acc + int, 0);
-  labelSumInterest.textContent = `${interest}€`;
+  labelSumInterest.textContent = `${interest.toFixed(2)}€`;
 };
 
 const createUsernames = function (accs) {
@@ -165,7 +165,7 @@ btnLogin.addEventListener('click', function (e) {
   console.log(currentAccount);
 
   // if (currentAccount?.pin === Number(inputLoginPin.value)) {
-  // Using the UNARY Operator for Type Coercion INSTEAD of the "Number()" CONSTRUCTOR
+  // Using the UNARY PLUS Operator for Type Coercion INSTEAD of the "Number()" CONSTRUCTOR
   if (currentAccount?.pin === +inputLoginPin.value) {
     // Display UI and message
     labelWelcome.textContent = `Welcome back, ${
@@ -185,7 +185,7 @@ btnLogin.addEventListener('click', function (e) {
 btnTransfer.addEventListener('click', function (e) {
   e.preventDefault();
   // const amount = Number(inputTransferAmount.value);
-  // Using the UNARY Operator for Type Coercion INSTEAD of the "Number()" CONSTRUCTOR
+  // Using the UNARY PLUS Operator for Type Coercion INSTEAD of the "Number()" CONSTRUCTOR
   const amount = +inputTransferAmount.value;
   const receiverAcc = accounts.find(
     (acc) => acc.username === inputTransferTo.value
@@ -211,9 +211,9 @@ btnLoan.addEventListener('click', function (e) {
   e.preventDefault();
 
   // const amount = Number(inputLoanAmount.value);
-  // Using the UNARY Operator for Type Coercion INSTEAD of the "Number()" CONSTRUCTOR
-  const amount = +inputLoanAmount.value;
-
+  // Using the UNARY PLUS Operator for Type Coercion INSTEAD of the "Number()" CONSTRUCTOR
+  // const amount = +inputLoanAmount.value;
+  const amount = Math.floor(inputLoanAmount.value);
   if (
     amount > 0 &&
     currentAccount.movements.some((mov) => mov >= amount * 0.1)
@@ -233,7 +233,7 @@ btnClose.addEventListener('click', function (e) {
   if (
     inputCloseUsername.value === currentAccount.username &&
     // Number(inputClosePin.value) === currentAccount.pin
-    // Using the UNARY Operator for Type Coercion INSTEAD of the "Number()" CONSTRUCTOR
+    // Using the UNARY PLUS Operator for Type Coercion INSTEAD of the "Number()" CONSTRUCTOR
     +inputClosePin.value === currentAccount.pin
   ) {
     const index = accounts.findIndex(
@@ -284,7 +284,7 @@ console.log(0.1 + 0.2 === 0.3); // false - lol :D
 // 1.1.1. Using the "Number()" CONSTRUCTOR for Type Coversion:
 console.log(Number('23')); // 23
 
-// 1.1.2. Using the "+" UNARY Operator for Type Coercion:
+// 1.1.2. Using the "+" UNARY PLUS Operator for Type Coercion:
 console.log(+'23'); // 23
 // "this works because when JavaScript sees the "+" operator, it will do type coercion."
 
@@ -293,7 +293,7 @@ console.log(+'23'); // 23
 console.log(Number.parseInt('30px', 10)); // 30 // this WORKS
 console.log(Number.parseInt('030px', 10)); // 30 // this ALSO WORKS
 console.log(Number.parseInt('     00000000030px   ', 10)); // 30 // this ALSO WORKS - WHITESPACES DO NOT AFFECT IT
-// Converts A string to an integer.
+// Converts A S to an integer.
 // @param string — A string to convert into a number.
 // @param radix
 // A value between 2 and 36 that specifies the BASE of the number in string. If this argument is not supplied, strings with a prefix of '0x' are considered hexadecimal. All other strings are considered decimal.
@@ -306,12 +306,13 @@ console.log(Number.parseInt('e23', 10)); // NaN // this DOESN'T work BECAUSE it 
 console.log(Number.parseInt('14', 2)); // this DOESN'T work properly - I keep getting "1" or "NaN"
 console.log(Number.parseInt('01555', 2)); // this DOESN'T work properly - I keep getting "1" or "NaN"
 console.log(Number.parseInt('65', 2)); // this DOESN'T work properly - I keep getting "1" or "NaN"
+*/
 
-// console.log(14.toString(2)); // this DOESN'T work // "Uncaught SyntaxError: Invalid or unexpected token"
+// console.log(14.toString(2)); // this DOESN'T work WITHOUT PARENTHESIS "()" // "Uncaught SyntaxError: Invalid or unexpected token"
+console.log((14).toString(2)); // 1100 // this WORKS ONLY WITH PARENTHESIS "()"
 // USE INSTEAD:
 const fourteen = 14;
 console.log(fourteen.toString(2)); // 1100 // this WORKS
-*/
 
 // 1.2.2. Using PARSING for DECIMAL numbers (12.3456789):
 console.log(Number.parseInt('  2.5rem  ')); // 2 - NOT CORRECT - we ONLY GET the INTEGER part of the number - WHITESPACES DO NOT AFFECT IT
@@ -340,6 +341,72 @@ console.log(Number.isInteger(23)); // true
 console.log(Number.isInteger(23.0)); // true
 console.log(Number.isInteger('23')); // false
 console.log(Number.isInteger(23 / 0)); // false - "Infinity"
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////
+// 2. Math and Rounding
+// Square root:
+console.log(Math.sqrt(25)); // 5
+// OR
+console.log(25 ** (1 / 2)); // 5
+
+// Cubic root:
+console.log(8 ** (1 / 3)); // 2
+
+// Max value:
+console.log(Math.max(5, 18, 23, 11, 2)); // 23
+console.log(Math.max(5, 18, '23', 11, 2)); // 23 - Type Coercion
+console.log(Math.max(5, 18, '23px', 11, 2)); // NaN
+
+// Min value:
+console.log(Math.min(5, 18, 23, 11, 2)); // 2
+
+console.log(Math.PI * Number.parseFloat('10px') ** 2); // 314.1592653589793
+
+console.log(Math.trunc(Math.random() * 6) + 1); // "The Math.random() function returns a floating-point, pseudo-random number that's GREATER than OR EQUAL to 0 and LESS than 1"
+
+// Creating a function that returns a Random POSITIVE INTEGER Number (>=0) between 2 values (a min value and a max value)
+const randomInt = (min, max) =>
+  Math.floor(Math.random() * (max - min) + 1) + min;
+// Math.random() => 0...1 * (max - min) ((+1)) -> 0...(max - min) -> (0 + min)...(max - min + min) -> min...max
+console.log(randomInt(10, 20));
+
+// MORE EXAMPLES @ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+
+// Rounding integers
+console.log(Math.round(23.3)); // 23
+console.log(Math.round(23.9)); // 24
+console.log(Math.round('23.9'), typeof Math.round('23.9')); // 24 - number - Type Coercion !!!
+
+console.log(Math.ceil(23.3)); // 24
+console.log(Math.ceil(23.9)); // 24
+console.log(Math.ceil('23.9'), typeof Math.ceil('23.9')); // 24 - number - Type Coercion !!!
+
+console.log(Math.floor(23.3)); // 23
+console.log(Math.floor('23.9'), typeof Math.floor('23.9')); // 23 - number - Type Coercion !!!
+
+console.log(Math.trunc(23.3)); // 23
+console.log(Math.trunc('23.9'), typeof Math.trunc('23.3')); // 23 - number - Type Coercion !!!
+
+console.log(Math.trunc(-23.3)); // -23
+console.log(Math.floor(-23.3)); // -24 !!!
+
+// Rounding decimals:
+// the ".toFixed()" Method "Returns a STRING representing a number in fixed-point notation."
+console.log((2.7).toFixed(0)); // BOXING...
+/*
+JUST LIKE STRINGS, NUMBERS are ALSO just PRIMITIVES.
+So why do they have methods?
+
+Whenever we call a method on a Number, JavaScript will automatically, behind the scenes, CONVERT that Number Primitive to a Number OBJECT with the same content.
+And then it's on that OBJECT where the Methods are CALLED.
+
+This process is called BOXING because it basically takes our Number and puts it into a BOX which is the OBJECT.
+When the operation is done the Object is converted back to a regular Number Primitive.
+*/
+console.log((2.7).toFixed(3)); // '2.700' // "Returns a STRING representing a number in fixed-point notation."
+console.log((2.366).toFixed(2)); // '2.37' - string // !!! IT ALSO ROUNDS IT UP
+console.log(+(2.345).toFixed(2)); // 2.345 - number - because of the "+" UNARY PLUS Operator
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
