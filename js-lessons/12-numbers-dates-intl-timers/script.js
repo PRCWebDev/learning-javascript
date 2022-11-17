@@ -288,6 +288,7 @@ console.log(Number('23')); // 23
 console.log(+'23'); // 23
 // "this works because when JavaScript sees the "+" operator, it will do type coercion."
 
+///////////////////////////////////////
 // 1.2. Using PARSING (Reading / Getting / Extracting a Number out of a String):
 // 1.2.1. Using PARSING foR INTEGERS numbers:
 console.log(Number.parseInt('30px', 10)); // 30 // this WORKS
@@ -343,6 +344,7 @@ console.log(Number.isInteger('23')); // false
 console.log(Number.isInteger(23 / 0)); // false - "Infinity"
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 // 2. Math and Rounding
 // Square root:
 console.log(Math.sqrt(25)); // 5
@@ -408,6 +410,7 @@ console.log((2.366).toFixed(2)); // '2.37' - string // !!! IT ALSO ROUNDS IT UP
 console.log(+(2.345).toFixed(2)); // 2.345 - number - because of the "+" UNARY PLUS Operator
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 // 3. The Remainder Operator "%" :
 console.log(5 % 2); // 1
 console.log(5 / 2); // 5 = 2 * 2 + 1
@@ -436,6 +439,7 @@ labelBalance.addEventListener('click', function () {
 });
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 // 4. Numeric Separators "_":
 // 287,460,000,000
 const diameter = 287_460_000_000; // 287460000000
@@ -458,6 +462,7 @@ console.log(Number('230_000')); // NaN - DOES NOT WORK because we used the Numer
 console.log(parseInt('230_000')); // 230 - kinda works, but BETTER AVOID !!!
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 // 5. Working with BigInt
 console.log(2 ** 53 - 1); // 9007199254740991 - the Maximum value of a Normal Integer number accepted by JS
 // OR
@@ -472,7 +477,8 @@ console.log(4838430248342043823408394839483204n); // the "n" at the end of the n
 // OR using the CONSTRUCTOR "BigInt()"
 console.log(BigInt(48384302)); // 48384302n
 
-// (Mathematical) Operations - we MUST CONVERT the Normal Integer number to a BigInt number for (Mathematical) Operations to WORK
+///////////////////////////////////////
+// 5.1. (Mathematical) Operations - we MUST CONVERT the Normal Integer number to a BigInt number for (Mathematical) Operations to WORK
 console.log(10000n + 10000n); // 20000n
 console.log(36286372637263726376237263726372632n * 10000000n); // 362863726372637263762372637263726320000000n
 // console.log(Math.sqrt(16n)); //  DOES NOT WORK // "Cannot convert a BigInt value to a number at Math.sqrt (<anonymous>)"
@@ -483,13 +489,91 @@ console.log(11 / 3); // 3.6666666666666665
 const huge = 20289830237283728378237n;
 const num = 23;
 // console.log(huge * num); // DOES NOT WORK // "Uncaught TypeError: Cannot mix BigInt and other types, use explicit conversions"
-console.log(huge * BigInt(num)); // this WORKS - because we CONVERTED the Normal Integer number to a BigInt number
+console.log(huge * BigInt(num)); // this WORKS - because we CONVERTED the Normal Integer number to a BigInt number // 466666095457525752699451n
 
-console.log(typeof 20n); // bigint
-// Exceptions - Type Coercion of BigInt numbers
+///////////////////////////////////////
+// 5.2. Type Coercion of BigInt numbers
+console.log(typeof 20n); // 'bigint'
 console.log(20n > 15); // true
 // console.log(20n === 20); // false
 console.log(20n == '20'); // true
 console.log(huge + ' is REALLY big!!!'); // 20289830237283728378237 is REALLY big!!!
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// 6. Creating Dates
+// 6.1. Creating a Date
+const now = new Date();
+console.log(now); // 'Thu Nov 17 2022 21:36:12 GMT+0200'
+
+console.log(new Date('Thu Nov 17 2022 21:13:30')); // 'Thu Nov 17 2022 21:36:12 GMT+0200'
+console.log(new Date('December 24, 2024')); // 'Tue Dec 24 2024 00:00:00 GMT+0200'
+console.log(new Date(account1.movementsDates[0])); // 'Mon Nov 18 2019 23:31:17 GMT+0200'
+
+// The Month in JS is Zero-based => 0 === January, 1 === February ... 11 === December
+console.log(new Date(2037, 10, 19, 15, 23, 5)); // Y M D H Min Sec // 'Thu Nov 19 2037 15:23:05 GMT+0200'
+// !!! 10 !== Nov => The Month in JS is Zero-based => 0 === January, 1 === February ... 11 === December
+// ALSO: JS ADDS the Correct Day of the Week in front of the Date
+console.log(new Date(2037, 0, 19, 15, 23, 5)); // 'Mon Jan 19 2037 15:23:05 GMT+0200'
+console.log(new Date(2037, 1, 19, 15, 23, 5)); // 'Thu Feb 19 2037 15:23:05 GMT+0200'
+console.log(new Date(2037, 11, 19, 15, 23, 5)); // 'Sat Dec 19 2037 15:23:05 GMT+0200'
+
+// JS AUTO-CORRECTS the Date / Day:
+console.log(new Date(2037, 10, 31)); // JS AUTO-CORRECTS the Date / Day // 'Tue Dec 01 2037 00:00:00 GMT+0200'
+console.log(new Date(2037, 11, 39)); // JS AUTO-CORRECTS the Date / Day // 'Fri Jan 08 2038 00:00:00 GMT+0200'
+
+//  we can also pass into the "Date" CONSTRUCTOR function the amount of MILLISECONDS passed since the beginning of the UNIX TIME, which is January 1, 1970
+console.log(new Date(0)); // 'Thu Jan 01 1970 02:00:00 GMT+0200'
+console.log(new Date(3 * 24 * 60 * 60 * 1000)); // 3 Days * 24 Hours * 60 Min * 60 Sec * 1000 msec // 'Sun Jan 04 1970 02:00:00 GMT+0200'
+// TIMESTAMP === 259200000 === 3 * 24 * 60 * 60 * 1000
+
+///////////////////////////////////////
+// 6.2. Working with Dates
+// !!! Dates are just ANOTHER TYPE of OBJECTS => DATES HAVE METHODS:
+const future = new Date(2037, 10, 19, 15, 23);
+console.log(future); // 'Thu Nov 19 2037 15:23:00 GMT+0200'
+
+console.log(future.getFullYear()); // 2037 !!! ALWAYS USE ".getFullYear()"
+// !!! NEVER USE ".getYear()"
+// console.log(future.getYear()); // 137 ??????
+console.log(future.getMonth()); // 10 // The Month in JS is Zero-based => 10 === Nov
+console.log(future.getDate()); // 19 // the Day of the Month
+console.log(future.getDay()); // 4 // the Day of the Week
+console.log(future.getHours()); // 15
+console.log(future.getMinutes()); // 23
+console.log(future.getSeconds()); // 0
+console.log(future.toISOString()); // '2037-11-19T13:23:00.000Z'
+console.log(future.getTime()); // 2142249780000 // !!! GET TIMESTAMP !!!
+
+// !!! Creating a Date USING THE TIMESTAMP:
+console.log(new Date(2142256980000)); // 'Thu Nov 19 2037 17:23:00 GMT+0200'
+
+console.log(Date.now()); // 'Thu Nov 19 2037 17:23:00 GMT+0200'
+
+// !!! we can ALSO SET the Date - using ".set...()" instead of the ".get...()" Methods:
+future.setFullYear(2040);
+console.log(future); // 'Mon Nov 19 2040 15:23:00 GMT+0200'
+console.log(future.setDate(19)); // 2236944180000 // the Day of the Month TIMESTAMP
+
+// console.log(future.setDay(4)); // 'future.setDay is not a function' - DOES NOT WORK
+
+// Jonas:
+console.log(future.setHours(18)); // 2236954980000 // TIMESTAMP // 18H
+console.log(future.setMinutes(22)); // 2236954920000 // TIMESTAMP // 18H 22Min
+console.log(future.setSeconds(55)); // 2236954975000 // TIMESTAMP // // 18H 22Min 55Sec
+// EXTRA - Radu:
+// OR BETTER:
+console.log(future.setHours(18, 22, 55, 0)); // 2236958575000 // TIMESTAMP // "setHours(hours: number, min?: number | undefined, sec?: number | undefined, ms?: number | undefined): number" // 18H 22Min 55Sec 0msec
+
+console.log(future.setTime(2236954975000)); // 2236954975000 // SET TIMESTAMP
+console.log(future); // 'Mon Nov 19 2040 18:22:55 GMT+0200' // ORIGINAL DATE IS NOT CHANGED by the ".set...()" Methods
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
