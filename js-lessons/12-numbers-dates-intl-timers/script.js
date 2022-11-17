@@ -458,5 +458,38 @@ console.log(Number('230_000')); // NaN - DOES NOT WORK because we used the Numer
 console.log(parseInt('230_000')); // 230 - kinda works, but BETTER AVOID !!!
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// 5. Working with BigInt
+console.log(2 ** 53 - 1); // 9007199254740991 - the Maximum value of a Normal Integer number accepted by JS
+// OR
+console.log(Number.MAX_SAFE_INTEGER); // 9007199254740991 - the Maximum value of a Normal Integer number accepted by JS
+console.log(2 ** 53 + 1); // AVOID
+console.log(2 ** 53 + 2); // AVOID
+console.log(2 ** 53 + 3); // AVOID
+console.log(2 ** 53 + 4); // AVOID
+
+console.log(4838430248342043823408394839483204); // WITHOUT THE the "n" at the end of number // 4.8384302483420437e+33
+console.log(4838430248342043823408394839483204n); // the "n" at the end of the number TRANSFORMS IT to a BigInt(eger) Number // 4838430248342043823408394839483204n
+// OR using the CONSTRUCTOR "BigInt()"
+console.log(BigInt(48384302)); // 48384302n
+
+// (Mathematical) Operations - we MUST CONVERT the Normal Integer number to a BigInt number for (Mathematical) Operations to WORK
+console.log(10000n + 10000n); // 20000n
+console.log(36286372637263726376237263726372632n * 10000000n); // 362863726372637263762372637263726320000000n
+// console.log(Math.sqrt(16n)); //  DOES NOT WORK // "Cannot convert a BigInt value to a number at Math.sqrt (<anonymous>)"
+console.log(12n / 3n); // 4n
+console.log(11n / 3n); // 3n !!! IT CUTS OFF the Decimal part !!!
+console.log(11 / 3); // 3.6666666666666665
+
+const huge = 20289830237283728378237n;
+const num = 23;
+// console.log(huge * num); // DOES NOT WORK // "Uncaught TypeError: Cannot mix BigInt and other types, use explicit conversions"
+console.log(huge * BigInt(num)); // this WORKS - because we CONVERTED the Normal Integer number to a BigInt number
+
+console.log(typeof 20n); // bigint
+// Exceptions - Type Coercion of BigInt numbers
+console.log(20n > 15); // true
+// console.log(20n === 20); // false
+console.log(20n == '20'); // true
+console.log(huge + ' is REALLY big!!!'); // 20289830237283728378237 is REALLY big!!!
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
