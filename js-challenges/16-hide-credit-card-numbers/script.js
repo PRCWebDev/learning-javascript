@@ -22,10 +22,10 @@ maskCreditCardV1(123456789);
 maskCreditCardV1('123123');
 
 ///////////////////////////////////////
-// V2 - Jonas - with String Methods + Array Methods <=> METHOD CHAINING
-console.log('---V2---');
+// V2.1 - Jonas - with String Methods + Array Methods <=> METHOD CHAINING
+console.log('---V2.1.---');
 
-const maskCreditCardV2 = function (num) {
+const maskCreditCardV21 = function (num) {
   const str = num + '';
   // console.log(str);
 
@@ -39,9 +39,25 @@ const maskCreditCardV2 = function (num) {
   console.log(`Your credit card number is: ${mask}`);
   return mask;
 };
-maskCreditCardV2(123456789);
-maskCreditCardV2('123456789');
-maskCreditCardV2('  123456  \n');
+maskCreditCardV21(123456789);
+maskCreditCardV21('123456789');
+maskCreditCardV21('  123456  \n');
+
+///////////////////////////////////////
+// V2.2. - Radu: with String Methods + Array Methods <=> METHOD CHAINING
+console.log('---V2.2. Best Version---');
+
+const maskCreditCardV22 = (num) =>
+  num
+    .toString()
+    .toLowerCase()
+    .trim()
+    .split('')
+    .map((digit, i, arr) => (i < arr.length - 3 ? '*' : digit))
+    .join('');
+console.log(maskCreditCardV22(31313554646));
+console.log(maskCreditCardV22('  31313554646  '));
+console.log(maskCreditCardV22('\n   31313554646\n'));
 
 ///////////////////////////////////////
 ///////////////////////////////////////
