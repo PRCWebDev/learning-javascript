@@ -14,7 +14,21 @@
 
 ---
 
-#### ☑️ 14 November 2022
+#### ☑️ 16 - 19 November 2022
+
+1. Watched all the lectures of Section 12 from Jonas Schmedtmann's course - Numbers, Dates, Intl (Internalization) and Timers ☑️
+2. Coded along and took notes on half of Section's 12 lectures:
+
+- ☑️ Converting and Checking Numbers
+- ☑️ Math and Rounding
+- ☑️ The Remainder Operator
+- ☑️ Numeric Separators
+- ☑️ Working with BigInt
+- ☑️ Creating Dates
+
+---
+
+#### ☑️ 14 - 15 November 2022
 
 1. Completed 11 - 15 Codewars Katas ☑️
 2. Rewatched part of Section 11 lectures from Jonas Schmedtmann's course - Working with Arrays / Array Methods:
