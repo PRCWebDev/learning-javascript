@@ -14,7 +14,21 @@
 
 ---
 
-#### ☑️ 16 - 20 November 2022
+#### ☑️ 03 December 2022
+
+1. Rewatched part of Section 12 lectures from Jonas Schmedtmann's course - Numbers, Dates, Intl (Internalization) and Timers ☑️
+
+- ☑️ Converting and Checking Numbers
+- ☑️ Math and Rounding
+- ☑️ The Remainder Operator
+- ☑️ Numeric Separators
+- ☑️ Working with BigInt
+
+2. Notes recap & code review ☑️
+
+---
+
+#### ☑️ 16 - 19 November 2022
 
 1. Watched all the lectures of Section 12 from Jonas Schmedtmann's course - Numbers, Dates, Intl (Internalization) and Timers ☑️
 2. Coded along and took notes on half of Section's 12 lectures:
@@ -25,9 +39,6 @@
 - ☑️ Numeric Separators
 - ☑️ Working with BigInt
 - ☑️ Creating Dates
-
-3. HTML notes recap ☑️
-4. Practiced Touch typing ☑️
 
 ---
 
