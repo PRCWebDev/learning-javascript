@@ -281,7 +281,7 @@ console.log(0.1 + 0.2 === 0.3); // false - lol :D
 
 ///////////////////////////////////////
 // 1.1. Conversion of String to Number:
-// 1.1.1. Using the "Number()" CONSTRUCTOR for Type Coversion:
+// 1.1.1. Using the "Number()" CONSTRUCTOR for Type Conversion:
 console.log(Number('23')); // 23
 
 // 1.1.2. Using the "+" UNARY PLUS Operator for Type Coercion:
@@ -290,14 +290,13 @@ console.log(+'23'); // 23
 
 ///////////////////////////////////////
 // 1.2. Using PARSING (Reading / Getting / Extracting a Number out of a String):
-// 1.2.1. Using PARSING foR INTEGERS numbers:
+// 1.2.1. Using PARSING for INTEGERS numbers:
 console.log(Number.parseInt('30px', 10)); // 30 // this WORKS
 console.log(Number.parseInt('030px', 10)); // 30 // this ALSO WORKS
 console.log(Number.parseInt('     00000000030px   ', 10)); // 30 // this ALSO WORKS - WHITESPACES DO NOT AFFECT IT
-// Converts A S to an integer.
-// @param string — A string to convert into a number.
-// @param radix
-// A value between 2 and 36 that specifies the BASE of the number in string. If this argument is not supplied, strings with a prefix of '0x' are considered hexadecimal. All other strings are considered decimal.
+// Converts a String to an Integer.
+// @param string - A string to convert into a number.
+// @param radix - A value between 2 and 36 that specifies the BASE of the number in string. If this argument is not supplied, strings with a prefix of '0x' are considered hexadecimal. All other strings are considered decimal.
 
 console.log(Number.parseInt('e23', 10)); // NaN // this DOESN'T work BECAUSE it DOESN'T START with a Number
 
@@ -340,6 +339,7 @@ console.log(Number.isFinite(23 / 0)); // false - "Infinity"
 // Checking if value is an INTEGER Number:
 console.log(Number.isInteger(23)); // true
 console.log(Number.isInteger(23.0)); // true
+console.log(Number.isInteger(23.3)); // false
 console.log(Number.isInteger('23')); // false
 console.log(Number.isInteger(23 / 0)); // false - "Infinity"
 
@@ -455,7 +455,7 @@ const transferFee1 = 15_00; // 1500
 const transferFee2 = 1_500; // 1500
 console.log(transferFee1, transferFee2);
 
-const PI = 3.1415;
+const PI = 3.14_15;
 console.log(PI); // 3.1415
 
 console.log(Number('230_000')); // NaN - DOES NOT WORK because we used the Numeric Separator "_" on a String, NOT on a Number
@@ -501,77 +501,88 @@ console.log(huge + ' is REALLY big!!!'); // 20289830237283728378237 is REALLY bi
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// 6. Creating Dates
+// 6. Dates
+///////////////////////////////////////
 // 6.1. Creating a Date
 const now = new Date();
-console.log(now); // 'Thu Nov 17 2022 21:36:12 GMT+0200'
+console.log(now); // 'Thu Nov 17 2022 21:36:12 GMT+0200 (Eastern European Standard Time)'
 
-console.log(new Date('Thu Nov 17 2022 21:13:30')); // 'Thu Nov 17 2022 21:36:12 GMT+0200'
-console.log(new Date('December 24, 2024')); // 'Tue Dec 24 2024 00:00:00 GMT+0200'
-console.log(new Date(account1.movementsDates[0])); // 'Mon Nov 18 2019 23:31:17 GMT+0200'
+console.log(new Date('Thu Nov 17 2022 21:13:30')); // 'Thu Nov 17 2022 21:13:30 GMT+0200 ...'
+console.log(new Date('December 24, 2024')); // 'Tue Dec 24 2024 00:00:00 GMT+0200 ...'
+console.log(new Date(account1.movementsDates[0])); // 'Mon Nov 18 2019 23:31:17 GMT+0200 ...'
 
 // The Month in JS is Zero-based => 0 === January, 1 === February ... 11 === December
-console.log(new Date(2037, 10, 19, 15, 23, 5)); // Y M D H Min Sec // 'Thu Nov 19 2037 15:23:05 GMT+0200'
+console.log(new Date(2037, 10, 19, 15, 23, 5)); // Y M D H Min Sec // 'Thu Nov 19 2037 15:23:05 GMT+0200 ...'
 // !!! 10 !== Nov => The Month in JS is Zero-based => 0 === January, 1 === February ... 11 === December
 // ALSO: JS ADDS the Correct Day of the Week in front of the Date
-console.log(new Date(2037, 0, 19, 15, 23, 5)); // 'Mon Jan 19 2037 15:23:05 GMT+0200'
-console.log(new Date(2037, 1, 19, 15, 23, 5)); // 'Thu Feb 19 2037 15:23:05 GMT+0200'
-console.log(new Date(2037, 11, 19, 15, 23, 5)); // 'Sat Dec 19 2037 15:23:05 GMT+0200'
+console.log(new Date(2037, 0, 19, 15, 23, 5)); // 'Mon Jan 19 2037 15:23:05 GMT+0200 ...'
+console.log(new Date(2037, 1, 19, 15, 23, 5)); // 'Thu Feb 19 2037 15:23:05 GMT+0200 ...'
+console.log(new Date(2037, 11, 19, 15, 23, 5)); // 'Sat Dec 19 2037 15:23:05 GMT+0200 ...'
 
 // JS AUTO-CORRECTS the Date / Day:
-console.log(new Date(2037, 10, 31)); // JS AUTO-CORRECTS the Date / Day // 'Tue Dec 01 2037 00:00:00 GMT+0200'
-console.log(new Date(2037, 11, 39)); // JS AUTO-CORRECTS the Date / Day // 'Fri Jan 08 2038 00:00:00 GMT+0200'
+console.log(new Date(2037, 10, 31)); // JS AUTO-CORRECTS the Date / Day // 'Tue Dec 01 2037 00:00:00 GMT+0200 ...'
+console.log(new Date(2037, 11, 39)); // JS AUTO-CORRECTS the Date / Day // 'Fri Jan 08 2038 00:00:00 GMT+0200 ...'
 
 //  we can also pass into the "Date" CONSTRUCTOR function the amount of MILLISECONDS passed since the beginning of the UNIX TIME, which is January 1, 1970
-console.log(new Date(0)); // 'Thu Jan 01 1970 02:00:00 GMT+0200'
-console.log(new Date(3 * 24 * 60 * 60 * 1000)); // 3 Days * 24 Hours * 60 Min * 60 Sec * 1000 msec // 'Sun Jan 04 1970 02:00:00 GMT+0200'
+console.log(new Date(0)); // 'Thu Jan 01 1970 02:00:00 GMT+0200 ...'
+console.log(new Date(3 * 24 * 60 * 60 * 1000)); // 3 Days * 24 Hours * 60 Min * 60 Sec * 1000 msec // 'Sun Jan 04 1970 02:00:00 GMT+0200 ...'
 // TIMESTAMP === 259200000 === 3 * 24 * 60 * 60 * 1000
+
+// !!! Creating a Date USING THE TIMESTAMP:
+console.log(new Date(259200000)); // 'Sun Jan 04 1970 02:00:00 GMT+0200 ... (Eastern European Standard Time)'
 
 ///////////////////////////////////////
 // 6.2. Working with Dates
 // !!! Dates are just ANOTHER TYPE of OBJECTS => DATES HAVE METHODS:
 const future = new Date(2037, 10, 19, 15, 23);
-console.log(future); // 'Thu Nov 19 2037 15:23:00 GMT+0200'
+console.log(future); // 'Thu Nov 19 2037 15:23:00 GMT+0200 ...'
 
+// 6.2.1. GET Dates Methods
 console.log(future.getFullYear()); // 2037 !!! ALWAYS USE ".getFullYear()"
 // !!! NEVER USE ".getYear()"
 // console.log(future.getYear()); // 137 ??????
-console.log(future.getMonth()); // 10 // The Month in JS is Zero-based => 10 === Nov
-console.log(future.getDate()); // 19 // the Day of the Month
-console.log(future.getDay()); // 4 // the Day of the Week
-console.log(future.getHours()); // 15
-console.log(future.getMinutes()); // 23
-console.log(future.getSeconds()); // 0
-console.log(future.toISOString()); // '2037-11-19T13:23:00.000Z'
-console.log(future.getTime()); // 2142249780000 // !!! GET TIMESTAMP !!!
+// !!! NEVER USE ".getUTCFullYear()" because of Daylight Saving
+// console.log(future.getUTCFullYear()); // 2037
+console.log(future.getMonth()); // 10 // The Month in JS is Zero-based => 10 === Nov // !!! NUMBER
+console.log(future.getDate()); // 19 // the Day of the Month // !!! NUMBER
+console.log(future.getDay()); // 4 // the Day of the Week // !!! NUMBER
+console.log(future.getHours()); // 15 // !!! NUMBER
+console.log(future.getMinutes()); // 23 // !!! NUMBER
+console.log(future.getSeconds()); // 0 // !!! NUMBER
+console.log(future.toISOString()); // '2037-11-19T13:23:00.000Z' // STRING => VERY USEFUL for Converting Date to STRING and Store it somewhere...
+console.log(future.getTime()); // 2142249780000 // !!! GET TIMESTAMP !!! // !!! NUMBER
 
 // !!! Creating a Date USING THE TIMESTAMP:
-console.log(new Date(2142256980000)); // 'Thu Nov 19 2037 17:23:00 GMT+0200'
+console.log(new Date(2142256980000)); // 'Thu Nov 19 2037 17:23:00 GMT+0200 ...'
 
-console.log(Date.now()); // 'Thu Nov 19 2037 17:23:00 GMT+0200'
+// 6.2.2. Getting the TIMESTAMP of the Current Time:
+console.log(Date.now()); // 1670085559724 // Number
 
-// !!! we can ALSO SET the Date - using ".set...()" instead of the ".get...()" Methods:
+// 6.2.3. SET Dates Methods
+// we can ALSO SET the Date - using ".set...()" instead of the ".get...()" Methods:
+// !!! ORIGINAL DATE IS CHANGED by the ".set...()" Methods !!!
 future.setFullYear(2040);
-console.log(future); // 'Mon Nov 19 2040 15:23:00 GMT+0200'
-console.log(future.setDate(19)); // 2236944180000 // the Day of the Month TIMESTAMP
+console.log(future); // 'Mon Nov 19 2040 15:23:00 GMT+0200 ...'
+console.log(future.setDate(11)); // 2236252980000 // the Day of the Month TIMESTAMP
+console.log(future); // 'Sun Nov 11 2040 15:23:00 GMT+0200 (Eastern European Standard Time)' // !!! ORIGINAL DATE IS CHANGED by the ".set...()" Methods !!!
 
 // console.log(future.setDay(4)); // 'future.setDay is not a function' - DOES NOT WORK
 
 // Jonas:
-console.log(future.setHours(18)); // 2236954980000 // TIMESTAMP // 18H
-console.log(future.setMinutes(22)); // 2236954920000 // TIMESTAMP // 18H 22Min
-console.log(future.setSeconds(55)); // 2236954975000 // TIMESTAMP // // 18H 22Min 55Sec
+console.log(future.setHours(18)); // 2236263780000 // TIMESTAMP // 18H
+console.log(future.setMinutes(22)); // 2236263720000 // TIMESTAMP // 18H 22Min
+console.log(future.setSeconds(55)); // 2236263775000 // TIMESTAMP // // 18H 22Min 55Sec
 // EXTRA - Radu:
 // OR BETTER:
 console.log(future.setHours(18, 22, 55, 0)); // 2236958575000 // TIMESTAMP // "setHours(hours: number, min?: number | undefined, sec?: number | undefined, ms?: number | undefined): number" // 18H 22Min 55Sec 0msec
+console.log(future); // 'Sun Nov 11 2040 18:22:55 GMT+0200 (Eastern European Standard Time)' // !!! ORIGINAL DATE IS CHANGED by the ".set...()" Methods !!!
 
 console.log(future.setTime(2236954975000)); // 2236954975000 // SET TIMESTAMP
-console.log(future); // 'Mon Nov 19 2040 18:22:55 GMT+0200' // ORIGINAL DATE IS NOT CHANGED by the ".set...()" Methods
+console.log(future); // 'Mon Nov 19 2040 18:22:55 GMT+0200 ...' // !!! ORIGINAL DATE IS CHANGED by the ".set...()" Methods !!!
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -25,6 +25,8 @@
 - ☑️ Working with BigInt
 
 2. Notes recap & code review ☑️
+3. Practiced Touch typing ☑️
+4. Notes & code updates ☑️
 
 ---
 
