@@ -185,6 +185,9 @@ const updateUI = function (acc) {
 };
 
 const startLogOutTimer = function () {
+  // Set time to 5 minutes
+  let time = 300;
+
   const tick = function () {
     const min = String(Math.trunc(time / 60)).padStart(2, 0);
     const sec = String(time % 60).padStart(2, 0);
@@ -199,12 +202,9 @@ const startLogOutTimer = function () {
       containerApp.style.opacity = 0;
     }
 
-    // Decrease 1s
+    // Decrease by 1s
     time--;
   };
-
-  // Set time to 5 minutes
-  let time = 120;
 
   // Call the timer every second
   tick();
@@ -269,8 +269,8 @@ btnLogin.addEventListener('click', function (e) {
     inputLoginPin.blur();
 
     // Timer
-    if (timer) clearInterval(timer);
-    timer = startLogOutTimer();
+    if (timer) clearInterval(timer); // CLEAR / RESET the Timer on EACH LOGIN
+    timer = startLogOutTimer(); // Start a NEW TIMER on EACH LOGIN
 
     // Update UI
     updateUI(currentAccount);
@@ -302,8 +302,9 @@ btnTransfer.addEventListener('click', function (e) {
     // Update UI
     updateUI(currentAccount);
 
-    // Reset timer
+    // Reset timer EVERY TIME the current user PERFORMS an Action (Transfer / Loan)
     clearInterval(timer);
+    // Start a NEW TIMER AFTER the current user PERFORMS an Action (Transfer / Loan)
     timer = startLogOutTimer();
   }
 });
@@ -327,8 +328,9 @@ btnLoan.addEventListener('click', function (e) {
       // Update UI
       updateUI(currentAccount);
 
-      // Reset timer
+      // Reset timer EVERY TIME the current user PERFORMS an Action (Transfer / Loan)
       clearInterval(timer);
+      // Start a NEW TIMER AFTER the current user PERFORMS an Action (Transfer / Loan)
       timer = startLogOutTimer();
     }, 2500);
   }
@@ -803,5 +805,31 @@ console.log(
 // MORE INFO @ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// 8. Timers - "setTimeout();" / "setInterval();" & "clearTimeout();" / "clearInterval();"
+///////////////////////////////////////
+// 8.1. "setTimeout();"
+const ingredients = ['olives', 'spinach'];
+// const ingredients = ['olives', 'mushrooms'];
+const pizzaTimer = setTimeout(
+  (ing1, ing2) => console.log(`Here is your pizza with ${ing1} and ${ing2} 🍕`),
+  3000,
+  ...ingredients
+);
+console.log('Waiting...');
+
+///////////////////////////////////////
+// 8.2. "clearTimeout();"
+if (ingredients.includes('spinach')) clearTimeout(pizzaTimer);
+
+///////////////////////////////////////
+// 8.3. "setInterval();"
+// setInterval(function () {
+//   const now = new Date();
+//   console.log(now);
+// }, 1000);
+
+///////////////////////////////////////
+// 8.4. "clearInterval();" - SAME AS "clearTimeout();"
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

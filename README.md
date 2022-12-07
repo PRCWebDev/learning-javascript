@@ -14,6 +14,22 @@
 
 ---
 
+#### ☑️ 04 - 07 December 2022
+
+1. Watched all of the remaining lectures of Section 12 from Jonas Schmedtmann's course - Numbers, Dates, Intl (Internalization) and Timers ☑️
+
+- ☑️ Creating Dates
+- ☑️ Adding Dates to "Bankist" App
+- ☑️ Operations With Dates
+- ☑️ Internationalizing (& Localizing) Dates (Intl)
+- ☑️ Internationalizing (& Localizing) Numbers (Intl)
+- ☑️ Timers: setTimeout and setInterval (& clearTimeout and clearInterval)
+- ☑️ Implementing a Countdown Timer (on the "Bankist" App)
+
+2. Coded along and took notes ☑️
+3. Notes recap & code review ☑️
+4. Practiced Touch typing ☑️
+
 #### ☑️ 03 December 2022
 
 1. Rewatched part of Section 12 lectures from Jonas Schmedtmann's course - Numbers, Dates, Intl (Internalization) and Timers ☑️
