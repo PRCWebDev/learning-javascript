@@ -14,6 +14,12 @@
 
 ---
 
+#### ☑️ 08 - 09 December 2022
+
+1. Notes recap & review ☑️
+2. Practiced Touch typing ☑️
+3. Completed 21 - 25 Codewars Katas ☑️
+
 #### ☑️ 04 - 07 December 2022
 
 1. Watched all of the remaining lectures of Section 12 from Jonas Schmedtmann's course - Numbers, Dates, Intl (Internalization) and Timers ☑️
