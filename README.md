@@ -14,6 +14,12 @@
 
 ---
 
+#### ☑️ 10 December 2022
+
+1. Notes recap ☑️
+2. Completed 26 -30 Codewars Katas ☑️
+3. Practiced Touch typing ☑️
+
 #### ☑️ 08 - 09 December 2022
 
 1. Notes recap & review ☑️
