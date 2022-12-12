@@ -14,10 +14,18 @@
 
 ---
 
+#### ☑️ 12 December 2022
+
+1. Completed 36 - 40 Codewars Katas ☑️
+
+#### ☑️ 11 December 2022
+
+1. Completed 31 - 35 Codewars Katas ☑️
+
 #### ☑️ 10 December 2022
 
 1. Notes recap ☑️
-2. Completed 26 -30 Codewars Katas ☑️
+2. Completed 26 - 30 Codewars Katas ☑️
 3. Practiced Touch typing ☑️
 
 #### ☑️ 08 - 09 December 2022
