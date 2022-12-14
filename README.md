@@ -8,11 +8,23 @@
     - 🌟 the [Guess My Number](https://guess-my-number-js-webdevprc.netlify.app/) game
     - 🌟 the [Modal Window](https://modal-window-js-webdevprc.netlify.app/) mini-project
     - 🌟 the [Pig Game](https://pig-game-js-webdevprc.netlify.app/)
-  - 🚧 Work in Progress (WIP) on Jonas "Bankist" App
+  - 🚧 Work in Progress (WIP) on Jonas "Bankist" App + Website
 
     \*All credit for these projects goes to Jonas Schmedtmann 🙏 I am just his student, learning and practicing from his awesome course 🔥
 
 ---
+
+#### ☑️ 14 December 2022
+
+1. Notes review ☑️
+2. Practiced Touch typing ☑️
+3. Skipped ahead on Jonas Schmedtmann's course and completed all the lectures from Section 19 - Setting up Git + GitHub and Continuous Integration / Continuous Deployment (CI/CD) with Netlify ☑️
+
+- ☑️ Simple Deployment With Netlify
+- ☑️ Setting Up Git and GitHub
+- ☑️ Git Fundamentals
+- ☑️ Pushing to GitHub
+- ☑️ Setting Up Continuous Integration / Continuous Deployment (CI/CD) With Netlify
 
 #### ☑️ 12 December 2022
 
