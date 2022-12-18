@@ -14,6 +14,35 @@
 
 ---
 
+#### ☑️ 17 - 18 December 2022
+
+1. Practiced Touch typing ☑️
+2. Watched all of the lectures of Section 13 from Jonas Schmedtmann's course - Advanced DOM and Events ☑️
+   (✖️ only watched once ✖️ no coding along ✖️ no notes )
+
+- ☑️ PROJECT: "Bankist" Website
+- ☑️ How the DOM Really Works
+- ☑️ Selecting, Creating, and Deleting Elements
+- ☑️ Styles, Attributes and Classes
+- ☑️ Implementing Smooth Scrolling
+- ☑️ Types of Events and Event Handlers
+- ☑️ Event Propagation: Bubbling and Capturing
+- ☑️ Event Propagation in Practice
+- ☑️ Event Delegation: Implementing Page Navigation
+- ☑️ DOM Traversing
+- ☑️ Building a Tabbed Component
+- ☑️ Passing Arguments to Event Handlers
+- ☑️ Implementing a Sticky Navigation: The Scroll Event
+- ☑️ A Better Way: The Intersection Observer API
+- ☑️ Revealing Elements on Scroll
+- ☑️ Lazy Loading Images
+- ☑️ Building a Slider Component: Part 1
+- ☑️ Building a Slider Component: Part 2
+- ☑️ Lifecycle DOM Events
+- ☑️ Efficient Script Loading: defer and async
+
+---
+
 #### ☑️ 14 December 2022
 
 1. Notes review ☑️
