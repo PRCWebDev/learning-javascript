@@ -14,11 +14,23 @@
 
 ---
 
+#### ☑️ 19 December 2022
+
+1. Watched part of the lectures of Section 14 from Jonas Schmedtmann's course - Object-Oriented Programming (OOP) With JavaScript (✖️ only watched once ✖️ no coding along ✖️ no notes):
+
+- ☑️ What is Object-Oriented Programming?
+- ☑️ OOP in JavaScript
+- ☑️ Constructor Functions and the new Operator
+- ☑️ Prototypes
+- ☑️ Prototypal Inheritance and The Prototype Chain
+- ☑️ Prototypal Inheritance on Built-In Objects
+- ☑️ ES6 Classes
+
+---
+
 #### ☑️ 17 - 18 December 2022
 
-1. Practiced Touch typing ☑️
-2. Watched all of the lectures of Section 13 from Jonas Schmedtmann's course - Advanced DOM and Events ☑️
-   (✖️ only watched once ✖️ no coding along ✖️ no notes )
+1. Watched all of the lectures of Section 13 from Jonas Schmedtmann's course - Advanced DOM and Events (✖️ only watched once ✖️ no coding along ✖️ no notes):
 
 - ☑️ PROJECT: "Bankist" Website
 - ☑️ How the DOM Really Works
@@ -41,13 +53,15 @@
 - ☑️ Lifecycle DOM Events
 - ☑️ Efficient Script Loading: defer and async
 
+2. Practiced Touch typing ☑️
+
 ---
 
 #### ☑️ 14 December 2022
 
 1. Notes review ☑️
 2. Practiced Touch typing ☑️
-3. Skipped ahead on Jonas Schmedtmann's course and completed all the lectures from Section 19 - Setting up Git + GitHub and Continuous Integration / Continuous Deployment (CI/CD) with Netlify ☑️
+3. Skipped ahead on Jonas Schmedtmann's course and completed all the lectures from Section 19 - Setting up Git + GitHub and Continuous Integration / Continuous Deployment (CI/CD) with Netlify:
 
 - ☑️ Simple Deployment With Netlify
 - ☑️ Setting Up Git and GitHub
@@ -55,13 +69,19 @@
 - ☑️ Pushing to GitHub
 - ☑️ Setting Up Continuous Integration / Continuous Deployment (CI/CD) With Netlify
 
+---
+
 #### ☑️ 12 December 2022
 
 1. Completed 36 - 40 Codewars Katas ☑️
 
+---
+
 #### ☑️ 11 December 2022
 
 1. Completed 31 - 35 Codewars Katas ☑️
+
+---
 
 #### ☑️ 10 December 2022
 
@@ -69,15 +89,19 @@
 2. Completed 26 - 30 Codewars Katas ☑️
 3. Practiced Touch typing ☑️
 
+---
+
 #### ☑️ 08 - 09 December 2022
 
 1. Notes recap & review ☑️
 2. Practiced Touch typing ☑️
 3. Completed 21 - 25 Codewars Katas ☑️
 
+---
+
 #### ☑️ 04 - 07 December 2022
 
-1. Watched all of the remaining lectures of Section 12 from Jonas Schmedtmann's course - Numbers, Dates, Intl (Internalization) and Timers ☑️
+1. Watched all of the remaining lectures of Section 12 from Jonas Schmedtmann's course - Numbers, Dates, Intl (Internalization) and Timers:
 
 - ☑️ Creating Dates
 - ☑️ Adding Dates to "Bankist" App
@@ -91,9 +115,11 @@
 3. Notes recap & code review ☑️
 4. Practiced Touch typing ☑️
 
+---
+
 #### ☑️ 03 December 2022
 
-1. Rewatched part of Section 12 lectures from Jonas Schmedtmann's course - Numbers, Dates, Intl (Internalization) and Timers ☑️
+1. Rewatched part of Section 12 lectures from Jonas Schmedtmann's course - Numbers, Dates, Intl (Internalization) and Timers:
 
 - ☑️ Converting and Checking Numbers
 - ☑️ Math and Rounding
