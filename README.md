@@ -8,7 +8,7 @@
     - 🌟 the [Guess My Number](https://guess-my-number-js-webdevprc.netlify.app/) game
     - 🌟 the [Modal Window](https://modal-window-js-webdevprc.netlify.app/) mini-project
     - 🌟 the [Pig Game](https://pig-game-js-webdevprc.netlify.app/)
-  - 🚧 Work in Progress (WIP) on Jonas "Bankist" App + Website
+  - 🚧 Work in Progress (WIP) on Jonas "Bankist" App ([Live Demo](https://thunderous-narwhal-89e660.netlify.app/)) + Website
 
     \*All credit for these projects goes to Jonas Schmedtmann 🙏 I am just his student, learning and practicing from his awesome course 🔥
 
